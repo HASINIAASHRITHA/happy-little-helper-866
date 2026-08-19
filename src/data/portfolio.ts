@@ -128,7 +128,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'A beauty-oriented website showcasing fundamental web development skills.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://beautymaker.vercel.app/site.png',
+    image: 'https://beautymaker.vercel.app/og-image.png',
     liveUrl: 'https://beautymaker.vercel.app',
   },
   {
