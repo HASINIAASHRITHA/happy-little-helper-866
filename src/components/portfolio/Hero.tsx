@@ -146,27 +146,33 @@ export const Hero = () => {
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex flex-wrap gap-6 mb-12">
               <motion.a 
                 href="#projects" 
-                whileHover={{ y: -2, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] transition-all"
+                whileHover={{ y: -5, scale: 1.05, boxShadow: "0 0 30px rgba(var(--primary), 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 transition-all flex items-center justify-center gap-2 group"
               >
                 View My Work
+                <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
+                  <ArrowDown className="-rotate-90" size={20} />
+                </motion.span>
               </motion.a>
               {resumeUrl && resumeUrl !== '#' ? (
                 <motion.a 
                   href={resumeUrl} 
                   target="_blank" 
                   rel="noreferrer"
-                  whileHover={{ y: -2, scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-10 py-4 border border-white/10 rounded-full font-bold transition-all"
+                  whileHover={{ y: -5, scale: 1.05, background: "rgba(255,255,255,0.1)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-4 glass border border-white/10 rounded-full font-bold transition-all"
                 >
                   Download CV
                 </motion.a>
               ) : (
-                <div className="px-10 py-4 border border-white/5 rounded-full font-bold text-muted-foreground/40 cursor-not-allowed">
+                <motion.div 
+                  whileHover={{ y: -2 }}
+                  className="px-10 py-4 border border-white/5 rounded-full font-bold text-muted-foreground/40 cursor-not-allowed"
+                >
                   CV coming soon
-                </div>
+                </motion.div>
               )}
             </motion.div>
 

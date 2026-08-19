@@ -122,7 +122,7 @@ export const About = () => {
                     </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
