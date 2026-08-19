@@ -37,6 +37,18 @@ export const Navbar = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.slice(1);
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: id === 'home' ? 0 : offsetTop - 80,
+        behavior: 'smooth'
+      });
+      setMobileMenuOpen(false);
+    }
   }, []);
 
   return (
@@ -60,6 +72,7 @@ export const Navbar = () => {
             <motion.a
               key={item.name}
               href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -104,7 +117,7 @@ export const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => scrollToSection(e, item.href)}
                   className="text-lg font-medium text-muted-foreground hover:text-primary"
                 >
                   {item.name}
