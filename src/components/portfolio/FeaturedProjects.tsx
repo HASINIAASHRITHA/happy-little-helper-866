@@ -173,7 +173,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 <span className="text-muted-foreground/50 font-bold flex items-center gap-2 relative py-3 text-lg italic">
                   Launch Unavailable
                 </span>
-              )}
+              ) : null}
               {project.githubUrl ? (
                 <a 
                   href={project.githubUrl} 
