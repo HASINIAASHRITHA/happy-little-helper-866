@@ -13,20 +13,28 @@ export const seedProjects = async (force = false) => {
       return;
     }
 
-    console.log('Syncing verified project data with Firestore...');
+    console.log('Syncing verified project data with Firestore (force sync)...');
     const batch = writeBatch(db);
     
+    // First, clear existing to ensure clean slate on force
+    if (force && !querySnapshot.empty) {
+      querySnapshot.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+    }
+
     projects.forEach((project) => {
+      // Use project.id as the document ID for stability
       const docRef = doc(projectsRef, project.id);
       batch.set(docRef, {
         ...project,
         order: getOrderValue(project.year, project.title),
         updatedAt: new Date().toISOString()
-      }, { merge: true });
+      });
     });
 
     await batch.commit();
-    console.log('Successfully synced Firestore with verified project data.');
+    console.log(`Successfully synced ${projects.length} projects to Firestore.`);
   } catch (error) {
     console.error('Error seeding projects:', error);
   }

@@ -29,8 +29,8 @@ export const Route = createFileRoute('/')({
 
 function PortfolioIndex() {
   useEffect(() => {
-    // Seed projects on first load if collection is empty
-    seedProjects(true); // Force sync to ensure latest verified data
+    // Seed projects on load
+    seedProjects(true); 
   }, []);
 
   return (
