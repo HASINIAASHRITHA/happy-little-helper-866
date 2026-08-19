@@ -143,7 +143,7 @@ export const Contact = () => {
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Message</label>
                   <textarea 
-                    placeholder="Tell me about your project..." 
+                    placeholder="Your message" 
                     rows={5} 
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
