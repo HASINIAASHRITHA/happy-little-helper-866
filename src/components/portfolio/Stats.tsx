@@ -6,7 +6,7 @@ const AnimatedNumber = ({ value }: { value: string }) => {
   const numericValue = parseInt(value);
   const isPlus = value.includes('+');
   const count = useMotionValue(0);
-  const rounded = useSpring(count, { stiffness: 30, damping: 15 });
+  const rounded = useSpring(count, { stiffness: 40, damping: 20 });
   const [display, setDisplay] = useState("0");
 
   useEffect(() => {
