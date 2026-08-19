@@ -11,11 +11,12 @@ export const useProjects = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Firebase is initialized
+    let unsubscribe: (() => void) | undefined;
+    
     try {
       const q = query(collection(db, PROJECTS_COLLECTION), orderBy('year', 'desc'));
       
-      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      unsubscribe = onSnapshot(q, (querySnapshot) => {
         if (querySnapshot.empty) {
           console.warn("Firestore collection 'projects' is empty.");
           setProjects([]);
@@ -32,13 +33,15 @@ export const useProjects = () => {
         setError("Projects temporarily unavailable");
         setLoading(false);
       });
-
-      return () => unsubscribe();
     } catch (err) {
       console.error("Firebase Query Error:", err);
       setError("Database connection failed");
       setLoading(false);
     }
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   return { projects, loading, error };
