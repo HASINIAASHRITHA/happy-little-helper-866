@@ -54,11 +54,11 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-4 glass border-b' : 'py-6 bg-transparent'
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[90%] md:w-auto max-w-4xl px-8 rounded-2xl ${
+        isScrolled ? 'glass py-4 shadow-2xl' : 'py-6 bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="flex justify-between items-center gap-12">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
