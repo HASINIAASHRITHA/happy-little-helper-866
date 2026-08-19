@@ -30,7 +30,7 @@ export const getOptimizedCloudinaryUrl = (source: string, width = 800) => {
     if (source.includes('/upload/')) {
       const parts = source.split('/upload/');
       // If it doesn't have our specific transformation, add it
-      if (parts.length === 2 && !parts[1].startsWith('w_')) {
+      if (parts.length === 2 && parts[1] && !parts[1].startsWith('w_')) {
         return `${parts[0]}/upload/w_${width},c_scale,q_auto,f_auto/${parts[1]}`;
       }
     }
