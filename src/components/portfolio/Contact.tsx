@@ -79,9 +79,9 @@ export const Contact = () => {
           </div>
         </motion.div>
         
-        <div className="mt-24 text-center">
-          <p className="text-muted-foreground text-sm uppercase tracking-[0.5em] opacity-30">
-            Hasini Addanki &copy; {new Date().getFullYear()}
+        <div className="mt-24 text-center border-t border-white/5 pt-12">
+          <p className="text-muted-foreground text-xs uppercase tracking-[0.5em] opacity-30">
+            Hasini Addanki &copy; {new Date().getFullYear()} &bull; Built with Intelligence
           </p>
         </div>
       </div>
