@@ -170,13 +170,15 @@ export const Projects = () => {
                   <ProjectSkeleton key={i} />
                 ))
               ) : filteredProjects.length > 0 ? (
-                filteredProjects.map((project) => (
-                  <ProjectCard 
-                    key={project.id} 
-                    project={project} 
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))
+                filteredProjects
+                  .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+                  .map((project) => (
+                    <ProjectCard 
+                      key={project.id} 
+                      project={project} 
+                      onClick={() => setSelectedProject(project)}
+                    />
+                  ))
               ) : (
                 <motion.div 
                   initial={{ opacity: 0 }}
