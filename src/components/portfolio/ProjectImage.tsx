@@ -83,7 +83,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
           </div>
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-primary/60 tracking-[0.2em] uppercase block">
-              {!src ? 'Project screenshot not uploaded yet' : 'Screenshot loading...'}
+              {!src ? 'Project screenshot not uploaded yet' : 'Image Load Failed'}
             </span>
             <span className="text-xs font-medium text-muted-foreground/40 block italic">
               {alt}
