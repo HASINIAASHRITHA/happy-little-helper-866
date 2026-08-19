@@ -140,20 +140,24 @@ export const Hero = () => {
             </motion.p>
             
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex flex-wrap gap-6 mb-12">
-              <a 
+              <motion.a 
                 href="#projects" 
-                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] transition-all"
               >
                 View My Work
-              </a>
-              <a 
+              </motion.a>
+              <motion.a 
                 href={resumeUrl} 
                 target="_blank" 
                 rel="noreferrer"
-                className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all active:scale-95"
+                whileHover={{ y: -2, scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
+                whileTap={{ scale: 0.98 }}
+                className="px-10 py-4 border border-white/10 rounded-full font-bold transition-all"
               >
                 Download CV
-              </a>
+              </motion.a>
             </motion.div>
 
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex items-center gap-8">
