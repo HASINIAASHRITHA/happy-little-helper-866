@@ -180,32 +180,37 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               ))}
             </div>
             
-            <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
+            <div className="flex flex-wrap items-center gap-6" onClick={(e) => e.stopPropagation()}>
               <button 
                 onClick={onClick}
                 className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
               >
-                <span className="relative z-10 px-4 py-1.5 bg-primary/10 rounded-lg group-hover/link:bg-primary/20 transition-colors">View Details</span>
+                <span className="relative z-10 px-5 py-2 bg-primary/20 hover:bg-primary/30 text-primary rounded-xl transition-all duration-300 border border-primary/30 shadow-[0_0_20px_rgba(var(--primary),0.1)]">
+                  View Details
+                </span>
                 <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform text-primary" />
-                <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
               </button>
               
-              <button 
-                onClick={onClick}
-                className="text-muted-foreground hover:text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg transition-colors"
-              >
-                <span className="relative z-10">Case Study</span>
-                <motion.div className="absolute bottom-0 left-0 h-px bg-white/20 w-0 group-hover/link:w-full transition-all duration-300" />
-              </button>
+              {project.liveUrl && (
+                <a 
+                  href={project.liveUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary font-bold flex items-center gap-2 group/link relative py-3 text-lg transition-all duration-300"
+                >
+                  <span className="relative z-10 px-5 py-2 glass rounded-xl border border-white/5 hover:border-primary/30 transition-all">Live Demo</span>
+                </a>
+              )}
 
               {project.githubUrl && (
                 <a 
                   href={project.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 ml-4"
+                  className="text-muted-foreground hover:text-primary transition-all duration-300 p-3 glass rounded-xl border border-white/5 hover:border-primary/30"
+                  aria-label="View Source on GitHub"
                 >
-                  <GithubIcon size={28} />
+                  <GithubIcon size={24} />
                 </a>
               )}
             </div>
