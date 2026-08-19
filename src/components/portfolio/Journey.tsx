@@ -30,6 +30,10 @@ export const Journey = () => {
     offset: ["start center", "end center"]
   });
 
+  return (
+    <section id="journey" className="py-24 relative overflow-hidden scroll-mt-20">
+  });
+
   const scaleY = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
