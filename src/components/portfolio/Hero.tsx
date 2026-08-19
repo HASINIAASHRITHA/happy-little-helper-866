@@ -23,18 +23,23 @@ export const Hero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  const rotateX = useTransform(springY, [-300, 300], [10, -10]);
-  const rotateY = useTransform(springX, [-300, 300], [-10, 10]);
+  // Parallax effects
+  const portraitX = useTransform(springX, [-500, 500], [-15, 15]);
+  const portraitY = useTransform(springY, [-500, 500], [-15, 15]);
+  const bgX = useTransform(springX, [-500, 500], [-5, 5]);
+  const bgY = useTransform(springY, [-500, 500], [-5, 5]);
+
+  const rotateX = useTransform(springY, [-500, 500], [5, -5]);
+  const rotateY = useTransform(springX, [-500, 500], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseX.set(e.clientX - centerX);
-    mouseY.set(e.clientY - centerY);
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    mouseX.set(clientX - innerWidth / 2);
+    mouseY.set(clientY - innerHeight / 2);
   };
 
   const handleMouseLeave = () => {
@@ -73,9 +78,18 @@ export const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {/* Background elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] -z-10" />
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] -z-10" />
+      <motion.div 
+        style={{ x: bgX, y: bgY }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] -z-10" 
+      />
+      <motion.div 
+        style={{ x: bgX, y: bgY }}
+        className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10" 
+      />
+      <motion.div 
+        style={{ x: bgX, y: bgY }}
+        className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] -z-10" 
+      />
       
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -83,6 +97,7 @@ export const Hero = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            className="relative z-20"
           >
             <motion.span 
               variants={itemVariants}
@@ -157,7 +172,10 @@ export const Hero = () => {
           >
             <div className="relative w-[500px] h-[500px] mx-auto">
               {/* Profile Image Placeholder Area */}
-              <div className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2">
+              <motion.div 
+                style={{ x: portraitX, y: portraitY }}
+                className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2"
+              >
                 <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden">
                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary),0.2),transparent_70%)]" />
                    <img 
@@ -167,7 +185,7 @@ export const Hero = () => {
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Decorative rings */}
               <div className="absolute -inset-4 border border-white/5 rounded-[40px] animate-[spin_30s_linear_infinite]" />
