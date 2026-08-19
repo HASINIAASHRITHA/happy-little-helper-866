@@ -12,6 +12,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  longDescription?: string;
 }
 
 export const projects: Project[] = [
@@ -26,6 +27,7 @@ export const projects: Project[] = [
     image: 'warehouse-copilot-og', // Cloudinary public ID or full URL
     liveUrl: 'https://warehousecopilot.vercel.app',
     featured: true,
+    longDescription: "Warehouse Copilot is a sophisticated AI-driven platform that optimizes logistics operations. It provides real-time insights into inventory flow and uses predictive modeling to prevent bottlenecks, significantly improving overall warehouse efficiency."
   },
   {
     id: 'factory-copilot',
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     image: 'factory-copilot-og',
     liveUrl: 'https://factory-copilot-1.vercel.app/dashboard',
     featured: true,
+    longDescription: "Factory Copilot serves as an intelligent manufacturing assistant, bridging the gap between raw industrial data and actionable decisions. It monitors production health and provides predictive maintenance alerts to minimize downtime."
   },
   {
     id: 'ai-assistant',
@@ -47,6 +50,7 @@ export const projects: Project[] = [
     technologies: ['AI', 'NLP', 'React', 'API Integration'],
     image: 'ai-assistant-preview',
     featured: true,
+    longDescription: "An AI-powered interface that simplifies complex information retrieval. This assistant is trained to handle natural language queries, providing users with accurate, context-aware information in a clean, interactive environment."
   },
   // 2nd Year
   {
@@ -59,6 +63,7 @@ export const projects: Project[] = [
     image: 'atomic-dreamscape-og',
     liveUrl: 'https://atomic-dreamscape.vercel.app',
     featured: true,
+    longDescription: "Atomic Dreamscape pushes the boundaries of web-based 3D experiences. Using Three.js, it creates a reactive, atomic-themed simulation of the solar system, allowing users to explore celestial bodies with high-fidelity performance."
   },
   {
     id: 'elegance',
