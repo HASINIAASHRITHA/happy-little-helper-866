@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useProjects } from '@/lib/projects';
 
 export const About = () => {
+  const { projects } = useProjects();
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -66,7 +68,7 @@ export const About = () => {
                 </div>
                 <div className="w-px h-12 bg-border hidden sm:block" />
                 <div className="flex flex-col">
-                  <span className="text-3xl font-bold text-foreground">15+</span>
+                  <span className="text-3xl font-bold text-foreground">{projects.length || 0}+</span>
                   <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Projects Built</span>
                 </div>
               </motion.div>

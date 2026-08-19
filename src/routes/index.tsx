@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion, useSpring, useScroll } from 'framer-motion';
+import { useEffect } from 'react';
 import { CustomCursor } from '@/components/portfolio/CustomCursor';
 import { Navbar } from '@/components/portfolio/Navbar';
 import { Hero } from '@/components/portfolio/Hero';
@@ -10,6 +11,7 @@ import { Journey } from '@/components/portfolio/Journey';
 import { FeaturedProjects } from '@/components/portfolio/FeaturedProjects';
 import { Projects } from '@/components/portfolio/Projects';
 import { Contact } from '@/components/portfolio/Contact';
+import { seedProjects } from '@/lib/seed';
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -26,6 +28,11 @@ export const Route = createFileRoute('/')({
 });
 
 function PortfolioIndex() {
+  useEffect(() => {
+    // Seed projects on first load if collection is empty
+    seedProjects();
+  }, []);
+
   return (
     <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white font-sans antialiased relative">
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[60]" style={{ scaleX: useSpring(useScroll().scrollYProgress, { stiffness: 100, damping: 30 }) }} />

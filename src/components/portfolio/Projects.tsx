@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { projects, Project } from '@/data/portfolio';
-import { ExternalLink } from 'lucide-react';
+import { Project } from '@/data/portfolio';
+import { ExternalLink, AlertCircle } from 'lucide-react';
 import { ProjectModal } from './ProjectModal';
+import { useProjects } from '@/lib/projects';
+import { ProjectImage } from './ProjectImage';
+import { ProjectSkeleton } from './ProjectSkeleton';
 
 const GithubIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -61,40 +64,19 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
           <div className="w-2 h-2 rounded-full bg-green-500/50" />
         </div>
-        <div className="absolute inset-0 pt-6 flex items-center justify-center bg-white/5 group-hover:scale-105 transition-transform duration-700">
-           {project.image ? (
-             <img 
-               src={project.image} 
-               alt={project.title}
-               className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
-               loading="lazy"
-               onError={(e) => {
-                 (e.target as HTMLImageElement).style.display = 'none';
-                 (e.target as HTMLImageElement).parentElement?.querySelector('.fallback-preview')?.classList.remove('hidden');
-               }}
-             />
-           ) : null}
-           <div className={`${project.image ? 'hidden' : ''} fallback-preview w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col p-4 space-y-2 opacity-60`}>
-             <div className="h-4 w-2/3 bg-white/10 rounded" />
-             <div className="grid grid-cols-3 gap-2">
-               <div className="h-20 bg-white/5 rounded" />
-               <div className="h-20 bg-white/5 rounded" />
-               <div className="h-20 bg-white/5 rounded" />
-             </div>
-             <div className="h-4 w-full bg-white/5 rounded" />
-           </div>
-           {!project.image && (
-             <div className="absolute inset-0 flex items-center justify-center">
-               <span className="font-bold text-white/20 text-xs tracking-widest uppercase">Preview Unavailable</span>
-             </div>
-           )}
+        <div className="absolute inset-0 pt-6 group-hover:scale-105 transition-transform duration-700">
+           <ProjectImage 
+            src={project.image} 
+            alt={project.title} 
+            fallbackText={project.category}
+          />
         </div>
       </div>
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col flex-grow">
         <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
         <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-          {project.technologies.slice(0, 3).map(tech => (
+          {project.technologies?.slice(0, 3).map(tech => (
             <motion.span 
               key={tech} 
               initial={{ opacity: 0.8 }}
@@ -106,11 +88,15 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           ))}
         </div>
         <div className="flex space-x-4 relative z-10" onClick={(e) => e.stopPropagation()}>
-          {project.liveUrl && (
-            <a href={project.liveUrl} target="_blank" rel="noreferrer" className="text-sm flex items-center gap-1 hover:text-primary transition-colors"><ExternalLink size={16} /> Demo</a>
+          {project.liveUrl ? (
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 hover:text-primary transition-colors"><ExternalLink size={16} /> Demo</a>
+          ) : (
+            <span className="text-sm flex items-center gap-1 text-muted-foreground/50 italic"><ExternalLink size={16} /> Demo Unavailable</span>
           )}
-          {project.githubUrl && (
-            <a href={project.githubUrl} target="_blank" rel="noreferrer" className="text-sm flex items-center gap-1 hover:text-primary transition-colors"><GithubIcon size={16} /> Code</a>
+          {project.githubUrl ? (
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 hover:text-primary transition-colors"><GithubIcon size={16} /> Code</a>
+          ) : (
+            <span className="text-sm flex items-center gap-1 text-muted-foreground/50 italic"><GithubIcon size={16} /> Code Unavailable</span>
           )}
         </div>
       </div>
@@ -119,13 +105,14 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
 };
 
 export const Projects = () => {
+  const { projects: allProjects, loading, error } = useProjects();
   const [filter, setFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const categories = ['All', '1st Year', '2nd Year', '3rd Year'];
 
   const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(p => p.year === filter);
+    ? allProjects 
+    : allProjects.filter(p => p.year === filter);
 
   return (
     <section id="projects" className="py-24">
@@ -148,18 +135,38 @@ export const Projects = () => {
           ))}
         </div>
 
-        {/* Project Grid */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <ProjectCard 
-                key={project.id} 
-                project={project} 
-                onClick={() => setSelectedProject(project)}
-              />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {error ? (
+          <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
+            <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
+              <AlertCircle size={32} />
+            </div>
+            <h4 className="text-xl font-bold">{error}</h4>
+            <p className="text-muted-foreground max-w-md">We're having trouble connecting to the project database. Please try again later.</p>
+          </div>
+        ) : (
+          /* Project Grid */
+          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            <AnimatePresence mode="popLayout">
+              {loading ? (
+                Array.from({ length: 6 }).map((_, i) => (
+                  <ProjectSkeleton key={i} />
+                ))
+              ) : filteredProjects.length > 0 ? (
+                filteredProjects.map((project) => (
+                  <ProjectCard 
+                    key={project.id} 
+                    project={project} 
+                    onClick={() => setSelectedProject(project)}
+                  />
+                ))
+              ) : (
+                <div className="col-span-full py-20 text-center">
+                  <p className="text-muted-foreground text-lg">No projects in this category yet.</p>
+                </div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
         
         <ProjectModal 
           project={selectedProject} 
