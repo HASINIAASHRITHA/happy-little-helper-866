@@ -138,7 +138,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Real estate portfolio project demonstrating layout and styling capabilities.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://elite-homes-virid.vercel.app/cover.png',
+    image: 'https://elite-homes-virid.vercel.app/og-image.png',
     liveUrl: 'https://elite-homes-virid.vercel.app',
   },
   {
