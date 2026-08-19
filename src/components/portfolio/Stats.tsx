@@ -35,7 +35,7 @@ export const Stats = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden bg-background">
       <div className="absolute inset-0 bg-primary/[0.02] -z-10" />
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
