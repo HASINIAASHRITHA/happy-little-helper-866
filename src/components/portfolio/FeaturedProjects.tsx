@@ -34,8 +34,14 @@ export const FeaturedProjects = () => {
               <FeaturedProjectSkeleton key={i} index={i} />
              ))
           ) : featured.length > 0 ? (
-            featured
-              .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+            [...featured]
+              .sort((a, b) => {
+                const yearOrder = { '3rd Year': 3, '2nd Year': 2, '1st Year': 1 };
+                const yearA = yearOrder[a.year as keyof typeof yearOrder] || 0;
+                const yearB = yearOrder[b.year as keyof typeof yearOrder] || 0;
+                if (yearB !== yearA) return yearB - yearA;
+                return ((b as any).order || 0) - ((a as any).order || 0);
+              })
               .map((project, index) => (
                 <FeaturedProjectItem 
                   key={project.id}
