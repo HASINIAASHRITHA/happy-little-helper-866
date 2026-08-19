@@ -5,17 +5,17 @@ export const About = () => {
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-16 items-start">
+          <div className="flex flex-col md:flex-row gap-20 items-center">
             <motion.div 
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="flex-1"
             >
-              <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-6">About Me</h2>
-              <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">
-                From building websites to building intelligent systems.
+              <h2 className="text-sm font-bold text-primary uppercase tracking-[0.4em] mb-8">Personal Essence</h2>
+              <h3 className="text-5xl md:text-7xl font-bold tracking-tighter mb-10 leading-[1.1]">
+                Bridging Human Intuition with <span className="text-primary italic">Artificial Intelligence.</span>
               </h3>
               
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
