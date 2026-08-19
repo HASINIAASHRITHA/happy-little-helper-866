@@ -61,9 +61,18 @@ export const ProjectModal = ({
                   {project.category}
                 </div>
                 
-                <p className="text-muted-foreground mb-8 text-lg">
+                <p className="text-muted-foreground mb-6 text-lg">
                   {project.description}
                 </p>
+                
+                {project.longDescription && (
+                  <div className="mb-8 p-6 glass border border-primary/10 rounded-2xl bg-primary/5 italic text-muted-foreground leading-relaxed relative">
+                    <div className="absolute top-0 left-6 -translate-y-1/2 px-3 py-0.5 bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
+                      Deep Dive
+                    </div>
+                    {project.longDescription}
+                  </div>
+                )}
                 
                 <div className="mb-8">
                   <h4 className="text-sm font-bold uppercase tracking-widest mb-4">Technologies</h4>

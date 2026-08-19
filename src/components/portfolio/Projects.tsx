@@ -52,9 +52,9 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       data-cursor-text="View"
-      className="glass rounded-2xl p-6 group hover:border-primary transition-all duration-300 relative overflow-hidden h-full flex flex-col cursor-pointer active:scale-[0.98]"
+      className="glass rounded-2xl p-6 group hover:border-primary/50 transition-all duration-300 relative overflow-hidden h-full flex flex-col cursor-pointer active:scale-[0.98] hover:shadow-[0_0_40px_rgba(var(--primary),0.1)]"
     >
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity" />
       <div 
         className="mb-6 h-48 bg-secondary rounded-xl overflow-hidden relative border border-white/5"
         style={{ transform: 'translateZ(20px)' }}
@@ -64,7 +64,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
           <div className="w-2 h-2 rounded-full bg-green-500/50" />
         </div>
-        <div className="absolute inset-0 pt-6 group-hover:scale-110 transition-transform duration-1000 ease-out">
+        <div className="absolute inset-0 pt-6 group-hover:scale-110 transition-transform duration-1000 ease-out group-hover:shadow-[0_0_30px_rgba(var(--primary),0.2)]">
            <ProjectImage 
             src={project.image} 
             alt={project.title} 
@@ -91,29 +91,39 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           ))}
         </div>
         
-        <div className="flex space-x-6 relative z-10" onClick={(e) => e.stopPropagation()}>
-          {project.liveUrl && (
-            <a 
-              href={project.liveUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors"
+        <div className="flex flex-col gap-4 mt-auto pt-6 border-t border-white/5 group-hover:border-primary/20 transition-colors">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex gap-4 relative z-10" onClick={(e) => e.stopPropagation()}>
+              {project.liveUrl && (
+                <a 
+                  href={project.liveUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 glass rounded-lg text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  title="Live Demo"
+                >
+                  <ExternalLink size={16} />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a 
+                  href={project.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 glass rounded-lg text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  title="Source Code"
+                >
+                  <GithubIcon size={16} />
+                </a>
+              )}
+            </div>
+            
+            <motion.div 
+              className="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-lg border border-primary/20 group-hover:bg-primary/20 transition-all"
             >
-              <ExternalLink size={14} /> 
-              <span>Live Demo</span>
-            </a>
-          )}
-          {project.githubUrl && (
-            <a 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors"
-            >
-              <GithubIcon size={14} /> 
-              <span>Source</span>
-            </a>
-          )}
+              Details →
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -173,8 +183,14 @@ export const Projects = () => {
                   <ProjectSkeleton key={i} />
                 ))
               ) : filteredProjects.length > 0 ? (
-                filteredProjects
-                  .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+                [...filteredProjects]
+                  .sort((a, b) => {
+                    const yearOrder = { '3rd Year': 3, '2nd Year': 2, '1st Year': 1 };
+                    const yearA = yearOrder[a.year as keyof typeof yearOrder] || 0;
+                    const yearB = yearOrder[b.year as keyof typeof yearOrder] || 0;
+                    if (yearB !== yearA) return yearB - yearA;
+                    return ((b as any).order || 0) - ((a as any).order || 0);
+                  })
                   .map((project) => (
                     <ProjectCard 
                       key={project.id} 

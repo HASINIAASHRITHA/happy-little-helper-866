@@ -34,8 +34,14 @@ export const FeaturedProjects = () => {
               <FeaturedProjectSkeleton key={i} index={i} />
              ))
           ) : featured.length > 0 ? (
-            featured
-              .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+            [...featured]
+              .sort((a, b) => {
+                const yearOrder = { '3rd Year': 3, '2nd Year': 2, '1st Year': 1 };
+                const yearA = yearOrder[a.year as keyof typeof yearOrder] || 0;
+                const yearB = yearOrder[b.year as keyof typeof yearOrder] || 0;
+                if (yearB !== yearA) return yearB - yearA;
+                return ((b as any).order || 0) - ((a as any).order || 0);
+              })
               .map((project, index) => (
                 <FeaturedProjectItem 
                   key={project.id}
@@ -102,7 +108,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
                 <div className="ml-4 h-4 w-32 bg-white/5 rounded-full" />
               </div>
-              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000">
+              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000 group-hover:shadow-[0_0_50px_rgba(var(--primary),0.3)]">
                 <ProjectImage 
                   src={project.image} 
                   alt={project.title} 
@@ -153,10 +159,24 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-muted-foreground mb-10 leading-relaxed"
+              className="text-xl text-muted-foreground mb-8 leading-relaxed"
             >
               {project.description}
             </motion.p>
+            
+            {project.longDescription && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-10 p-6 glass border border-primary/10 rounded-2xl bg-primary/5 italic text-sm text-muted-foreground/80 relative"
+              >
+                <div className="absolute top-0 left-6 -translate-y-1/2 px-3 py-0.5 bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
+                  Project Insight
+                </div>
+                {project.longDescription}
+              </motion.div>
+            )}
             
             <div className="flex flex-wrap gap-2 mb-12">
               {project.technologies?.map(tech => (
@@ -166,32 +186,37 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               ))}
             </div>
             
-            <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
+            <div className="flex flex-wrap items-center gap-6" onClick={(e) => e.stopPropagation()}>
               <button 
                 onClick={onClick}
                 className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
               >
-                <span className="relative z-10">View Project</span>
-                <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
+                <span className="relative z-10 px-5 py-2 bg-primary/20 hover:bg-primary/30 text-primary rounded-xl transition-all duration-300 border border-primary/30 shadow-[0_0_20px_rgba(var(--primary),0.1)]">
+                  View Details
+                </span>
+                <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform text-primary" />
               </button>
               
-              <button 
-                onClick={onClick}
-                className="text-muted-foreground hover:text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg transition-colors"
-              >
-                <span className="relative z-10">Case Study</span>
-                <motion.div className="absolute bottom-0 left-0 h-px bg-white/20 w-0 group-hover/link:w-full transition-all duration-300" />
-              </button>
+              {project.liveUrl && (
+                <a 
+                  href={project.liveUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary font-bold flex items-center gap-2 group/link relative py-3 text-lg transition-all duration-300"
+                >
+                  <span className="relative z-10 px-5 py-2 glass rounded-xl border border-white/5 hover:border-primary/30 transition-all">Live Demo</span>
+                </a>
+              )}
 
               {project.githubUrl && (
                 <a 
                   href={project.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 ml-4"
+                  className="text-muted-foreground hover:text-primary transition-all duration-300 p-3 glass rounded-xl border border-white/5 hover:border-primary/30"
+                  aria-label="View Source on GitHub"
                 >
-                  <GithubIcon size={28} />
+                  <GithubIcon size={24} />
                 </a>
               )}
             </div>

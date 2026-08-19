@@ -195,7 +195,7 @@ export const Hero = () => {
                    <img 
                     src={portraitAsset.url} 
                     alt="Hasini Addanki" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 relative z-10"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-active:grayscale-0 transition-all duration-700 relative z-10"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-20" />
                 </div>
