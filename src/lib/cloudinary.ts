@@ -24,16 +24,23 @@ export const getCloudinaryUploadUrl = () => {
 export const getOptimizedCloudinaryUrl = (source: string, width = 800) => {
   if (!source) return '';
   
-  // If it's already a Cloudinary URL, we can inject transformations
+  // If it's already a full Cloudinary URL
   if (source.includes('res.cloudinary.com')) {
-    const parts = source.split('/upload/');
-    if (parts.length === 2) {
-      return `${parts[0]}/upload/w_${width},c_scale,q_auto,f_auto/${parts[1]}`;
+    // Check if it already has transformations
+    if (source.includes('/upload/')) {
+      const parts = source.split('/upload/');
+      // If it doesn't have our specific transformation, add it
+      if (parts.length === 2 && !parts[1].startsWith('w_')) {
+        return `${parts[0]}/upload/w_${width},c_scale,q_auto,f_auto/${parts[1]}`;
+      }
     }
+    return source;
   }
   
   // If it's just a public ID or a path
   if (!source.startsWith('http')) {
+    // Standardize: ensure no version prefix if it's just a raw ID, 
+    // but if it has one (e.g. v123/id), Cloudinary handles it
     return `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/w_${width},c_scale,q_auto,f_auto/${source}`;
   }
   
