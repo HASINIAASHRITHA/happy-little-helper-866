@@ -11,6 +11,7 @@ import { Skills } from '@/components/portfolio/Skills';
 import { Journey } from '@/components/portfolio/Journey';
 import { FeaturedProjects } from '@/components/portfolio/FeaturedProjects';
 import { Projects } from '@/components/portfolio/Projects';
+import { CurrentlyBuilding } from '@/components/portfolio/CurrentlyBuilding';
 import { Contact } from '@/components/portfolio/Contact';
 import { seedProjects } from '@/lib/seed';
 
@@ -49,10 +50,11 @@ function PortfolioIndex() {
         <Intro />
         <Stats />
         <About />
-        <Journey />
-        <Skills />
         <FeaturedProjects />
+        <Journey />
         <Projects />
+        <Skills />
+        <CurrentlyBuilding />
         <Contact />
       </div>
     </main>

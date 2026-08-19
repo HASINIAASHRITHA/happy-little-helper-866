@@ -156,19 +156,24 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               ))}
             </div>
             
-            <div className="flex items-center gap-8" onClick={(e) => e.stopPropagation()}>
-              {project.liveUrl && (
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
-                >
-                  <span className="relative z-10">Launch Project</span>
-                  <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                  <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
-                </a>
-              )}
+            <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
+              <button 
+                onClick={onClick}
+                className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
+              >
+                <span className="relative z-10">View Project</span>
+                <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
+              </button>
+              
+              <button 
+                onClick={onClick}
+                className="text-muted-foreground hover:text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg transition-colors"
+              >
+                <span className="relative z-10">Case Study</span>
+                <motion.div className="absolute bottom-0 left-0 h-px bg-white/20 w-0 group-hover/link:w-full transition-all duration-300" />
+              </button>
+            </div>
               {project.githubUrl && (
                 <a 
                   href={project.githubUrl} 
