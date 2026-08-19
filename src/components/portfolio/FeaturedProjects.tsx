@@ -94,7 +94,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
                 <div className="ml-4 h-4 w-32 bg-white/5 rounded-full" />
               </div>
-              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-105 transition-transform duration-1000">
+              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000">
                 <ProjectImage 
                   src={project.image} 
                   alt={project.title} 
@@ -128,8 +128,9 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               whileInView={{ opacity: 1, x: 0 }}
               className="flex items-center gap-4 mb-4"
             >
-              <span className="h-px w-8 bg-primary/50" />
-              <span className="text-primary text-sm font-bold uppercase tracking-[0.2em]">{project.year}</span>
+              <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full border border-primary/20">
+                {project.year} · {project.category.split(' ')[0]}
+              </span>
             </motion.div>
             
             <motion.h3 
@@ -149,10 +150,9 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               {project.description}
             </motion.p>
             
-            <div className="flex flex-wrap gap-3 mb-12">
+            <div className="flex flex-wrap gap-2 mb-12">
               {project.technologies?.map(tech => (
-                <span key={tech} className="text-sm text-muted-foreground/80 flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-primary" />
+                <span key={tech} className="px-3 py-1 bg-white/5 text-[10px] text-muted-foreground/80 rounded-lg border border-white/5 group-hover:border-primary/20 transition-colors uppercase tracking-wider font-bold">
                   {tech}
                 </span>
               ))}

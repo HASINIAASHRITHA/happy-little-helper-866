@@ -76,7 +76,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-xl font-bold group-hover:text-primary transition-colors leading-tight">{project.title}</h3>
-          <span className="text-[10px] font-bold text-primary/60 uppercase tracking-widest">{project.year.split(' ')[0]}</span>
+          <span className="text-[10px] font-bold text-primary/60 uppercase tracking-widest">{project.year} · {project.category.split(' ')[0]}</span>
         </div>
         <p className="text-muted-foreground text-sm mb-6 line-clamp-3 leading-relaxed">{project.description}</p>
         
