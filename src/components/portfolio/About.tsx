@@ -80,7 +80,16 @@ export const About = () => {
               className="flex-1 w-full"
             >
               <div className="glass rounded-3xl p-8 md:p-10 border border-white/5 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl -z-10 group-hover:bg-primary/20 transition-colors" />
+                <motion.div 
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.1, 0.2, 0.1],
+                    x: [0, 20, 0],
+                    y: [0, -20, 0]
+                  }}
+                  transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+                  className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl -z-10 group-hover:bg-primary/20 transition-colors" 
+                />
                 
                 <h4 className="text-xl font-bold mb-8 flex items-center gap-3">
                   <span className="w-8 h-px bg-primary" />
