@@ -38,12 +38,6 @@ function PortfolioIndex() {
       <FeaturedProjects />
       <Projects />
       <Contact />
-      
-      <footer className="py-12 border-t border-border/50 text-center text-muted-foreground text-sm">
-        <div className="container mx-auto px-6">
-          <p>© {new Date().getFullYear()} Hasini Addanki. All rights reserved.</p>
-        </div>
-      </footer>
     </main>
   );
 }
