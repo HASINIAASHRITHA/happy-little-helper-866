@@ -22,3 +22,24 @@ export const getCloudinaryUploadUrl = () => {
 export const getOptimizedCloudinaryUrl = (publicId: string, width = 800) => {
   return `https://res.cloudinary.com/${CLOUDINARY_CONFIG.cloudName}/image/upload/w_${width},c_scale,q_auto,f_auto/${publicId}`;
 };
+
+/**
+ * Uploads an image to Cloudinary using the provided preset
+ */
+export const uploadToCloudinary = async (file: File) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", CLOUDINARY_CONFIG.uploadPreset);
+
+  const response = await fetch(getCloudinaryUploadUrl(), {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to upload image to Cloudinary");
+  }
+
+  return response.json();
+};
+
