@@ -91,38 +91,39 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           ))}
         </div>
         
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5 group-hover:border-primary/20 transition-colors">
-          <div className="flex space-x-6 relative z-10" onClick={(e) => e.stopPropagation()}>
-            {project.liveUrl && (
-              <a 
-                href={project.liveUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors text-muted-foreground"
-              >
-                <ExternalLink size={14} /> 
-                <span>Live Demo</span>
-              </a>
-            )}
-            {project.githubUrl && (
-              <a 
-                href={project.githubUrl} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors text-muted-foreground"
-              >
-                <GithubIcon size={14} /> 
-                <span>Source</span>
-              </a>
-            )}
+        <div className="flex flex-col gap-4 mt-auto pt-6 border-t border-white/5 group-hover:border-primary/20 transition-colors">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex gap-4 relative z-10" onClick={(e) => e.stopPropagation()}>
+              {project.liveUrl && (
+                <a 
+                  href={project.liveUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 glass rounded-lg text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  title="Live Demo"
+                >
+                  <ExternalLink size={16} />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a 
+                  href={project.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 glass rounded-lg text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
+                  title="Source Code"
+                >
+                  <GithubIcon size={16} />
+                </a>
+              )}
+            </div>
+            
+            <motion.div 
+              className="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-lg border border-primary/20 group-hover:bg-primary/20 transition-all"
+            >
+              Details →
+            </motion.div>
           </div>
-          <motion.span 
-            initial={{ opacity: 0, x: 5 }}
-            whileHover={{ opacity: 1, x: 0 }}
-            className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all"
-          >
-            View Project →
-          </motion.span>
         </div>
       </div>
     </motion.div>
