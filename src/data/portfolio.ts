@@ -168,7 +168,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'An exploration into creative web design and canvases.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://creative-canvass.vercel.app/gallery.png',
+    image: 'https://creative-canvass.vercel.app/og-image.png',
     liveUrl: 'https://creative-canvass.vercel.app',
   },
   {
