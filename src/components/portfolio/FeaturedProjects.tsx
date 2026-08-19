@@ -185,8 +185,8 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 onClick={onClick}
                 className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
               >
-                <span className="relative z-10">View Project</span>
-                <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                <span className="relative z-10 px-4 py-1.5 bg-primary/10 rounded-lg group-hover/link:bg-primary/20 transition-colors">View Details</span>
+                <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform text-primary" />
                 <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
               </button>
               

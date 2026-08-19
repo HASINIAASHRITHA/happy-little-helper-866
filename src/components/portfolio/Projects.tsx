@@ -91,7 +91,39 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           ))}
         </div>
         
-        <div className="flex space-x-6 relative z-10" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5 group-hover:border-primary/20 transition-colors">
+          <div className="flex space-x-6 relative z-10" onClick={(e) => e.stopPropagation()}>
+            {project.liveUrl && (
+              <a 
+                href={project.liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors text-muted-foreground"
+              >
+                <ExternalLink size={14} /> 
+                <span>Live Demo</span>
+              </a>
+            )}
+            {project.githubUrl && (
+              <a 
+                href={project.githubUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors text-muted-foreground"
+              >
+                <GithubIcon size={14} /> 
+                <span>Source</span>
+              </a>
+            )}
+          </div>
+          <motion.span 
+            initial={{ opacity: 0, x: 5 }}
+            whileHover={{ opacity: 1, x: 0 }}
+            className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all"
+          >
+            View Project →
+          </motion.span>
+        </div>
           {project.liveUrl && (
             <a 
               href={project.liveUrl} 
