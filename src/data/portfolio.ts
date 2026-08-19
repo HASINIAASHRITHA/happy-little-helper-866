@@ -188,7 +188,7 @@ export const skills = [
 
 export const resumeUrl = '#'; // Placeholder, easy to replace
 export const socialLinks = {
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
+  github: 'https://github.com/HASINIAASHRITHA',
+  linkedin: 'https://www.linkedin.com/in/hasini-addanki-70b236322/',
   email: 'mailto:contact@example.com'
 };
