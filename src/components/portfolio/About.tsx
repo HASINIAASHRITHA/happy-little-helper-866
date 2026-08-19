@@ -25,6 +25,9 @@ export const About = () => {
                 <p>
                   Currently, I'm focused on the intersection of <span className="text-foreground font-medium">Data Science and Software Engineering</span>, creating tools that don't just present information but actively assist in decision-making through intelligence.
                 </p>
+                <p>
+                  I've taken on leadership roles as a <span className="text-foreground font-medium">Team Leader</span>, guiding projects with a vision for efficiency and collaboration. As an active member of the <span className="text-foreground font-medium">SmartCity Lab</span>, I specialized in IoT systems—exploring sensor integrations, understanding their electrical connections, and developing logic for how they interact to solve urban challenges.
+                </p>
               </div>
               
               <div className="mt-12 flex flex-wrap gap-6">

@@ -16,9 +16,9 @@ const milestones = [
   },
   {
     year: '03 — THIRD YEAR',
-    title: 'AI & Real-World Systems',
-    skills: ['AI', 'Machine Learning', 'Data Science'],
-    description: 'Specializing in intelligent operations and smart manufacturing assistants.',
+    title: 'AI, IoT & Leadership',
+    skills: ['AI', 'IoT (SmartCity Lab)', 'Team Leadership'],
+    description: 'Leading technical teams and specializing in AI-driven IoT systems and smart manufacturing assistants.',
     active: true,
   },
 ];

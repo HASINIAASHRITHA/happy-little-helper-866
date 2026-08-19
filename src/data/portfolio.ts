@@ -189,8 +189,8 @@ export const skills = [
     items: ['Python', 'JavaScript', 'HTML', 'CSS']
   },
   {
-    category: 'Data / AI',
-    items: ['Machine Learning', 'Data Science', 'Pandas', 'NumPy', 'Scikit-learn']
+    category: 'Data / AI / IoT',
+    items: ['Machine Learning', 'Data Science', 'IoT', 'Sensors & Actuators', 'Team Leadership']
   },
   {
     category: 'Web',
