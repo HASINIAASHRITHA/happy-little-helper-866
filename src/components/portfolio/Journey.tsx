@@ -121,7 +121,7 @@ const MilestoneItem = ({ milestone, index, total }: { milestone: any, index: num
             <span className="text-6xl font-bold">{index + 1}</span>
           </div>
           
-          <div className={`text-primary font-bold text-xs mb-3 tracking-widest ${index % 2 === 0 ? 'md:justify-end' : ''} flex items-center gap-2`}>
+          <div className={`text-primary font-bold text-xs mb-3 tracking-widest ${index % 2 === 0 ? 'md:justify-end' : ''} flex items-center gap-2 uppercase`}>
             {index % 2 === 1 && <span className="w-4 h-px bg-primary/30" />}
             {milestone.year}
             {index % 2 === 0 && <span className="w-4 h-px bg-primary/30 md:hidden lg:block" />}

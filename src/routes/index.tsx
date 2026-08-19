@@ -12,6 +12,7 @@ import { Journey } from '@/components/portfolio/Journey';
 import { FeaturedProjects } from '@/components/portfolio/FeaturedProjects';
 import { Projects } from '@/components/portfolio/Projects';
 import { CurrentlyBuilding } from '@/components/portfolio/CurrentlyBuilding';
+import { AIAssistantShowcase } from '@/components/portfolio/AIAssistantShowcase';
 import { Contact } from '@/components/portfolio/Contact';
 import { seedProjects } from '@/lib/seed';
 
@@ -55,6 +56,7 @@ function PortfolioIndex() {
         <Projects />
         <Skills />
         <CurrentlyBuilding />
+        <AIAssistantShowcase />
         <Contact />
       </div>
     </main>

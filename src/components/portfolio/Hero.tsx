@@ -190,14 +190,14 @@ export const Hero = () => {
                 style={{ x: portraitX, y: portraitY }}
                 className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2"
               >
-                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden group">
                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary),0.2),transparent_70%)]" />
                    <img 
                     src={portraitAsset.url} 
                     alt="Hasini Addanki" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 relative z-10"
                    />
-                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-20" />
                 </div>
               </motion.div>
 
