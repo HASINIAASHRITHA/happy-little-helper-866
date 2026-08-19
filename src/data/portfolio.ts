@@ -24,7 +24,7 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'An AI-powered intelligent operations platform for warehouse management and decision support.',
     technologies: ['AI', 'Warehouse Management', 'Decision Support', 'Data Analysis'],
-    image: 'https://warehousecopilot.vercel.app/og.png',
+    image: 'https://warehousecopilot.vercel.app/favicon.ico', // Testing if a simple asset loads
     liveUrl: 'https://warehousecopilot.vercel.app',
     githubUrl: 'https://github.com/HASINIAASHRITHA/warehouse-copilot',
     featured: true,
