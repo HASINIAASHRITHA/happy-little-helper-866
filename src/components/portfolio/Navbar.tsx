@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -21,18 +21,19 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
       
       const sections = ['home', 'about', 'journey', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
+      let currentSection = 'home';
+      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+          const rect = element.getBoundingClientRect();
+          // Use a threshold (e.g., top of element is near the top of the viewport)
+          if (rect.top <= 150) {
+            currentSection = section;
           }
         }
       }
+      setActiveSection(currentSection);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
