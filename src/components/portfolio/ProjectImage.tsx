@@ -40,7 +40,9 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
   };
 
   const handleError = () => {
-    console.error(`PROJECT NAME — broken Cloudinary image link: ${alt}`, { src, optimizedSrc });
+    // If first source fails, we can try to find an alternative or just log it
+    // Some Vercel deployments might not have /og.png, so we stay in loading state or show specific error
+    console.warn(`PROJECT IMAGE — could not load screenshot for: ${alt}`, { src, optimizedSrc });
     setHasError(true);
     setIsLoading(false);
   };
@@ -81,7 +83,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
           </div>
           <div className="space-y-1">
             <span className="text-[10px] font-bold text-primary/60 tracking-[0.2em] uppercase block">
-              {!src ? 'Project screenshot not uploaded yet' : 'Image Load Failed'}
+              {!src ? 'Project screenshot not uploaded yet' : 'Screenshot loading...'}
             </span>
             <span className="text-xs font-medium text-muted-foreground/40 block italic">
               {alt}
