@@ -77,7 +77,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A comprehensive hotel management and booking portal.',
     technologies: ['React', 'Authentication', 'State Management'],
-    image: 'https://hotel-eta-five.vercel.app/hero.png',
+    image: 'https://hotel-eta-five.vercel.app/og-image.png',
     liveUrl: 'https://hotel-eta-five.vercel.app',
   },
   {
