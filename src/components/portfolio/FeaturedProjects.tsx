@@ -17,42 +17,39 @@ export const FeaturedProjects = () => {
   const featured = allProjects.filter(p => p.featured);
 
   return (
-    <section className="py-20 relative">
+    <section id="work" className="py-20 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">Featured Work</h2>
-            <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Main Highlights</h3>
-          </div>
-          <div className="h-px flex-grow bg-border mx-8 hidden lg:block mb-4 opacity-30" />
+        <div className="text-center mb-24">
+          <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">SELECTED WORK</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Things I've built.</h3>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A selection of projects from my journey across web development, AI and data.
+          </p>
         </div>
         
-        {error ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
-             <AlertCircle className="text-red-500" size={48} />
-             <h4 className="text-xl font-bold">Featured content unavailable</h4>
-          </div>
-        ) : (
-          <div className="space-y-48">
-            {loading ? (
-               Array.from({ length: 2 }).map((_, i) => (
-                <FeaturedProjectSkeleton key={i} index={i} />
-               ))
-            ) : featured.length > 0 ? (
-              featured
-                .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
-                .map((project, index) => (
-                  <FeaturedProjectItem 
-                    key={project.id}
-                    project={project}
-                    index={index}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))
-            ) : null}
-          </div>
-        )}
+        <div className="space-y-48">
+          {loading ? (
+             Array.from({ length: 4 }).map((_, i) => (
+              <FeaturedProjectSkeleton key={i} index={i} />
+             ))
+          ) : featured.length > 0 ? (
+            featured
+              .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+              .map((project, index) => (
+                <FeaturedProjectItem 
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))
+          ) : (
+            <div className="text-center py-20 text-muted-foreground italic">
+              Featured content loading...
+            </div>
+          )}
+        </div>
         
         <ProjectModal 
           project={selectedProject} 
@@ -78,13 +75,15 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
     <motion.div
       ref={ref}
       style={{ opacity, scale }}
-      className="group relative cursor-pointer"
-      onClick={onClick}
+      className="group relative"
       data-cursor-text="View"
     >
-      <div className={`grid lg:grid-cols-12 gap-12 items-center ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
+      <div className={`grid lg:grid-cols-12 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [50, -50]) }}
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [100, -100]),
+            rotate: useTransform(scrollYProgress, [0, 1], [2, -2])
+          }}
           className={`lg:col-span-7 relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}
         >
           <div className="relative aspect-[16/10] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
@@ -95,7 +94,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
                 <div className="ml-4 h-4 w-32 bg-white/5 rounded-full" />
               </div>
-              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-105 transition-transform duration-1000">
+              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000">
                 <ProjectImage 
                   src={project.image} 
                   alt={project.title} 
@@ -129,8 +128,9 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               whileInView={{ opacity: 1, x: 0 }}
               className="flex items-center gap-4 mb-4"
             >
-              <span className="h-px w-8 bg-primary/50" />
-              <span className="text-primary text-sm font-bold uppercase tracking-[0.2em]">{project.year}</span>
+              <span className="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full border border-primary/20">
+                {project.year} · {project.category.split(' ')[0]}
+              </span>
             </motion.div>
             
             <motion.h3 
@@ -150,34 +150,38 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               {project.description}
             </motion.p>
             
-            <div className="flex flex-wrap gap-3 mb-12">
+            <div className="flex flex-wrap gap-2 mb-12">
               {project.technologies?.map(tech => (
-                <span key={tech} className="text-sm text-muted-foreground/80 flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-primary" />
+                <span key={tech} className="px-3 py-1 bg-white/5 text-[10px] text-muted-foreground/80 rounded-lg border border-white/5 group-hover:border-primary/20 transition-colors uppercase tracking-wider font-bold">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <div className="flex items-center gap-8" onClick={(e) => e.stopPropagation()}>
-              {project.liveUrl && (
-                <a 
-                  href={project.liveUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
-                >
-                  <span className="relative z-10">Launch Project</span>
-                  <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                  <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
-                </a>
-              )}
+            <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
+              <button 
+                onClick={onClick}
+                className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
+              >
+                <span className="relative z-10">View Project</span>
+                <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
+              </button>
+              
+              <button 
+                onClick={onClick}
+                className="text-muted-foreground hover:text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg transition-colors"
+              >
+                <span className="relative z-10">Case Study</span>
+                <motion.div className="absolute bottom-0 left-0 h-px bg-white/20 w-0 group-hover/link:w-full transition-all duration-300" />
+              </button>
+
               {project.githubUrl && (
                 <a 
                   href={project.githubUrl} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2"
+                  className="text-muted-foreground hover:text-foreground transition-colors p-2 ml-4"
                 >
                   <GithubIcon size={28} />
                 </a>

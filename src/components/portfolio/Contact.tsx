@@ -77,10 +77,10 @@ export const Contact = () => {
           
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-6">Get in Touch</h2>
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.1]">Let's build something <span className="text-primary italic">meaningful.</span></h3>
+              <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-6">LET'S CONNECT</h2>
+              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.1]">Have an idea? <br/>Let's <span className="text-primary italic">build it.</span></h3>
               <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-                I'm always interested in learning, building and collaborating on interesting technology projects. Reach out if you have a challenge for me!
+                I'm always interested in learning, experimenting and building interesting technology projects.
               </p>
               
               <div className="flex flex-col gap-8">
@@ -143,7 +143,7 @@ export const Contact = () => {
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Message</label>
                   <textarea 
-                    placeholder="Tell me about your project..." 
+                    placeholder="Your message" 
                     rows={5} 
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}

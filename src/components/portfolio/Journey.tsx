@@ -46,17 +46,26 @@ export const Journey = () => {
             viewport={{ once: true }}
             className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4"
           >
-            Milestones
+            MY JOURNEY
           </motion.h2>
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold tracking-tight"
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-6"
           >
-            Development Journey
+            Three years. A lot of building.
           </motion.h3>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-muted-foreground text-lg"
+          >
+            What started with simple websites gradually evolved into interactive applications and AI-powered systems.
+          </motion.p>
         </div>
         
         <div className="relative max-w-5xl mx-auto">
@@ -112,7 +121,7 @@ const MilestoneItem = ({ milestone, index, total }: { milestone: any, index: num
             <span className="text-6xl font-bold">{index + 1}</span>
           </div>
           
-          <div className={`text-primary font-bold text-xs mb-3 tracking-widest ${index % 2 === 0 ? 'md:justify-end' : ''} flex items-center gap-2`}>
+          <div className={`text-primary font-bold text-xs mb-3 tracking-widest ${index % 2 === 0 ? 'md:justify-end' : ''} flex items-center gap-2 uppercase`}>
             {index % 2 === 1 && <span className="w-4 h-px bg-primary/30" />}
             {milestone.year}
             {index % 2 === 0 && <span className="w-4 h-px bg-primary/30 md:hidden lg:block" />}

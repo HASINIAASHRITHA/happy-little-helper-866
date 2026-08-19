@@ -5,9 +5,9 @@ import { Menu, X } from 'lucide-react';
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Work', href: '#work' },
   { name: 'Journey', href: '#journey' },
   { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -20,7 +20,7 @@ export const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
-      const sections = ['home', 'about', 'journey', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'work', 'journey', 'skills', 'contact'];
       let currentSection = 'home';
       
       for (const section of sections) {

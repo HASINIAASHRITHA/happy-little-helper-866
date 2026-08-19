@@ -76,7 +76,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="text-xl font-bold group-hover:text-primary transition-colors leading-tight">{project.title}</h3>
-          <span className="text-[10px] font-bold text-primary/60 uppercase tracking-widest">{project.year.split(' ')[0]}</span>
+          <span className="text-[10px] font-bold text-primary/60 uppercase tracking-widest">{project.year} · {project.category.split(' ')[0]}</span>
         </div>
         <p className="text-muted-foreground text-sm mb-6 line-clamp-3 leading-relaxed">{project.description}</p>
         
@@ -133,8 +133,11 @@ export const Projects = () => {
   return (
     <section id="projects" className="py-24 scroll-mt-20">
       <div className="container mx-auto px-6">
-        <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4 text-center">Archive</h2>
-        <h3 className="text-4xl md:text-5xl font-bold mb-16 text-center tracking-tight">Development Journey</h3>
+        <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4 text-center">PROJECT ARCHIVE</h2>
+        <h3 className="text-4xl md:text-5xl font-bold mb-4 text-center tracking-tight">Explore everything I've built.</h3>
+        <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+          From my first web projects to AI-powered systems.
+        </p>
         
         {/* Filter */}
         <div className="flex justify-center space-x-2 md:space-x-4 mb-16 flex-wrap gap-y-4">

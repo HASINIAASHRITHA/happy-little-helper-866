@@ -4,12 +4,15 @@ import { useEffect } from 'react';
 import { CustomCursor } from '@/components/portfolio/CustomCursor';
 import { Navbar } from '@/components/portfolio/Navbar';
 import { Hero } from '@/components/portfolio/Hero';
+import { Intro } from '@/components/portfolio/Intro';
 import { Stats } from '@/components/portfolio/Stats';
 import { About } from '@/components/portfolio/About';
 import { Skills } from '@/components/portfolio/Skills';
 import { Journey } from '@/components/portfolio/Journey';
 import { FeaturedProjects } from '@/components/portfolio/FeaturedProjects';
 import { Projects } from '@/components/portfolio/Projects';
+import { CurrentlyBuilding } from '@/components/portfolio/CurrentlyBuilding';
+import { AIAssistantShowcase } from '@/components/portfolio/AIAssistantShowcase';
 import { Contact } from '@/components/portfolio/Contact';
 import { seedProjects } from '@/lib/seed';
 
@@ -45,12 +48,15 @@ function PortfolioIndex() {
         <Navbar />
         
         <Hero />
+        <Intro />
         <Stats />
         <About />
-        <Journey />
-        <Skills />
         <FeaturedProjects />
+        <Journey />
         <Projects />
+        <Skills />
+        <CurrentlyBuilding />
+        <AIAssistantShowcase />
         <Contact />
       </div>
     </main>

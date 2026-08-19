@@ -110,10 +110,11 @@ export const Hero = () => {
             <motion.h1 
               variants={itemVariants}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
             >
-              Building <br /> 
-              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[280px] md:min-w-[400px]">
+              I build <br /> 
+              <span className="text-primary italic">intelligent</span> <br />
+              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[200px] md:min-w-[300px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
@@ -139,7 +140,7 @@ export const Hero = () => {
               transition={{ duration: 0.8 }}
               className="text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed"
             >
-              AI & Data Science student building intelligent systems, data-driven applications and modern web experiences.
+              I'm a 3rd-year B.Tech student exploring AI, Data Science and modern web development — turning ideas into real, usable products.
             </motion.p>
             
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex flex-wrap gap-6 mb-12">
@@ -189,14 +190,14 @@ export const Hero = () => {
                 style={{ x: portraitX, y: portraitY }}
                 className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2"
               >
-                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden">
+                <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden group">
                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary),0.2),transparent_70%)]" />
                    <img 
                     src={portraitAsset.url} 
                     alt="Hasini Addanki" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 relative z-10"
                    />
-                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-20" />
                 </div>
               </motion.div>
 

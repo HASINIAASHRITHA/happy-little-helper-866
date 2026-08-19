@@ -27,7 +27,7 @@ export const Skills = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-20">
           <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">Tech Stack</h2>
-          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Expertise & Tools</h3>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Tools I use to build.</h3>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">

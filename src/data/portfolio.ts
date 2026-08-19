@@ -189,16 +189,16 @@ export const skills = [
     items: ['Python', 'JavaScript', 'HTML', 'CSS']
   },
   {
-    category: 'Data / AI / IoT',
-    items: ['Machine Learning', 'Data Science', 'IoT', 'Sensors & Actuators', 'Team Leadership']
+    category: 'AI / Data',
+    items: ['Machine Learning', 'Data Science', 'Pandas', 'NumPy', 'Scikit-learn']
   },
   {
     category: 'Web',
     items: ['React', 'Vite', 'Tailwind CSS']
   },
   {
-    category: 'Tools / Platforms',
-    items: ['GitHub', 'Firebase', 'Vercel']
+    category: 'Tools',
+    items: ['Firebase', 'GitHub', 'Cloudinary', 'Vercel']
   }
 ];
 
