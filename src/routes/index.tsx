@@ -29,8 +29,11 @@ export const Route = createFileRoute('/')({
 
 function PortfolioIndex() {
   useEffect(() => {
-    // Seed projects on load
-    seedProjects(true); 
+    const runSeed = async () => {
+      console.log("Triggering project synchronization...");
+      await seedProjects(true);
+    };
+    runSeed();
   }, []);
 
   return (
