@@ -158,7 +158,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Food delivery landing page project.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://hungerbuster.vercel.app/hero-bg.png',
+    image: 'https://hungerbuster.vercel.app/og-image.png',
     liveUrl: 'https://hungerbuster.vercel.app',
   },
   {
