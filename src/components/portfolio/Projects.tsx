@@ -124,6 +124,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
             View Project →
           </motion.span>
         </div>
+      </div>
     </motion.div>
   );
 };
