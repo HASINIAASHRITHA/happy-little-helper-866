@@ -1,5 +1,5 @@
-import { createFileRoute, useScroll } from '@tanstack/react-router';
-import { motion, useSpring } from 'framer-motion';
+import { createFileRoute } from '@tanstack/react-router';
+import { motion, useSpring, useScroll } from 'framer-motion';
 import { CustomCursor } from '@/components/portfolio/CustomCursor';
 import { Navbar } from '@/components/portfolio/Navbar';
 import { Hero } from '@/components/portfolio/Hero';
