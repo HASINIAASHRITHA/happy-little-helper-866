@@ -13,31 +13,41 @@ export const useProjects = () => {
   useEffect(() => {
     let unsubscribe: (() => void) | undefined;
     
-    try {
-      const q = query(collection(db, PROJECTS_COLLECTION), orderBy('year', 'desc'));
-      
-      unsubscribe = onSnapshot(q, (querySnapshot) => {
-        if (querySnapshot.empty) {
-          console.warn("Firestore collection 'projects' is empty.");
-          setProjects([]);
-        } else {
-          const projectsData: Project[] = [];
-          querySnapshot.forEach((doc) => {
-            projectsData.push({ id: doc.id, ...doc.data() } as Project);
-          });
-          setProjects(projectsData);
+    const fetchProjects = async () => {
+      try {
+        const projectsRef = collection(db, PROJECTS_COLLECTION);
+        const q = query(projectsRef, orderBy('year', 'desc'));
+        
+        // Initial get to confirm table exists/has data
+        const initialSnap = await getDocs(q);
+        if (initialSnap.empty) {
+          console.warn("Initial check: Projects collection is empty.");
         }
+
+        unsubscribe = onSnapshot(q, (querySnapshot) => {
+          if (querySnapshot.empty) {
+            setProjects([]);
+          } else {
+            const projectsData: Project[] = [];
+            querySnapshot.forEach((doc) => {
+              projectsData.push({ id: doc.id, ...doc.data() } as Project);
+            });
+            setProjects(projectsData);
+          }
+          setLoading(false);
+        }, (err) => {
+          console.error("onSnapshot error:", err);
+          setError("Connection to project database failed");
+          setLoading(false);
+        });
+      } catch (err) {
+        console.error("fetchProjects error:", err);
+        setError("Database unavailable");
         setLoading(false);
-      }, (err) => {
-        console.error("Error fetching projects from Firebase:", err);
-        setError("Projects temporarily unavailable");
-        setLoading(false);
-      });
-    } catch (err) {
-      console.error("Firebase Query Error:", err);
-      setError("Database connection failed");
-      setLoading(false);
-    }
+      }
+    };
+
+    fetchProjects();
 
     return () => {
       if (unsubscribe) unsubscribe();
