@@ -91,14 +91,20 @@ export const Contact = () => {
                   >
                     Let's Connect
                   </a>
-                  <a 
-                    href={resumeUrl} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="text-foreground font-bold border-b-2 border-primary/30 hover:border-primary transition-all py-1"
-                  >
-                    Download CV
-                  </a>
+                  {resumeUrl ? (
+                    <a 
+                      href={resumeUrl} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="text-foreground font-bold border-b-2 border-primary/30 hover:border-primary transition-all py-1"
+                    >
+                      Download CV
+                    </a>
+                  ) : (
+                    <span className="text-muted-foreground/30 font-bold border-b-2 border-transparent py-1 italic cursor-help" title="Resume coming soon">
+                      CV coming soon
+                    </span>
+                  )}
                 </div>
                 
                 <div className="flex items-center gap-8 mt-4">
