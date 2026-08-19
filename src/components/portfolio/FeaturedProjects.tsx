@@ -157,7 +157,6 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
             </div>
             
             <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
               <button 
                 onClick={onClick}
                 className="text-foreground font-bold flex items-center gap-2 group/link relative py-3 text-lg"
