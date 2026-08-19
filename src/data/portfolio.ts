@@ -67,7 +67,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A premium, high-end web application focusing on sophisticated UI and interactive elements.',
     technologies: ['React', 'Framer Motion', 'UI/UX Design'],
-    image: 'https://elegance-flame.vercel.app/preview.png',
+    image: 'https://elegance-flame.vercel.app/og-image.png',
     liveUrl: 'https://elegance-flame.vercel.app',
   },
   {
