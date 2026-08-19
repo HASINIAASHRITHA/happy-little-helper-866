@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ArrowDown, Mail } from 'lucide-react';
 import { socialLinks } from '@/data/portfolio';
@@ -19,6 +19,28 @@ const techCards = [
 ];
 
 export const Hero = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const rotateX = useTransform(springY, [-300, 300], [10, -10]);
+  const rotateY = useTransform(springX, [-300, 300], [-10, 10]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const [keywordIndex, setKeywordIndex] = useState(0);
   const keywords = ['AI', 'Data Science', 'Machine Learning', 'Web Development', 'Creative Technology'];
 
@@ -48,7 +70,7 @@ export const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] -z-10" />
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10" />
@@ -125,6 +147,7 @@ export const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4 }}
             className="relative hidden lg:block"
+            style={{ rotateX, rotateY, perspective: 1000 }}
           >
             <div className="relative w-[500px] h-[500px] mx-auto">
               {/* Profile Image Placeholder Area */}
