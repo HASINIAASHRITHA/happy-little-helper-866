@@ -34,7 +34,7 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'A smart manufacturing assistant leveraging AI and Machine Learning for industrial decision support.',
     technologies: ['AI', 'Machine Learning', 'Smart Manufacturing', 'Decision Support'],
-    image: 'https://factory-copilot-1.vercel.app/dashboard/preview.png',
+    image: 'https://factory-copilot-1.vercel.app/og-image.png',
     liveUrl: 'https://factory-copilot-1.vercel.app/dashboard',
     featured: true,
   },
@@ -56,7 +56,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'An immersive 3D Solar System experience built with modern web technologies.',
     technologies: ['Three.js', 'React', '3D Modeling', 'Animations'],
-    image: 'https://atomic-dreamscape.vercel.app/screenshot.png',
+    image: 'https://atomic-dreamscape.vercel.app/og-image.png',
     liveUrl: 'https://atomic-dreamscape.vercel.app',
     featured: true,
   },
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A premium, high-end web application focusing on sophisticated UI and interactive elements.',
     technologies: ['React', 'Framer Motion', 'UI/UX Design'],
-    image: 'https://elegance-flame.vercel.app/preview.png',
+    image: 'https://elegance-flame.vercel.app/og-image.png',
     liveUrl: 'https://elegance-flame.vercel.app',
   },
   {
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A comprehensive hotel management and booking portal.',
     technologies: ['React', 'Authentication', 'State Management'],
-    image: 'https://hotel-eta-five.vercel.app/hero.png',
+    image: 'https://hotel-eta-five.vercel.app/og-image.png',
     liveUrl: 'https://hotel-eta-five.vercel.app',
   },
   {
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A real-time interactive chat application with user authentication.',
     technologies: ['React', 'Authentication', 'Real-time Data'],
-    image: 'https://funinchat.vercel.app/app-preview.png',
+    image: 'https://funinchat.vercel.app/og-image.png',
     liveUrl: 'https://funinchat.vercel.app',
   },
   {
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A luxury wellness and spa services platform with an elegant interface.',
     technologies: ['React', 'CSS Modules', 'Web Design'],
-    image: 'https://spa-ten-ivory.vercel.app/main.png',
+    image: 'https://spa-ten-ivory.vercel.app/og-image.png',
     liveUrl: 'https://spa-ten-ivory.vercel.app',
   },
   // 1st Year
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Early project focused on health-related information and web fundamentals.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://swastik-health.vercel.app/preview.png',
+    image: 'https://swastik-health.vercel.app/og-image.png',
     liveUrl: 'https://swastik-health.vercel.app',
   },
   {
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'A media-focused project exploring responsive layouts and basic interactivity.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://entertainment-code.vercel.app/home.png',
+    image: 'https://entertainment-code.vercel.app/og-image.png',
     liveUrl: 'https://entertainment-code.vercel.app',
   },
   {
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'A beauty-oriented website showcasing fundamental web development skills.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://beautymaker.vercel.app/site.png',
+    image: 'https://beautymaker.vercel.app/og-image.png',
     liveUrl: 'https://beautymaker.vercel.app',
   },
   {
@@ -138,7 +138,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Real estate portfolio project demonstrating layout and styling capabilities.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://elite-homes-virid.vercel.app/cover.png',
+    image: 'https://elite-homes-virid.vercel.app/og-image.png',
     liveUrl: 'https://elite-homes-virid.vercel.app',
   },
   {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Fitness tracker concept built during my first year of learning.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://befit-lilac.vercel.app/screen.png',
+    image: 'https://befit-lilac.vercel.app/og-image.png',
     liveUrl: 'https://befit-lilac.vercel.app',
   },
   {
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Food delivery landing page project.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://hungerbuster.vercel.app/hero-bg.png',
+    image: 'https://hungerbuster.vercel.app/og-image.png',
     liveUrl: 'https://hungerbuster.vercel.app',
   },
   {
@@ -168,7 +168,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'An exploration into creative web design and canvases.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://creative-canvass.vercel.app/gallery.png',
+    image: 'https://creative-canvass.vercel.app/og-image.png',
     liveUrl: 'https://creative-canvass.vercel.app',
   },
   {
@@ -178,7 +178,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Technology-focused landing page showcasing early coding skills.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://stellartech-five.vercel.app/layout.png',
+    image: 'https://stellartech-five.vercel.app/og-image.png',
     liveUrl: 'https://stellartech-five.vercel.app',
   },
 ];
