@@ -20,8 +20,24 @@ export const Contact = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-6xl mx-auto glass p-8 md:p-20 rounded-[3rem] relative overflow-hidden border border-white/5"
         >
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 blur-[100px] -z-10" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/10 blur-[100px] -z-10" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              x: [0, 20, 0],
+              y: [0, -20, 0]
+            }}
+            transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
+            className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 blur-[100px] -z-10" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.3, 1],
+              x: [0, -30, 0],
+              y: [0, 30, 0]
+            }}
+            transition={{ repeat: Infinity, duration: 18, ease: "easeInOut" }}
+            className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/10 blur-[100px] -z-10" 
+          />
           
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
