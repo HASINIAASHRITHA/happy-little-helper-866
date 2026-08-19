@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { socialLinks, resumeUrl } from '@/data/portfolio';
+import { db } from '@/lib/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { toast } from 'sonner';
+
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -10,7 +15,38 @@ const LinkedinIcon = ({ size = 24 }: { size?: number }) => (
 );
 
 export const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, 'contacts'), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+      toast.success('Message sent successfully!');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
+
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
         <motion.div 
@@ -73,26 +109,52 @@ export const Contact = () => {
             </div>
             
             <div className="relative">
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Name</label>
-                    <input type="text" placeholder="John Doe" className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-20" />
+                    <input 
+                      type="text" 
+                      placeholder="John Doe" 
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-20" 
+                      required
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Email</label>
-                    <input type="email" placeholder="john@example.com" className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-20" />
+                    <input 
+                      type="email" 
+                      placeholder="john@example.com" 
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-20" 
+                      required
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Message</label>
-                  <textarea placeholder="Your message here..." rows={5} className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-20"></textarea>
+                  <textarea 
+                    placeholder="Your message here..." 
+                    rows={5} 
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-20"
+                    required
+                  ></textarea>
                 </div>
-                <button className="w-full py-5 bg-white/10 hover:bg-white/15 rounded-2xl font-bold uppercase tracking-widest text-sm transition-all border border-white/10 hover:border-white/20 active:scale-[0.98]">
-                  Send Message
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-5 bg-white/10 hover:bg-white/15 disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl font-bold uppercase tracking-widest text-sm transition-all border border-white/10 hover:border-white/20 active:scale-[0.98]"
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
+
           </div>
         </motion.div>
         
