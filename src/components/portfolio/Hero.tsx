@@ -110,10 +110,10 @@ export const Hero = () => {
             <motion.h1 
               variants={itemVariants}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.9]"
+              className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[0.9]"
             >
               Building <br /> 
-              <span className="relative inline-block ml-4 min-w-[300px]">
+              <span className="relative inline-block md:ml-4 min-w-[280px] md:min-w-[400px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
@@ -121,7 +121,7 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                     exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-primary absolute left-0 top-0"
+                    className="text-primary absolute left-0 top-0 w-full"
                   >
                     {keywords[keywordIndex]}
                   </motion.span>
