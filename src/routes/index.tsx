@@ -39,6 +39,7 @@ function PortfolioIndex() {
       <FeaturedProjects />
       <Projects />
       <Contact />
+      </div>
     </main>
   );
 }
