@@ -183,11 +183,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 >
                   <GithubIcon size={28} />
                 </a>
-              ) : (
-                <span className="text-muted-foreground/20 p-2" title="Source code not available">
-                   <GithubIcon size={28} />
-                </span>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
