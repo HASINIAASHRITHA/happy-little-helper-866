@@ -123,7 +123,7 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
             className="relative hidden lg:block"
           >
             <div className="relative w-[500px] h-[500px] mx-auto">
