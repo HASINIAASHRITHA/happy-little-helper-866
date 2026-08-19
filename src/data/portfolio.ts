@@ -178,7 +178,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Technology-focused landing page showcasing early coding skills.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://stellartech-five.vercel.app/layout.png',
+    image: 'https://stellartech-five.vercel.app/og-image.png',
     liveUrl: 'https://stellartech-five.vercel.app',
   },
 ];
