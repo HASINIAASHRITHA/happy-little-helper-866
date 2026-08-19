@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -54,8 +54,8 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[90%] md:w-auto max-w-4xl px-8 rounded-2xl ${
-        isScrolled ? 'glass py-4 shadow-2xl' : 'py-6 bg-transparent'
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 w-[90%] md:w-auto max-w-4xl px-8 rounded-2xl ${
+        isScrolled ? 'glass py-4 shadow-2xl border-white/10' : 'py-6 bg-transparent border-transparent'
       }`}
     >
       <div className="flex justify-between items-center gap-12">
