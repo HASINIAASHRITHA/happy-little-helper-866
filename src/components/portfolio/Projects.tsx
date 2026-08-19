@@ -64,7 +64,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
           <div className="w-2 h-2 rounded-full bg-green-500/50" />
         </div>
-        <div className="absolute inset-0 pt-6 group-hover:scale-110 transition-transform duration-1000 ease-out">
+        <div className="absolute inset-0 pt-6 group-hover:scale-110 transition-transform duration-1000 ease-out group-hover:shadow-[0_0_30px_rgba(var(--primary),0.2)]">
            <ProjectImage 
             src={project.image} 
             alt={project.title} 

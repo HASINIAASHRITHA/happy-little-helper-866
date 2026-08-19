@@ -102,7 +102,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
                 <div className="ml-4 h-4 w-32 bg-white/5 rounded-full" />
               </div>
-              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000">
+              <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000 group-hover:shadow-[0_0_50px_rgba(var(--primary),0.3)]">
                 <ProjectImage 
                   src={project.image} 
                   alt={project.title} 
