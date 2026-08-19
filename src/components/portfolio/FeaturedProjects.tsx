@@ -34,6 +34,7 @@ export const FeaturedProjects = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="group relative cursor-pointer"
               onClick={() => setSelectedProject(project)}
+              data-cursor-text="View"
             >
               <div className={`grid lg:grid-cols-12 gap-8 items-center ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
                 <div className={`lg:col-span-7 relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
@@ -45,7 +46,7 @@ export const FeaturedProjects = () => {
                         <div className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
                         <div className="ml-4 h-4 w-32 bg-white/5 rounded-full" />
                       </div>
-                      <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000">
+                      <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-105 transition-transform duration-1000">
                         {project.image ? (
                           <img 
                             src={project.image} 

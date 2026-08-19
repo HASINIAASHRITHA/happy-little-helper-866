@@ -135,8 +135,8 @@ export const Projects = () => {
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
-                filter === c ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105' : 'bg-secondary hover:bg-secondary/80 text-muted-foreground'
+              className={`px-6 py-2 rounded-full transition-all duration-500 font-medium ${
+                filter === c ? 'bg-primary text-primary-foreground shadow-xl shadow-primary/20 scale-105' : 'bg-secondary hover:bg-secondary/80 text-muted-foreground'
               }`}
             >
               {c}
