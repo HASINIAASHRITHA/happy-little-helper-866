@@ -108,7 +108,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Early project focused on health-related information and web fundamentals.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://swastik-health.vercel.app/preview.png',
+    image: 'https://swastik-health.vercel.app/og-image.png',
     liveUrl: 'https://swastik-health.vercel.app',
   },
   {
