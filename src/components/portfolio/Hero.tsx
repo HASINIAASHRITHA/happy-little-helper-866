@@ -48,7 +48,7 @@ export const Hero = () => {
   };
 
   const [keywordIndex, setKeywordIndex] = useState(0);
-  const keywords = ['AI', 'Data Science', 'Machine Learning', 'Web Development', 'Intelligent Systems'];
+  const keywords = ['AI', 'Data', 'Machine Learning', 'Web'];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -113,15 +113,18 @@ export const Hero = () => {
               className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
             >
               Building <br /> 
-              <span className="relative inline-block h-[1.2em] w-full max-w-[500px] overflow-hidden align-middle">
-                <AnimatePresence mode="wait" initial={false}>
+              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[280px] md:min-w-[400px]">
+                <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -30 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="text-primary absolute left-0 top-0 w-full whitespace-nowrap"
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ 
+                      duration: 0.4, 
+                      ease: "easeInOut" 
+                    }}
+                    className="text-primary absolute left-0 top-0 whitespace-nowrap"
                   >
                     {keywords[keywordIndex]}
                   </motion.span>
