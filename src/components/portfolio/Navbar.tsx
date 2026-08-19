@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -21,21 +21,35 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
       
       const sections = ['home', 'about', 'journey', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
+      let currentSection = 'home';
+      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+          const rect = element.getBoundingClientRect();
+          // Use a threshold (e.g., top of element is near the top of the viewport)
+          if (rect.top <= 150) {
+            currentSection = section;
           }
         }
       }
+      setActiveSection(currentSection);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  const scrollToSection = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.slice(1);
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop = element.offsetTop;
+      window.scrollTo({
+        top: id === 'home' ? 0 : offsetTop - 80,
+        behavior: 'smooth'
+      });
+      setMobileMenuOpen(false);
+    }
   }, []);
 
   return (
@@ -59,6 +73,7 @@ export const Navbar = () => {
             <motion.a
               key={item.name}
               href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
@@ -103,7 +118,7 @@ export const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => scrollToSection(e, item.href)}
                   className="text-lg font-medium text-muted-foreground hover:text-primary"
                 >
                   {item.name}

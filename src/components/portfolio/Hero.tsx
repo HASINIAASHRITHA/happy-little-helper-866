@@ -1,7 +1,7 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ArrowDown, Mail } from 'lucide-react';
-import { socialLinks } from '@/data/portfolio';
+import { socialLinks, resumeUrl } from '@/data/portfolio';
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -19,6 +19,28 @@ const techCards = [
 ];
 
 export const Hero = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const rotateX = useTransform(springY, [-300, 300], [10, -10]);
+  const rotateY = useTransform(springX, [-300, 300], [-10, 10]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   const [keywordIndex, setKeywordIndex] = useState(0);
   const keywords = ['AI', 'Data Science', 'Machine Learning', 'Web Development', 'Creative Technology'];
 
@@ -48,7 +70,7 @@ export const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] -z-10" />
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10" />
@@ -108,9 +130,14 @@ export const Hero = () => {
               >
                 View My Work
               </a>
-              <button className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all active:scale-95">
+              <a 
+                href={resumeUrl} 
+                target="_blank" 
+                rel="noreferrer"
+                className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all active:scale-95"
+              >
                 Download CV
-              </button>
+              </a>
             </motion.div>
 
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex items-center gap-8">
@@ -123,8 +150,9 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
             className="relative hidden lg:block"
+            style={{ rotateX, rotateY, perspective: 1000 }}
           >
             <div className="relative w-[500px] h-[500px] mx-auto">
               {/* Profile Image Placeholder Area */}

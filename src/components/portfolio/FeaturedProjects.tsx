@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { projects } from '@/data/portfolio';
+import { projects, Project } from '@/data/portfolio';
 import { ExternalLink } from 'lucide-react';
+import { ProjectModal } from './ProjectModal';
 
 const GithubIcon = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
 );
 
 export const FeaturedProjects = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const featured = projects.filter(p => p.featured);
 
   return (
@@ -29,7 +32,8 @@ export const FeaturedProjects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative"
+              className="group relative cursor-pointer"
+              onClick={() => setSelectedProject(project)}
             >
               <div className={`grid lg:grid-cols-12 gap-8 items-center ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
                 <div className={`lg:col-span-7 relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
@@ -89,7 +93,7 @@ export const FeaturedProjects = () => {
                       ))}
                     </div>
                     
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
                       {project.liveUrl && (
                         <a 
                           href={project.liveUrl} 
@@ -119,6 +123,12 @@ export const FeaturedProjects = () => {
             </motion.div>
           ))}
         </div>
+        
+        <ProjectModal 
+          project={selectedProject} 
+          isOpen={!!selectedProject} 
+          onClose={() => setSelectedProject(null)} 
+        />
       </div>
     </section>
   );

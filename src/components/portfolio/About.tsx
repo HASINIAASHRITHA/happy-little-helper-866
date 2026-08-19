@@ -26,6 +26,18 @@ export const About = () => {
                   Currently, I'm focused on the intersection of <span className="text-foreground font-medium">Data Science and Software Engineering</span>, creating tools that don't just present information but actively assist in decision-making through intelligence.
                 </p>
               </div>
+              
+              <div className="mt-12 flex flex-wrap gap-6">
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold text-foreground">3+</span>
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Years of Growth</span>
+                </div>
+                <div className="w-px h-12 bg-border hidden sm:block" />
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold text-foreground">15+</span>
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Projects Built</span>
+                </div>
+              </div>
             </motion.div>
 
             <motion.div 

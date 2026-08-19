@@ -42,7 +42,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
@@ -62,7 +62,14 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {project.technologies.slice(0, 3).map(tech => (
-            <span key={tech} className="px-2 py-1 rounded bg-secondary text-xs group-hover:bg-primary/10 transition-colors">{tech}</span>
+            <motion.span 
+              key={tech} 
+              initial={{ opacity: 0.8 }}
+              whileHover={{ y: -2, opacity: 1 }}
+              className="px-2 py-1 rounded bg-secondary text-xs group-hover:bg-primary/10 transition-colors"
+            >
+              {tech}
+            </motion.span>
           ))}
         </div>
         <div className="flex space-x-4 relative z-10" onClick={(e) => e.stopPropagation()}>
@@ -88,9 +95,10 @@ export const Projects = () => {
     : projects.filter(p => p.year === filter);
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center uppercase tracking-widest">Archive</h2>
+        <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4 text-center">Archive</h2>
+        <h3 className="text-4xl md:text-5xl font-bold mb-16 text-center tracking-tight">Development Journey</h3>
         
         {/* Filter */}
         <div className="flex justify-center space-x-2 md:space-x-4 mb-12 flex-wrap gap-y-4">
