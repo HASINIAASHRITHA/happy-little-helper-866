@@ -148,7 +148,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Fitness tracker concept built during my first year of learning.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://befit-lilac.vercel.app/screen.png',
+    image: 'https://befit-lilac.vercel.app/og-image.png',
     liveUrl: 'https://befit-lilac.vercel.app',
   },
   {
