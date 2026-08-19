@@ -158,7 +158,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
             </div>
             
             <div className="flex items-center gap-8" onClick={(e) => e.stopPropagation()}>
-              {project.liveUrl ? (
+              {project.liveUrl && (
                 <a 
                   href={project.liveUrl} 
                   target="_blank" 
@@ -169,12 +169,8 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                   <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
                   <motion.div className="absolute bottom-0 left-0 h-px bg-primary w-0 group-hover/link:w-full transition-all duration-300" />
                 </a>
-              ) : (
-                <span className="text-muted-foreground/50 font-bold flex items-center gap-2 relative py-3 text-lg italic">
-                  Launch Unavailable
-                </span>
-              ) : null}
-              {project.githubUrl ? (
+              )}
+              {project.githubUrl && (
                 <a 
                   href={project.githubUrl} 
                   target="_blank" 
@@ -183,7 +179,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 >
                   <GithubIcon size={28} />
                 </a>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
