@@ -27,8 +27,10 @@ const AnimatedNumber = ({ value }: { value: string }) => {
 };
 
 export const Stats = () => {
+  const { projects } = useProjects();
+  
   const stats = [
-    { label: 'Total Projects', value: `${projects.length}+` },
+    { label: 'Total Projects', value: `${projects.length || 0}+` },
     { label: 'Years of Growth', value: '3' },
     { label: 'AI / ML Focus', value: '5+' },
     { label: 'Web Applications', value: '10+' },
