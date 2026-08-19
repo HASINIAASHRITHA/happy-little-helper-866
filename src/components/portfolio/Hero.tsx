@@ -113,15 +113,15 @@ export const Hero = () => {
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.9]"
             >
               Building <br /> 
-              <span className="relative inline-block">
+              <span className="relative inline-block ml-4 min-w-[300px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-primary"
+                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-primary absolute left-0 top-0"
                   >
                     {keywords[keywordIndex]}
                   </motion.span>
