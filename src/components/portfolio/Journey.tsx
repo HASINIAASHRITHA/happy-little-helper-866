@@ -108,7 +108,7 @@ const MilestoneItem = ({ milestone, index, total }: { milestone: any, index: num
     >
       {/* Content Side */}
       <div className={`flex-1 w-full ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'}`}>
-        <div className={`group relative glass p-8 md:p-10 rounded-3xl transition-all duration-500 border border-white/5 ${milestone.active ? 'bg-primary/[0.03] border-primary/30' : 'hover:border-white/20'}`}>
+        <div className={`group relative glass p-8 md:p-10 rounded-[2rem] transition-all duration-500 border border-white/5 ${milestone.active ? 'bg-primary/[0.03] border-primary/30 shadow-[0_0_30px_rgba(var(--primary),0.05)]' : 'hover:border-white/20'}`}>
           <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
             <span className="text-6xl font-bold">{index + 1}</span>
           </div>
