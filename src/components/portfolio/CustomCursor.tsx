@@ -75,7 +75,7 @@ export const CustomCursor = () => {
               <motion.span 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
-                className="absolute inset-0 flex items-center justify-center text-[2px] font-black uppercase text-primary-foreground tracking-tighter"
+                className="absolute inset-0 flex items-center justify-center text-[2px] font-black uppercase text-primary-foreground tracking-widest"
               >
                 {hoverText}
               </motion.span>
