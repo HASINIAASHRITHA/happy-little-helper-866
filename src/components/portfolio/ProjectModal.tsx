@@ -77,23 +77,15 @@ export const ProjectModal = ({
                 </div>
                 
                 <div className="flex flex-wrap gap-4 mt-auto">
-                  {project.liveUrl ? (
+                  {project.liveUrl && (
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95">
                       <ExternalLink size={20} /> Live Demo
                     </a>
-                  ) : (
-                     <span className="px-8 py-3 bg-secondary text-muted-foreground/50 rounded-full font-bold flex items-center gap-2 italic cursor-not-allowed">
-                        <ExternalLink size={20} /> Demo Unavailable
-                     </span>
                   )}
-                  {project.githubUrl ? (
+                  {project.githubUrl && (
                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-3 border border-white/10 rounded-full font-bold flex items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
                       <GithubIcon size={20} /> GitHub
                     </a>
-                  ) : (
-                    <span className="px-8 py-3 border border-white/5 text-muted-foreground/30 rounded-full font-bold flex items-center gap-2 italic cursor-not-allowed">
-                       <GithubIcon size={20} /> Source Unavailable
-                    </span>
                   )}
                 </div>
               </div>
