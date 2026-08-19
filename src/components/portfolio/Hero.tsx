@@ -2,6 +2,7 @@ import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from
 import { useState, useEffect } from 'react';
 import { ArrowDown, Mail } from 'lucide-react';
 import { socialLinks, resumeUrl } from '@/data/portfolio';
+import portraitAsset from '@/assets/portrait.png.asset.json';
 
 const GithubIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -159,13 +160,12 @@ export const Hero = () => {
               <div className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2">
                 <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden">
                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary),0.2),transparent_70%)]" />
-                   <div className="w-48 h-48 rounded-full bg-white/5 blur-3xl animate-pulse" />
-                   <div className="z-10 text-center">
-                      <div className="w-32 h-32 rounded-full border-4 border-primary/20 mx-auto mb-4 flex items-center justify-center">
-                        <span className="text-4xl font-black opacity-10">IMAGE</span>
-                      </div>
-                      <p className="text-xs font-bold uppercase tracking-widest opacity-20">Hasini Addanki</p>
-                   </div>
+                   <img 
+                    src={portraitAsset.url} 
+                    alt="Hasini Addanki" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 </div>
               </div>
 

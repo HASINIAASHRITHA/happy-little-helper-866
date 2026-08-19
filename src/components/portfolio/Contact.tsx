@@ -25,7 +25,7 @@ export const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-6">Get in Touch</h2>
-              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.1]">Let's build something meaningful.</h3>
+              <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.1]">Let's build something <span className="text-primary italic">meaningful.</span></h3>
               <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
                 I'm always interested in learning, building and collaborating on interesting technology projects. Reach out if you have a challenge for me!
               </p>

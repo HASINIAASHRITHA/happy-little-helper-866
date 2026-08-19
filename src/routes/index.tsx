@@ -26,18 +26,21 @@ export const Route = createFileRoute('/')({
 
 function PortfolioIndex() {
   return (
-    <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white">
-      <CustomCursor />
-      <Navbar />
-      
-      <Hero />
-      <Stats />
-      <About />
-      <Journey />
-      <Skills />
-      <FeaturedProjects />
-      <Projects />
-      <Contact />
+    <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white font-sans antialiased relative">
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(var(--primary),0.05),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(var(--accent),0.05),transparent_50%)] pointer-events-none" />
+      <div className="relative z-10">
+        <CustomCursor />
+        <Navbar />
+        
+        <Hero />
+        <Stats />
+        <About />
+        <Journey />
+        <Skills />
+        <FeaturedProjects />
+        <Projects />
+        <Contact />
+      </div>
     </main>
   );
 }

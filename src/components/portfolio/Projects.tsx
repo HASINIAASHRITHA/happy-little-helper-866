@@ -50,11 +50,27 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
     >
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
       <div 
-        className="mb-4 h-48 bg-secondary rounded-lg overflow-hidden relative"
+        className="mb-4 h-48 bg-secondary rounded-lg overflow-hidden relative border border-white/5"
         style={{ transform: 'translateZ(20px)' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-          <span className="font-bold text-muted-foreground/30 text-2xl">{project.title.substring(0, 2)}</span>
+        <div className="absolute top-0 left-0 right-0 h-6 bg-white/10 flex items-center px-3 gap-1 z-10">
+          <div className="w-2 h-2 rounded-full bg-red-500/50" />
+          <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
+          <div className="w-2 h-2 rounded-full bg-green-500/50" />
+        </div>
+        <div className="absolute inset-0 pt-6 flex items-center justify-center bg-white/5 group-hover:scale-105 transition-transform duration-700">
+           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col p-4 space-y-2 opacity-60">
+             <div className="h-4 w-2/3 bg-white/10 rounded" />
+             <div className="grid grid-cols-3 gap-2">
+               <div className="h-20 bg-white/5 rounded" />
+               <div className="h-20 bg-white/5 rounded" />
+               <div className="h-20 bg-white/5 rounded" />
+             </div>
+             <div className="h-4 w-full bg-white/5 rounded" />
+           </div>
+           <div className="absolute inset-0 flex items-center justify-center">
+             <span className="font-bold text-white/20 text-xs tracking-widest uppercase">Dashboard Preview</span>
+           </div>
         </div>
       </div>
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col flex-grow">

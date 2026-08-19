@@ -156,10 +156,14 @@
 
 @layer utilities {
   .glass {
-    @apply bg-card backdrop-blur-md border border-border;
+    @apply bg-card backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
   }
   
   .text-glow {
-    text-shadow: 0 0 20px oklch(0.7 0.15 250 / 50%);
+    text-shadow: 0 0 30px oklch(0.7 0.15 250 / 40%);
+  }
+
+  .container-wide {
+    @apply max-w-[1400px] mx-auto px-6;
   }
 }
