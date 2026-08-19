@@ -24,7 +24,7 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'An AI-powered intelligent operations platform for warehouse management and decision support.',
     technologies: ['AI', 'Warehouse Management', 'Decision Support', 'Data Analysis'],
-    image: 'sample', // Verified Cloudinary sample ID
+    image: undefined, // Project screenshot not uploaded yet
     liveUrl: 'https://warehousecopilot.vercel.app',
     githubUrl: 'https://github.com/HASINIAASHRITHA/warehouse-copilot',
     featured: true,
