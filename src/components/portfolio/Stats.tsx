@@ -1,31 +1,60 @@
-import { motion } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { projects } from '@/data/portfolio';
+
+const AnimatedNumber = ({ value }: { value: string }) => {
+  const numericValue = parseInt(value);
+  const isPlus = value.includes('+');
+  const count = useMotionValue(0);
+  const rounded = useSpring(count, { stiffness: 50, damping: 20 });
+  const [display, setDisplay] = useState("0");
+
+  useEffect(() => {
+    count.set(numericValue);
+  }, [numericValue, count]);
+
+  useEffect(() => {
+    return rounded.on("change", (latest) => {
+      setDisplay(Math.floor(latest).toString());
+    });
+  }, [rounded]);
+
+  return (
+    <span>
+      {display}{isPlus ? '+' : ''}
+    </span>
+  );
+};
 
 export const Stats = () => {
   const stats = [
-    { label: 'Projects', value: `${projects.length}+` },
+    { label: 'Total Projects', value: `${projects.length}+` },
     { label: 'Years of Growth', value: '3' },
-    { label: 'AI / ML Projects', value: '5+' },
+    { label: 'AI / ML Focus', value: '5+' },
     { label: 'Web Applications', value: '10+' },
   ];
 
   return (
-    <section className="py-20 bg-background/50">
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-primary/[0.02] -z-10" />
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="text-center"
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              className="relative group text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                {stat.value}
+              <div className="mb-2">
+                <span className="text-5xl md:text-6xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500">
+                  <AnimatedNumber value={stat.value} />
+                </span>
               </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wider">
+              <div className="h-px w-8 bg-primary/30 mx-auto mb-4 group-hover:w-16 transition-all duration-500" />
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
                 {stat.label}
               </div>
             </motion.div>
