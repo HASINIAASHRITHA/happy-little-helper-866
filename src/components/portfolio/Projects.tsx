@@ -166,23 +166,17 @@ export const Projects = () => {
           ))}
         </div>
 
-        {error ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center text-red-500">
-              <AlertCircle size={32} />
-            </div>
-            <h4 className="text-xl font-bold">{error}</h4>
-            <p className="text-muted-foreground max-w-md">We're having trouble connecting to the project database. Please try again later.</p>
-          </div>
+        {loading ? (
+          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <ProjectSkeleton key={i} />
+            ))}
+          </motion.div>
         ) : (
           /* Project Grid */
           <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             <AnimatePresence mode="popLayout" initial={false}>
-              {loading ? (
-                Array.from({ length: 6 }).map((_, i) => (
-                  <ProjectSkeleton key={i} />
-                ))
-              ) : filteredProjects.length > 0 ? (
+              {filteredProjects.length > 0 ? (
                 [...filteredProjects]
                   .sort((a, b) => {
                     const yearOrder = { '3rd Year': 3, '2nd Year': 2, '1st Year': 1 };

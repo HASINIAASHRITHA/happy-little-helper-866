@@ -50,14 +50,6 @@ export const FeaturedProjects = () => {
                   onClick={() => setSelectedProject(project)}
                 />
               ))
-          ) : error ? (
-            <div className="text-center py-20 text-red-500 font-bold glass p-8 rounded-2xl border border-red-500/20">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <AlertCircle size={20} />
-                <span>Featured content unavailable</span>
-              </div>
-              <p className="text-sm text-red-500/60 font-medium uppercase tracking-widest">{error}</p>
-            </div>
           ) : (
             <div className="text-center py-20 text-muted-foreground italic">
               No featured projects found.

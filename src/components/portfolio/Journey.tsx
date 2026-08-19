@@ -110,6 +110,13 @@ const MilestoneItem = ({ milestone, index, total }: { milestone: any, index: num
     <motion.div
       ref={ref}
       style={{ opacity, scale }}
+      whileInView={{ 
+        opacity: [0, 1],
+        scale: [0.95, 1],
+        y: [20, 0]
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`flex flex-col md:flex-row items-center gap-12 md:gap-0 ${
         index % 2 === 1 ? 'md:flex-row-reverse' : ''
       }`}
