@@ -17,42 +17,39 @@ export const FeaturedProjects = () => {
   const featured = allProjects.filter(p => p.featured);
 
   return (
-    <section className="py-20 relative">
+    <section id="work" className="py-20 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">Featured Work</h2>
-            <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Main Highlights</h3>
-          </div>
-          <div className="h-px flex-grow bg-border mx-8 hidden lg:block mb-4 opacity-30" />
+        <div className="text-center mb-24">
+          <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">SELECTED WORK</h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">Things I've built.</h3>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A selection of projects from my journey across web development, AI and data.
+          </p>
         </div>
         
-        {error ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center space-y-4">
-             <AlertCircle className="text-red-500" size={48} />
-             <h4 className="text-xl font-bold">Featured content unavailable</h4>
-          </div>
-        ) : (
-          <div className="space-y-48">
-            {loading ? (
-               Array.from({ length: 2 }).map((_, i) => (
-                <FeaturedProjectSkeleton key={i} index={i} />
-               ))
-            ) : featured.length > 0 ? (
-              featured
-                .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
-                .map((project, index) => (
-                  <FeaturedProjectItem 
-                    key={project.id}
-                    project={project}
-                    index={index}
-                    onClick={() => setSelectedProject(project)}
-                  />
-                ))
-            ) : null}
-          </div>
-        )}
+        <div className="space-y-48">
+          {loading ? (
+             Array.from({ length: 4 }).map((_, i) => (
+              <FeaturedProjectSkeleton key={i} index={i} />
+             ))
+          ) : featured.length > 0 ? (
+            featured
+              .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+              .map((project, index) => (
+                <FeaturedProjectItem 
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  onClick={() => setSelectedProject(project)}
+                />
+              ))
+          ) : (
+            <div className="text-center py-20 text-muted-foreground italic">
+              Featured content loading...
+            </div>
+          )}
+        </div>
         
         <ProjectModal 
           project={selectedProject} 
