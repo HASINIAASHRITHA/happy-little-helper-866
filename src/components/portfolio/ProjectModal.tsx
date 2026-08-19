@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects, Project } from '@/data/portfolio';
+import { Project } from '@/data/portfolio';
 import { ExternalLink, X } from 'lucide-react';
+import { ProjectImage } from './ProjectImage';
 
 const GithubIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -45,18 +45,13 @@ export const ProjectModal = ({
             </button>
             
             <div className="grid md:grid-cols-2">
-              <div className="h-64 md:h-auto bg-secondary relative overflow-hidden">
-                {project.image ? (
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 flex items-center justify-center">
-                     <span className="text-4xl font-bold text-muted-foreground/20">{project.title}</span>
-                  </div>
-                )}
+              <div className="h-64 md:h-auto bg-secondary relative overflow-hidden min-h-[400px]">
+                <ProjectImage 
+                  src={project.image} 
+                  alt={project.title} 
+                  fallbackText={project.category}
+                  width={1200}
+                />
               </div>
               
               <div className="p-8 md:p-12">
@@ -73,7 +68,7 @@ export const ProjectModal = ({
                 <div className="mb-8">
                   <h4 className="text-sm font-bold uppercase tracking-widest mb-4">Technologies</h4>
                   <div className="flex flex-wrap gap-2">
-                    {project.technologies.map(tech => (
+                    {project.technologies?.map(tech => (
                       <span key={tech} className="px-3 py-1 bg-secondary rounded-lg text-sm border border-border/50">
                         {tech}
                       </span>
@@ -82,15 +77,23 @@ export const ProjectModal = ({
                 </div>
                 
                 <div className="flex flex-wrap gap-4 mt-auto">
-                  {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95">
+                  {project.liveUrl ? (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95">
                       <ExternalLink size={20} /> Live Demo
                     </a>
+                  ) : (
+                     <span className="px-8 py-3 bg-secondary text-muted-foreground/50 rounded-full font-bold flex items-center gap-2 italic cursor-not-allowed">
+                        <ExternalLink size={20} /> Demo Unavailable
+                     </span>
                   )}
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/10 rounded-full font-bold flex items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                  {project.githubUrl ? (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-3 border border-white/10 rounded-full font-bold flex items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
                       <GithubIcon size={20} /> GitHub
                     </a>
+                  ) : (
+                    <span className="px-8 py-3 border border-white/5 text-muted-foreground/30 rounded-full font-bold flex items-center gap-2 italic cursor-not-allowed">
+                       <GithubIcon size={20} /> Source Unavailable
+                    </span>
                   )}
                 </div>
               </div>
