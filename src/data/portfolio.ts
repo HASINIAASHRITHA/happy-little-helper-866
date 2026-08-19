@@ -87,7 +87,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A real-time interactive chat application with user authentication.',
     technologies: ['React', 'Authentication', 'Real-time Data'],
-    image: 'https://funinchat.vercel.app/app-preview.png',
+    image: 'https://funinchat.vercel.app/og-image.png',
     liveUrl: 'https://funinchat.vercel.app',
   },
   {
