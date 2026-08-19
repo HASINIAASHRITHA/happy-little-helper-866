@@ -54,8 +54,8 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 w-[90%] md:w-auto max-w-4xl px-8 rounded-2xl ${
-        isScrolled ? 'glass py-4 shadow-2xl border-white/10' : 'py-6 bg-transparent border-transparent'
+      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 w-[90%] md:w-auto max-w-4xl px-8 rounded-full ${
+        isScrolled ? 'glass py-3 shadow-2xl border border-white/10 backdrop-blur-xl' : 'py-6 bg-transparent border-transparent'
       }`}
     >
       <div className="flex justify-between items-center gap-12">
@@ -108,10 +108,11 @@ export const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-b overflow-hidden"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="md:hidden glass border border-white/10 overflow-hidden mt-4 rounded-2xl"
           >
             <div className="flex flex-col p-6 space-y-4">
               {navItems.map((item) => (
