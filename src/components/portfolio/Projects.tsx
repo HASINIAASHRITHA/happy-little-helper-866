@@ -124,28 +124,6 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
             View Project →
           </motion.span>
         </div>
-          {project.liveUrl && (
-            <a 
-              href={project.liveUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors"
-            >
-              <ExternalLink size={14} /> 
-              <span>Live Demo</span>
-            </a>
-          )}
-          {project.githubUrl && (
-            <a 
-              href={project.githubUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-xs font-bold flex items-center gap-1.5 hover:text-primary transition-colors"
-            >
-              <GithubIcon size={14} /> 
-              <span>Source</span>
-            </a>
-          )}
         </div>
       </div>
     </motion.div>
