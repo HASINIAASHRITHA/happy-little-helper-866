@@ -87,7 +87,15 @@ export const ProjectModal = ({
                 
                 <div className="flex flex-wrap gap-4 mt-auto">
                   {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95">
+                    <a 
+                      href={project.liveUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      onClick={(e) => {
+                        console.log(`Navigating to Live Demo: ${project.liveUrl}`);
+                      }}
+                      className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95"
+                    >
                       <ExternalLink size={20} /> Live Demo
                     </a>
                   )}

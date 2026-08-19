@@ -24,8 +24,9 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'An AI-powered intelligent operations platform for warehouse management and decision support.',
     technologies: ['AI', 'Warehouse Management', 'Decision Support', 'Data Analysis'],
-    image: 'warehouse-copilot-og', // Cloudinary public ID or full URL
+    image: 'sample', // Verified Cloudinary sample ID
     liveUrl: 'https://warehousecopilot.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/warehouse-copilot',
     featured: true,
     longDescription: "Warehouse Copilot is a sophisticated AI-driven platform that optimizes logistics operations. It provides real-time insights into inventory flow and uses predictive modeling to prevent bottlenecks, significantly improving overall warehouse efficiency."
   },
@@ -36,8 +37,9 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'A smart manufacturing assistant leveraging AI and Machine Learning for industrial decision support.',
     technologies: ['AI', 'Machine Learning', 'Smart Manufacturing', 'Decision Support'],
-    image: 'factory-copilot-og',
-    liveUrl: 'https://factory-copilot-1.vercel.app/dashboard',
+    image: 'cld-sample',
+    liveUrl: 'https://factory-copilot-1.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/factory-copilot',
     featured: true,
     longDescription: "Factory Copilot serves as an intelligent manufacturing assistant, bridging the gap between raw industrial data and actionable decisions. It monitors production health and provides predictive maintenance alerts to minimize downtime."
   },
@@ -48,11 +50,12 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'An AI-powered conversational application designed to interact with users and provide intelligent responses.',
     technologies: ['AI', 'NLP', 'React', 'API Integration'],
-    image: 'ai-assistant-preview',
+    image: 'cld-sample-2',
+    liveUrl: 'https://ai-assistant-preview.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/ai-assistant',
     featured: true,
     longDescription: "An AI-powered interface that simplifies complex information retrieval. This assistant is trained to handle natural language queries, providing users with accurate, context-aware information in a clean, interactive environment."
   },
-  // 2nd Year
   {
     id: 'atomic-dreamscape',
     title: 'Atomic Dreamscape',
@@ -60,8 +63,9 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'An immersive 3D Solar System experience built with modern web technologies.',
     technologies: ['Three.js', 'React', '3D Modeling', 'Animations'],
-    image: 'atomic-dreamscape-og',
+    image: 'cld-sample-3',
     liveUrl: 'https://atomic-dreamscape.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/atomic-dreamscape',
     featured: true,
     longDescription: "Atomic Dreamscape pushes the boundaries of web-based 3D experiences. Using Three.js, it creates a reactive, atomic-themed simulation of the solar system, allowing users to explore celestial bodies with high-fidelity performance."
   },
@@ -72,8 +76,9 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A premium, high-end web application focusing on sophisticated UI and interactive elements.',
     technologies: ['React', 'Framer Motion', 'UI/UX Design'],
-    image: 'elegance-og',
+    image: 'cld-sample-4',
     liveUrl: 'https://elegance-flame.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/elegance',
   },
   {
     id: 'hotel-portal',
@@ -82,8 +87,9 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A comprehensive hotel management and booking portal.',
     technologies: ['React', 'Authentication', 'State Management'],
-    image: 'hotel-portal-og',
+    image: 'cld-sample-5',
     liveUrl: 'https://hotel-eta-five.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/hotel',
   },
   {
     id: 'funinchat',
@@ -92,8 +98,9 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A real-time interactive chat application with user authentication.',
     technologies: ['React', 'Authentication', 'Real-time Data'],
-    image: 'funinchat-og',
-    liveUrl: 'https://funinchat.vercel.app/auth',
+    image: 'sample',
+    liveUrl: 'https://funinchat.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/funinchat',
   },
   {
     id: 'luxe-spa',
@@ -102,10 +109,10 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A luxury wellness and spa services platform with an elegant interface.',
     technologies: ['React', 'CSS Modules', 'Web Design'],
-    image: 'luxe-spa-og',
+    image: 'cld-sample',
     liveUrl: 'https://spa-ten-ivory.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/spa',
   },
-  // 1st Year
   {
     id: 'swastik-health',
     title: 'Swastik Health',
@@ -113,8 +120,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Early project focused on health-related information and web fundamentals.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'swastik-health-og',
-    liveUrl: 'https://swastik-health.vercel.app/',
+    image: 'cld-sample-2',
+    liveUrl: 'https://swastik-health.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/swasthik',
   },
   {
     id: 'entertainment-pulse',
@@ -123,8 +131,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'A media-focused project exploring responsive layouts and basic interactivity.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'entertainment-pulse-og',
-    liveUrl: 'https://entertainment-code.vercel.app/',
+    image: 'cld-sample-3',
+    liveUrl: 'https://entertainment-code.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/anime-universe',
   },
   {
     id: 'beautymaker',
@@ -133,8 +142,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'A beauty-oriented website showcasing fundamental web development skills.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'beautymaker-og',
-    liveUrl: 'https://beautymaker.vercel.app/',
+    image: 'cld-sample-4',
+    liveUrl: 'https://beautymaker.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/beautymaker',
   },
   {
     id: 'elite-homes',
@@ -143,8 +153,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Real estate portfolio project demonstrating layout and styling capabilities.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'elite-homes-og',
-    liveUrl: 'https://elite-homes-virid.vercel.app/',
+    image: 'cld-sample-5',
+    liveUrl: 'https://elite-homes-virid.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/elite-homes',
   },
   {
     id: 'befit',
@@ -153,8 +164,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Fitness tracker concept built during my first year of learning.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'befit-og',
-    liveUrl: 'https://befit-lilac.vercel.app/',
+    image: 'sample',
+    liveUrl: 'https://befit-lilac.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/befit',
   },
   {
     id: 'hunger-buster',
@@ -163,8 +175,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Food delivery landing page project.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'hunger-buster-og',
-    liveUrl: 'https://hungerbuster.vercel.app/',
+    image: 'cld-sample',
+    liveUrl: 'https://hungerbuster.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/hungerbuster',
   },
   {
     id: 'creative-canvass',
@@ -173,8 +186,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'An exploration into creative web design and canvases.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'creative-canvass-og',
-    liveUrl: 'https://creative-canvass.vercel.app/',
+    image: 'cld-sample-2',
+    liveUrl: 'https://creative-canvass.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/creative-canvass',
   },
   {
     id: 'stellartech',
@@ -183,8 +197,9 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'Technology-focused landing page showcasing early coding skills.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'stellartech-og',
-    liveUrl: 'https://stellartech-five.vercel.app/',
+    image: 'cld-sample-3',
+    liveUrl: 'https://stellartech-five.vercel.app',
+    githubUrl: 'https://github.com/HASINIAASHRITHA/stellartech',
   },
 ];
 
