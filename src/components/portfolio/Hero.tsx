@@ -23,18 +23,23 @@ export const Hero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+  const springX = useSpring(mouseX, { stiffness: 100, damping: 30 });
+  const springY = useSpring(mouseY, { stiffness: 100, damping: 30 });
 
-  const rotateX = useTransform(springY, [-300, 300], [10, -10]);
-  const rotateY = useTransform(springX, [-300, 300], [-10, 10]);
+  // Parallax effects
+  const portraitX = useTransform(springX, [-500, 500], [-15, 15]);
+  const portraitY = useTransform(springY, [-500, 500], [-15, 15]);
+  const bgX = useTransform(springX, [-500, 500], [-5, 5]);
+  const bgY = useTransform(springY, [-500, 500], [-5, 5]);
+
+  const rotateX = useTransform(springY, [-500, 500], [5, -5]);
+  const rotateY = useTransform(springX, [-500, 500], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseX.set(e.clientX - centerX);
-    mouseY.set(e.clientY - centerY);
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    mouseX.set(clientX - innerWidth / 2);
+    mouseY.set(clientY - innerHeight / 2);
   };
 
   const handleMouseLeave = () => {
@@ -73,9 +78,18 @@ export const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       {/* Background elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] -z-10" />
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] -z-10" />
+      <motion.div 
+        style={{ x: bgX, y: bgY }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_70%)] -z-10" 
+      />
+      <motion.div 
+        style={{ x: bgX, y: bgY }}
+        className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10" 
+      />
+      <motion.div 
+        style={{ x: bgX, y: bgY }}
+        className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] -z-10" 
+      />
       
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -83,6 +97,7 @@ export const Hero = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            className="relative z-20"
           >
             <motion.span 
               variants={itemVariants}
@@ -98,15 +113,15 @@ export const Hero = () => {
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[0.9]"
             >
               Building <br /> 
-              <span className="relative inline-block">
+              <span className="relative inline-block ml-4 min-w-[300px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-primary"
+                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-primary absolute left-0 top-0"
                   >
                     {keywords[keywordIndex]}
                   </motion.span>
@@ -125,20 +140,24 @@ export const Hero = () => {
             </motion.p>
             
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex flex-wrap gap-6 mb-12">
-              <a 
+              <motion.a 
                 href="#projects" 
-                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:shadow-[0_0_30px_rgba(var(--primary),0.4)] transition-all"
               >
                 View My Work
-              </a>
-              <a 
+              </motion.a>
+              <motion.a 
                 href={resumeUrl} 
                 target="_blank" 
                 rel="noreferrer"
-                className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all active:scale-95"
+                whileHover={{ y: -2, scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
+                whileTap={{ scale: 0.98 }}
+                className="px-10 py-4 border border-white/10 rounded-full font-bold transition-all"
               >
                 Download CV
-              </a>
+              </motion.a>
             </motion.div>
 
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex items-center gap-8">
@@ -157,7 +176,10 @@ export const Hero = () => {
           >
             <div className="relative w-[500px] h-[500px] mx-auto">
               {/* Profile Image Placeholder Area */}
-              <div className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2">
+              <motion.div 
+                style={{ x: portraitX, y: portraitY }}
+                className="absolute inset-0 rounded-3xl overflow-hidden glass border border-white/5 p-2"
+              >
                 <div className="w-full h-full rounded-2xl bg-gradient-to-br from-primary/10 via-secondary to-accent/10 flex items-center justify-center relative overflow-hidden">
                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary),0.2),transparent_70%)]" />
                    <img 
@@ -167,34 +189,46 @@ export const Hero = () => {
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Decorative rings */}
               <div className="absolute -inset-4 border border-white/5 rounded-[40px] animate-[spin_30s_linear_infinite]" />
               <div className="absolute -inset-10 border border-primary/5 rounded-[50px] animate-[spin_40s_linear_infinite_reverse]" />
               
               {/* Floating Technology Cards */}
-              {techCards.map((card, i) => (
-                <motion.div
-                  key={card.name}
-                  animate={{ 
-                    y: [0, -15, 0],
-                    x: [0, i % 2 === 0 ? 10 : -10, 0]
-                  }}
-                  transition={{ 
-                    repeat: Infinity, 
-                    duration: 5 + i, 
-                    ease: "easeInOut",
-                    delay: card.delay 
-                  }}
-                  className={`absolute ${card.position} glass px-6 py-3 rounded-2xl text-sm font-bold shadow-2xl border border-primary/20 z-20 whitespace-nowrap`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                    {card.name}
-                  </span>
-                </motion.div>
-              ))}
+              {techCards.map((card, i) => {
+                // Individual card parallax intensity
+                const cardX = useTransform(springX, [-500, 500], [-(20 + i * 5), 20 + i * 5]);
+                const cardY = useTransform(springY, [-500, 500], [-(20 + i * 5), 20 + i * 5]);
+
+                return (
+                  <motion.div
+                    key={card.name}
+                    style={{ x: cardX, y: cardY }}
+                    className={`absolute ${card.position} z-20`}
+                  >
+                    <motion.div
+                      animate={{ 
+                        y: [0, -15, 0],
+                        x: [0, i % 2 === 0 ? 10 : -10, 0]
+                      }}
+                      transition={{ 
+                        repeat: Infinity, 
+                        duration: 5 + i, 
+                        ease: "easeInOut",
+                        delay: card.delay 
+                      }}
+                      whileHover={{ scale: 1.1, zIndex: 30 }}
+                      className="glass px-6 py-3 rounded-2xl text-sm font-bold shadow-2xl border border-primary/20 whitespace-nowrap cursor-default"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        {card.name}
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>

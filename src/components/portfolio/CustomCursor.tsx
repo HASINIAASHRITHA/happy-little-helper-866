@@ -8,6 +8,7 @@ export const CustomCursor = () => {
   const outerY = useSpring(0, { damping: 30, stiffness: 100, mass: 0.8 });
   
   const [isHovering, setIsHovering] = useState(false);
+  const [hoverText, setHoverText] = useState("");
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -29,6 +30,11 @@ export const CustomCursor = () => {
         target.getAttribute('role') === 'button'
       ) {
         setIsHovering(true);
+        if (target.closest('[data-cursor-text]')) {
+          setHoverText((target.closest('[data-cursor-text]') as HTMLElement).dataset['cursorText'] || "");
+        } else {
+          setHoverText("");
+        }
       }
     };
 
@@ -62,9 +68,19 @@ export const CustomCursor = () => {
               translateY: "-50%"
             }}
             animate={{
-              scale: isHovering ? 2.5 : 1,
+              scale: isHovering ? (hoverText ? 6 : 2.5) : 1,
             }}
-          />
+          >
+            {hoverText && (
+              <motion.span 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                className="absolute inset-0 flex items-center justify-center text-[2px] font-black uppercase text-primary-foreground tracking-widest"
+              >
+                {hoverText}
+              </motion.span>
+            )}
+          </motion.div>
           <motion.div
             className="fixed top-0 left-0 w-8 h-8 border border-primary/30 rounded-full pointer-events-none z-[9998]"
             style={{
@@ -74,7 +90,8 @@ export const CustomCursor = () => {
               translateY: "-50%"
             }}
             animate={{
-              scale: isHovering ? 1.5 : 1,
+              scale: isHovering ? (hoverText ? 0 : 1.5) : 1,
+              opacity: hoverText ? 0 : 1
             }}
           />
         </>

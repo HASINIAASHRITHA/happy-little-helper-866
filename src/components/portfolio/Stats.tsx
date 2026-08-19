@@ -6,7 +6,7 @@ const AnimatedNumber = ({ value }: { value: string }) => {
   const numericValue = parseInt(value);
   const isPlus = value.includes('+');
   const count = useMotionValue(0);
-  const rounded = useSpring(count, { stiffness: 50, damping: 20 });
+  const rounded = useSpring(count, { stiffness: 40, damping: 20 });
   const [display, setDisplay] = useState("0");
 
   useEffect(() => {
@@ -35,8 +35,8 @@ export const Stats = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-primary/[0.02] -z-10" />
+    <section className="py-24 relative overflow-hidden bg-background border-y border-white/5">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.03] to-transparent -z-10" />
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
           {stats.map((stat, index) => (

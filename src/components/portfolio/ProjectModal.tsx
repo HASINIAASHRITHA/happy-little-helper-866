@@ -31,10 +31,11 @@ export const ProjectModal = ({
           />
           <motion.div
             layoutId={project.id}
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.8, y: 100 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="w-full max-w-4xl glass rounded-3xl overflow-hidden relative z-10 max-h-[90vh] overflow-y-auto"
+            exit={{ opacity: 0, scale: 0.8, y: 100 }}
+            transition={{ type: "spring", damping: 30, stiffness: 200, mass: 1 }}
+            className="w-full max-w-5xl glass rounded-[2rem] overflow-hidden relative z-10 max-h-[90vh] overflow-y-auto"
           >
             <button
               onClick={onClose}
@@ -82,12 +83,12 @@ export const ProjectModal = ({
                 
                 <div className="flex flex-wrap gap-4 mt-auto">
                   {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-medium flex items-center gap-2 hover:opacity-90 transition-opacity">
+                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all active:scale-95">
                       <ExternalLink size={20} /> Live Demo
                     </a>
                   )}
                   {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="px-8 py-3 border border-border rounded-full font-medium flex items-center gap-2 hover:bg-secondary transition-colors">
+                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="px-8 py-3 border border-white/10 rounded-full font-bold flex items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
                       <GithubIcon size={20} /> GitHub
                     </a>
                   )}

@@ -7,12 +7,14 @@ const SkillCard = ({ skill, index }: { skill: string, index: number }) => {
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.05, duration: 0.5 }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="glass px-4 py-3 rounded-xl border border-white/5 hover:border-primary/30 transition-colors group cursor-default"
+      transition={{ delay: index * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ y: -5, scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      className="glass px-6 py-4 rounded-2xl border border-white/5 hover:border-primary/50 hover:bg-primary/[0.05] shadow-2xl transition-all group cursor-pointer relative overflow-hidden"
     >
+      <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
       <div className="flex items-center gap-3">
-        <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+        <div className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary group-hover:scale-150 transition-all duration-300" />
         <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">{skill}</span>
       </div>
     </motion.div>

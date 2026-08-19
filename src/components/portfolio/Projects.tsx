@@ -15,8 +15,8 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['10deg', '-10deg']);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-10deg', '10deg']);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['5deg', '-5deg']);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-5deg', '5deg']);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -39,13 +39,16 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
     <motion.div
       layout
       layoutId={project.id}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      exit={{ opacity: 0, scale: 0.95, y: 20 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
+      data-cursor-text="View"
       className="glass rounded-2xl p-6 group hover:border-primary transition-all duration-300 relative overflow-hidden h-full flex flex-col cursor-pointer"
     >
       <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -135,8 +138,8 @@ export const Projects = () => {
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 font-medium ${
-                filter === c ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105' : 'bg-secondary hover:bg-secondary/80 text-muted-foreground'
+              className={`px-6 py-2 rounded-full transition-all duration-500 font-medium ${
+                filter === c ? 'bg-primary text-primary-foreground shadow-xl shadow-primary/20 scale-105' : 'bg-secondary hover:bg-secondary/80 text-muted-foreground'
               }`}
             >
               {c}
