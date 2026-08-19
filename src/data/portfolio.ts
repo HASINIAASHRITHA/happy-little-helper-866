@@ -34,7 +34,7 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: 'A smart manufacturing assistant leveraging AI and Machine Learning for industrial decision support.',
     technologies: ['AI', 'Machine Learning', 'Smart Manufacturing', 'Decision Support'],
-    image: 'https://factory-copilot-1.vercel.app/dashboard/preview.png',
+    image: 'https://factory-copilot-1.vercel.app/og-image.png',
     liveUrl: 'https://factory-copilot-1.vercel.app/dashboard',
     featured: true,
   },
