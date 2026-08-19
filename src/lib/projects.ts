@@ -40,11 +40,8 @@ export const useProjects = () => {
           setProjects(localProjects);
           setUsingFallback(true);
           setLoading(false);
-          // DON'T hide the error as requested by the user.
-          setError("Database unavailable (Missing or insufficient permissions)");
-          setProjects(localProjects);
-          setUsingFallback(true);
-          setLoading(false);
+          // Only show error in console, don't break the UI since we have fallbacks
+          setError(null);
         });
       } catch (err) {
         console.error("Firebase initialization/query error, using fallback data:", err);

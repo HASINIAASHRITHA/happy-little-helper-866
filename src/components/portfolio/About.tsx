@@ -81,7 +81,10 @@ export const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="flex-1 w-full"
             >
-              <div className="glass rounded-3xl p-8 md:p-10 border border-white/5 relative overflow-hidden group">
+              <motion.div 
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="glass rounded-3xl p-8 md:p-10 border border-white/5 relative overflow-hidden group transition-all duration-500 hover:shadow-[0_0_50px_rgba(var(--primary),0.1)]"
+              >
                 <motion.div 
                   animate={{ 
                     scale: [1, 1.2, 1],
