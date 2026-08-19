@@ -39,10 +39,11 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
     <motion.div
       layout
       layoutId={project.id}
-      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true }}
-      exit={{ opacity: 0, scale: 0.9, y: 20 }}
+      viewport={{ once: true, margin: "-50px" }}
+      exit={{ opacity: 0, scale: 0.95, y: 20 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
