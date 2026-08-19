@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getOptimizedCloudinaryUrl } from '@/lib/cloudinary';
 
 interface ProjectImageProps {
-  src?: string;
+  src?: string | null;
   alt: string;
   className?: string;
   fallbackText?: string;
