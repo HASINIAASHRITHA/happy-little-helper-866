@@ -1,35 +1,21 @@
 import { db } from './firebase';
-import { doc, collection, getDocs, writeBatch, query, where, deleteDoc } from 'firebase/firestore';
+import { doc, collection, getDocs, writeBatch } from 'firebase/firestore';
 import { projects } from '@/data/portfolio';
 
-/**
- * Seeds Firestore with the initial projects from portfolio.ts
- * Call this once or via a secure admin toggle to populate your database
- */
 export const seedProjects = async () => {
   try {
     const projectsRef = collection(db, 'projects');
     const querySnapshot = await getDocs(projectsRef);
     
-    // For this bug-fix task, we will clear and re-seed to ensure data integrity
-    // if the existing data is inconsistent. 
-    // Usually we wouldn't clear, but the user requested a "Critical Fix" of project data.
-    
+    console.log('Syncing project data with Firestore...');
     const batch = writeBatch(db);
     
-    // Delete existing if needed, or just update. 
-    // To ensure clean state as per user request for "One Source of Truth" and "Correct URLs":
-    if (!querySnapshot.empty) {
-      console.log('Syncing project data with Firestore...');
-    }
-
     projects.forEach((project) => {
       const docRef = doc(projectsRef, project.id);
+      // Ensure the image field is correctly populated from the hardcoded data
       batch.set(docRef, {
         ...project,
         order: getOrderValue(project.year, project.title),
-        longDescription: project.description + " This project demonstrates my ability to build professional applications using modern technology stacks and best practices in software development.",
-        gallery: project.image ? [project.image] : [],
         updatedAt: new Date().toISOString()
       }, { merge: true });
     });
