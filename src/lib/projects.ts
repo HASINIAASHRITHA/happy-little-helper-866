@@ -11,22 +11,47 @@ export const useProjects = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const q = query(collection(db, PROJECTS_COLLECTION), orderBy('year', 'desc'));
+    let unsubscribe: (() => void) | undefined;
     
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const projectsData: Project[] = [];
-      querySnapshot.forEach((doc) => {
-        projectsData.push({ id: doc.id, ...doc.data() } as Project);
-      });
-      setProjects(projectsData);
-      setLoading(false);
-    }, (err) => {
-      console.error("Error fetching projects from Firebase:", err);
-      setError("Projects temporarily unavailable");
-      setLoading(false);
-    });
+    const fetchProjects = async () => {
+      try {
+        const projectsRef = collection(db, PROJECTS_COLLECTION);
+        const q = query(projectsRef, orderBy('year', 'desc'));
+        
+        // Initial get to confirm table exists/has data
+        const initialSnap = await getDocs(q);
+        if (initialSnap.empty) {
+          console.warn("Initial check: Projects collection is empty.");
+        }
 
-    return () => unsubscribe();
+        unsubscribe = onSnapshot(q, (querySnapshot) => {
+          if (querySnapshot.empty) {
+            setProjects([]);
+          } else {
+            const projectsData: Project[] = [];
+            querySnapshot.forEach((doc) => {
+              projectsData.push({ id: doc.id, ...doc.data() } as Project);
+            });
+            setProjects(projectsData);
+          }
+          setLoading(false);
+        }, (err) => {
+          console.error("onSnapshot error:", err);
+          setError("Connection to project database failed");
+          setLoading(false);
+        });
+      } catch (err) {
+        console.error("fetchProjects error:", err);
+        setError("Database unavailable");
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   return { projects, loading, error };
