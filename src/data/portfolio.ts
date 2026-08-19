@@ -118,7 +118,7 @@ export const projects: Project[] = [
     category: 'Web Foundations',
     description: 'A media-focused project exploring responsive layouts and basic interactivity.',
     technologies: ['HTML', 'CSS', 'JavaScript'],
-    image: 'https://entertainment-code.vercel.app/home.png',
+    image: 'https://entertainment-code.vercel.app/og-image.png',
     liveUrl: 'https://entertainment-code.vercel.app',
   },
   {
