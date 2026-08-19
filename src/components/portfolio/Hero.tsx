@@ -110,10 +110,11 @@ export const Hero = () => {
             <motion.h1 
               variants={itemVariants}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
             >
-              Building <br /> 
-              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[280px] md:min-w-[400px]">
+              I build <br /> 
+              <span className="text-primary italic">intelligent</span> <br />
+              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[200px] md:min-w-[300px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
@@ -139,7 +140,7 @@ export const Hero = () => {
               transition={{ duration: 0.8 }}
               className="text-xl text-muted-foreground mb-10 max-w-lg leading-relaxed"
             >
-              AI & Data Science student building intelligent systems, data-driven applications and modern web experiences.
+              I'm a 3rd-year B.Tech student exploring AI, Data Science and modern web development — turning ideas into real, usable products.
             </motion.p>
             
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex flex-wrap gap-6 mb-12">
