@@ -115,7 +115,7 @@ export const Projects = () => {
     : allProjects.filter(p => p.year === filter);
 
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-24 scroll-mt-20">
       <div className="container mx-auto px-6">
         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4 text-center">Archive</h2>
         <h3 className="text-4xl md:text-5xl font-bold mb-16 text-center tracking-tight">Development Journey</h3>

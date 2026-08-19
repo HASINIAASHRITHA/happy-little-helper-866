@@ -4,7 +4,7 @@ import { useProjects } from '@/lib/projects';
 export const About = () => {
   const { projects } = useProjects();
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row gap-20 items-center">

@@ -23,7 +23,7 @@ const SkillCard = ({ skill, index }: { skill: string, index: number }) => {
 
 export const Skills = () => {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="py-24 relative overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-20">
           <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">Tech Stack</h2>

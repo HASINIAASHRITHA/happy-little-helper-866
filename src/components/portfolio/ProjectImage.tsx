@@ -58,17 +58,18 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
           loading="lazy"
         />
       ) : (
-        <div className="w-full h-full bg-gradient-to-br from-primary/20 via-background to-accent/20 flex flex-col items-center justify-center p-6 text-center space-y-4">
-          <div className="w-16 h-16 rounded-2xl border-2 border-white/5 flex items-center justify-center text-white/10">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <div className="w-full h-full bg-secondary/30 flex flex-col items-center justify-center p-6 text-center space-y-3">
+          <div className="w-12 h-12 rounded-xl border border-white/5 flex items-center justify-center text-muted-foreground/30">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
           </div>
           <div className="space-y-1">
-            <span className="text-xs font-bold text-primary tracking-widest uppercase block">{fallbackText}</span>
-            <span className="text-sm font-medium text-muted-foreground/40 block">Image Unavailable</span>
+            <span className="text-[10px] font-bold text-primary/60 tracking-[0.2em] uppercase block">
+              {src ? 'Preview unavailable' : 'Preview coming soon'}
+            </span>
+            <span className="text-xs font-medium text-muted-foreground/40 block">
+              {alt}
+            </span>
           </div>
-          <span className="text-4xl font-black text-white/5 absolute inset-0 flex items-center justify-center pointer-events-none select-none uppercase tracking-tighter overflow-hidden whitespace-nowrap px-4">
-            {alt}
-          </span>
         </div>
       )}
     </div>
