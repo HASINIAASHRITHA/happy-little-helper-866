@@ -110,10 +110,10 @@ export const Hero = () => {
             <motion.h1 
               variants={itemVariants}
               transition={{ duration: 0.8 }}
-              className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[0.9]"
+              className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
             >
               Building <br /> 
-              <span className="relative inline-block md:ml-4 min-w-[280px] md:min-w-[400px]">
+              <span className="relative inline-block min-w-[320px] md:min-w-[500px] h-[1.2em] align-middle">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
