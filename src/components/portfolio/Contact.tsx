@@ -14,9 +14,10 @@ export const Contact = () => {
     <section id="contact" className="py-24">
       <div className="container mx-auto px-6">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-6xl mx-auto glass p-8 md:p-20 rounded-[3rem] relative overflow-hidden border border-white/5"
         >
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 blur-[100px] -z-10" />
@@ -34,7 +35,7 @@ export const Contact = () => {
                 <div className="flex items-center gap-6">
                   <a 
                     href={socialLinks.email} 
-                    className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
+                    className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
                   >
                     Let's Connect
                   </a>
@@ -71,7 +72,7 @@ export const Contact = () => {
                   <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Message</label>
                   <textarea placeholder="Your message here..." rows={5} className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-20"></textarea>
                 </div>
-                <button className="w-full py-5 bg-white/10 hover:bg-white/15 rounded-2xl font-bold uppercase tracking-widest text-sm transition-all border border-white/10 hover:border-white/20">
+                <button className="w-full py-5 bg-white/10 hover:bg-white/15 rounded-2xl font-bold uppercase tracking-widest text-sm transition-all border border-white/10 hover:border-white/20 active:scale-[0.98]">
                   Send Message
                 </button>
               </form>
