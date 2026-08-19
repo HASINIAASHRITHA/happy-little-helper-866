@@ -31,7 +31,7 @@ export const CustomCursor = () => {
       ) {
         setIsHovering(true);
         if (target.closest('[data-cursor-text]')) {
-          setHoverText((target.closest('[data-cursor-text]') as HTMLElement).dataset.cursorText || "");
+          setHoverText((target.closest('[data-cursor-text]') as HTMLElement).dataset['cursorText'] || "");
         } else {
           setHoverText("");
         }
