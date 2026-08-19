@@ -75,13 +75,15 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
     <motion.div
       ref={ref}
       style={{ opacity, scale }}
-      className="group relative cursor-pointer"
-      onClick={onClick}
+      className="group relative"
       data-cursor-text="View"
     >
-      <div className={`grid lg:grid-cols-12 gap-12 items-center ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
+      <div className={`grid lg:grid-cols-12 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
         <motion.div 
-          style={{ y: useTransform(scrollYProgress, [0, 1], [50, -50]) }}
+          style={{ 
+            y: useTransform(scrollYProgress, [0, 1], [100, -100]),
+            rotate: useTransform(scrollYProgress, [0, 1], [2, -2])
+          }}
           className={`lg:col-span-7 relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}
         >
           <div className="relative aspect-[16/10] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
