@@ -48,7 +48,7 @@ export const Hero = () => {
   };
 
   const [keywordIndex, setKeywordIndex] = useState(0);
-  const keywords = ['AI', 'Data Science', 'Machine Learning', 'Web Development', 'Intelligent Systems'];
+  const keywords = ['AI', 'Data', 'Machine Learning', 'Web'];
 
   useEffect(() => {
     const timer = setInterval(() => {
