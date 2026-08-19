@@ -68,7 +68,7 @@ export const About = () => {
                 </div>
                 <div className="w-px h-12 bg-border hidden sm:block" />
                 <div className="flex flex-col">
-                  <span className="text-3xl font-bold text-foreground">15+</span>
+                  <span className="text-3xl font-bold text-foreground">{projects.length || 0}+</span>
                   <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Projects Built</span>
                 </div>
               </motion.div>
