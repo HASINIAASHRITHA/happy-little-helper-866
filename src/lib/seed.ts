@@ -2,17 +2,22 @@ import { db } from './firebase';
 import { doc, collection, getDocs, writeBatch } from 'firebase/firestore';
 import { projects } from '@/data/portfolio';
 
-export const seedProjects = async () => {
+export const seedProjects = async (force = false) => {
   try {
     const projectsRef = collection(db, 'projects');
     const querySnapshot = await getDocs(projectsRef);
     
-    console.log('Syncing project data with Firestore...');
+    // Check if we should seed (if empty or force is true)
+    if (!force && !querySnapshot.empty) {
+      console.log('Projects already exist in Firestore, skipping seed. Use force=true to override.');
+      return;
+    }
+
+    console.log('Syncing verified project data with Firestore...');
     const batch = writeBatch(db);
     
     projects.forEach((project) => {
       const docRef = doc(projectsRef, project.id);
-      // Ensure the image field is correctly populated from the hardcoded data
       batch.set(docRef, {
         ...project,
         order: getOrderValue(project.year, project.title),

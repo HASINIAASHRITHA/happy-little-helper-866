@@ -40,14 +40,16 @@ export const FeaturedProjects = () => {
                 <FeaturedProjectSkeleton key={i} index={i} />
                ))
             ) : featured.length > 0 ? (
-              featured.map((project, index) => (
-                <FeaturedProjectItem 
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  onClick={() => setSelectedProject(project)}
-                />
-              ))
+              featured
+                .sort((a, b) => ((b as any).order || 0) - ((a as any).order || 0))
+                .map((project, index) => (
+                  <FeaturedProjectItem 
+                    key={project.id}
+                    project={project}
+                    index={index}
+                    onClick={() => setSelectedProject(project)}
+                  />
+                ))
             ) : null}
           </div>
         )}

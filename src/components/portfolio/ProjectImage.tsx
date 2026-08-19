@@ -30,7 +30,8 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
     
     if (!src) {
       setIsLoading(false);
-      console.warn(`PROJECT NAME — missing Cloudinary image: ${alt}`);
+      // Requirement: Clearly report missing Cloudinary images
+      console.error(`PROJECT NAME — missing Cloudinary image: ${alt}`);
     }
   }, [src, alt]);
 
