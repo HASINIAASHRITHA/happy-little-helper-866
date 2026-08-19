@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion, useSpring, useScroll } from 'framer-motion';
+import { useEffect } from 'react';
 import { CustomCursor } from '@/components/portfolio/CustomCursor';
 import { Navbar } from '@/components/portfolio/Navbar';
 import { Hero } from '@/components/portfolio/Hero';
@@ -10,6 +11,7 @@ import { Journey } from '@/components/portfolio/Journey';
 import { FeaturedProjects } from '@/components/portfolio/FeaturedProjects';
 import { Projects } from '@/components/portfolio/Projects';
 import { Contact } from '@/components/portfolio/Contact';
+import { seedProjects } from '@/lib/seed';
 
 export const Route = createFileRoute('/')({
   head: () => ({
