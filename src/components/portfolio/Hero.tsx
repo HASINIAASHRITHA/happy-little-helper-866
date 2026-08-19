@@ -113,7 +113,7 @@ export const Hero = () => {
               className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
             >
               Building <br /> 
-              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[300px]">
+              <span className="relative inline-block h-[1.1em] overflow-hidden align-top min-w-[280px] md:min-w-[400px]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={keywords[keywordIndex]}
@@ -122,7 +122,7 @@ export const Hero = () => {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ 
                       duration: 0.4, 
-                      ease: [0.23, 1, 0.32, 1] 
+                      ease: "easeInOut" 
                     }}
                     className="text-primary absolute left-0 top-0 whitespace-nowrap"
                   >
