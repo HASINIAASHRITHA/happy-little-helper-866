@@ -62,7 +62,14 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-6 mt-auto">
           {project.technologies.slice(0, 3).map(tech => (
-            <span key={tech} className="px-2 py-1 rounded bg-secondary text-xs group-hover:bg-primary/10 transition-colors">{tech}</span>
+            <motion.span 
+              key={tech} 
+              initial={{ opacity: 0.8 }}
+              whileHover={{ y: -2, opacity: 1 }}
+              className="px-2 py-1 rounded bg-secondary text-xs group-hover:bg-primary/10 transition-colors"
+            >
+              {tech}
+            </motion.span>
           ))}
         </div>
         <div className="flex space-x-4 relative z-10" onClick={(e) => e.stopPropagation()}>

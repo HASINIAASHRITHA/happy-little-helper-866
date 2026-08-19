@@ -130,9 +130,14 @@ export const Hero = () => {
               >
                 View My Work
               </a>
-              <button className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all active:scale-95">
+              <a 
+                href={resumeUrl} 
+                target="_blank" 
+                rel="noreferrer"
+                className="px-10 py-4 border border-white/10 rounded-full font-bold hover:bg-white/5 transition-all active:scale-95"
+              >
                 Download CV
-              </button>
+              </a>
             </motion.div>
 
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex items-center gap-8">
