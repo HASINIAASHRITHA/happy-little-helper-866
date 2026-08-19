@@ -26,7 +26,8 @@ export const Route = createFileRoute('/')({
 
 function PortfolioIndex() {
   return (
-    <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white">
+    <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white font-sans antialiased">
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(var(--primary),0.05),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(var(--accent),0.05),transparent_50%)] pointer-events-none" />
       <CustomCursor />
       <Navbar />
       
