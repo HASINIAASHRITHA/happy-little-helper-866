@@ -4,7 +4,7 @@ import { useProjects } from '@/lib/projects';
 export const About = () => {
   const { projects } = useProjects();
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden scroll-mt-20">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row gap-20 items-center">
@@ -38,14 +38,14 @@ export const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  My journey in technology has been a continuous evolution. I started with the foundational building blocks of the web and have grown into developing complex, AI-driven applications that solve real-world problems.
+                  I started with the foundational building blocks of the web and have grown into developing complex applications, always striving for professional excellence.
                 </motion.p>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                 >
-                  Currently, I'm focused on the intersection of <span className="text-foreground font-medium">Data Science and Software Engineering</span>, creating tools that don't just present information but actively assist in decision-making through intelligence.
+                  Currently, I'm focused on the intersection of <span className="text-foreground font-medium">Data Science and Software Engineering</span>, creating tools that don't just present information but actively assist in decision-making.
                 </motion.p>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}

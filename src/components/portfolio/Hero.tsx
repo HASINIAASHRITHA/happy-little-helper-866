@@ -48,7 +48,7 @@ export const Hero = () => {
   };
 
   const [keywordIndex, setKeywordIndex] = useState(0);
-  const keywords = ['AI', 'Data Science', 'Machine Learning', 'Web Development', 'Creative Technology'];
+  const keywords = ['AI', 'Data Science', 'Machine Learning', 'Web Development', 'Intelligent Systems'];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -113,15 +113,15 @@ export const Hero = () => {
               className="text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] md:leading-[1.2]"
             >
               Building <br /> 
-              <span className="relative inline-block min-w-[320px] md:min-w-[500px] h-[1.2em] align-middle">
-                <AnimatePresence mode="wait">
+              <span className="relative inline-block h-[1.2em] w-full max-w-[500px] overflow-hidden align-middle">
+                <AnimatePresence mode="wait" initial={false}>
                   <motion.span
                     key={keywords[keywordIndex]}
-                    initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
-                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                    exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-primary absolute left-0 top-0 w-full"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -30 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="text-primary absolute left-0 top-0 w-full whitespace-nowrap"
                   >
                     {keywords[keywordIndex]}
                   </motion.span>
@@ -148,16 +148,22 @@ export const Hero = () => {
               >
                 View My Work
               </motion.a>
-              <motion.a 
-                href={resumeUrl} 
-                target="_blank" 
-                rel="noreferrer"
-                whileHover={{ y: -2, scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
-                whileTap={{ scale: 0.98 }}
-                className="px-10 py-4 border border-white/10 rounded-full font-bold transition-all"
-              >
-                Download CV
-              </motion.a>
+              {resumeUrl && resumeUrl !== '#' ? (
+                <motion.a 
+                  href={resumeUrl} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  whileHover={{ y: -2, scale: 1.02, backgroundColor: "rgba(255,255,255,0.08)" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-10 py-4 border border-white/10 rounded-full font-bold transition-all"
+                >
+                  Download CV
+                </motion.a>
+              ) : (
+                <div className="px-10 py-4 border border-white/5 rounded-full font-bold text-muted-foreground/40 cursor-not-allowed">
+                  CV coming soon
+                </div>
+              )}
             </motion.div>
 
             <motion.div variants={itemVariants} transition={{ duration: 0.8 }} className="flex items-center gap-8">

@@ -47,7 +47,7 @@ export const Contact = () => {
 
   return (
 
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-24 scroll-mt-20">
       <div className="container mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
@@ -91,14 +91,20 @@ export const Contact = () => {
                   >
                     Let's Connect
                   </a>
-                  <a 
-                    href={resumeUrl} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="text-foreground font-bold border-b-2 border-primary/30 hover:border-primary transition-all py-1"
-                  >
-                    Download CV
-                  </a>
+                  {resumeUrl ? (
+                    <a 
+                      href={resumeUrl} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="text-foreground font-bold border-b-2 border-primary/30 hover:border-primary transition-all py-1"
+                    >
+                      Download CV
+                    </a>
+                  ) : (
+                    <span className="text-muted-foreground/30 font-bold border-b-2 border-transparent py-1 italic cursor-help" title="Resume coming soon">
+                      CV coming soon
+                    </span>
+                  )}
                 </div>
                 
                 <div className="flex items-center gap-8 mt-4">
@@ -115,10 +121,10 @@ export const Contact = () => {
                     <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Name</label>
                     <input 
                       type="text" 
-                      placeholder="John Doe" 
+                      placeholder="Your name" 
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-20" 
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-30" 
                       required
                     />
                   </div>
@@ -126,10 +132,10 @@ export const Contact = () => {
                     <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Email</label>
                     <input 
                       type="email" 
-                      placeholder="john@example.com" 
+                      placeholder="Your email" 
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-20" 
+                      className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all placeholder:opacity-30" 
                       required
                     />
                   </div>
@@ -137,11 +143,11 @@ export const Contact = () => {
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-2">Message</label>
                   <textarea 
-                    placeholder="Your message here..." 
+                    placeholder="Tell me about your project..." 
                     rows={5} 
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-20"
+                    className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-primary outline-none transition-all resize-none placeholder:opacity-30"
                     required
                   ></textarea>
                 </div>

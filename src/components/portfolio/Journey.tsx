@@ -37,7 +37,7 @@ export const Journey = () => {
   });
 
   return (
-    <section id="journey" className="py-24 relative overflow-hidden bg-background/50" ref={containerRef}>
+    <section id="journey" className="py-24 relative overflow-hidden bg-background/50 scroll-mt-20" ref={containerRef}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-24">
           <motion.h2 
@@ -71,7 +71,6 @@ export const Journey = () => {
 
           <div className="space-y-24 md:space-y-32">
             {milestones.map((m, index) => {
-              // Custom hook-like behavior inside map for scroll-driven visibility
               return (
                 <MilestoneItem 
                   key={m.year} 
