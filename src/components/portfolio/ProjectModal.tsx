@@ -44,10 +44,18 @@ export const ProjectModal = ({
             </button>
             
             <div className="grid md:grid-cols-2">
-              <div className="h-64 md:h-auto bg-secondary relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 flex items-center justify-center">
-                   <span className="text-4xl font-bold text-muted-foreground/20">{project.title}</span>
-                </div>
+              <div className="h-64 md:h-auto bg-secondary relative overflow-hidden">
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 flex items-center justify-center">
+                     <span className="text-4xl font-bold text-muted-foreground/20">{project.title}</span>
+                  </div>
+                )}
               </div>
               
               <div className="p-8 md:p-12">

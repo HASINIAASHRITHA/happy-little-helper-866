@@ -32,8 +32,8 @@ export const Skills = () => {
           {skills.map((skillGroup, groupIndex) => (
             <motion.div
               key={skillGroup.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true }}
               transition={{ delay: groupIndex * 0.1, duration: 0.8 }}
             >
