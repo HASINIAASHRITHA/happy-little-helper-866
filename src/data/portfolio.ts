@@ -97,7 +97,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'A luxury wellness and spa services platform with an elegant interface.',
     technologies: ['React', 'CSS Modules', 'Web Design'],
-    image: 'https://spa-ten-ivory.vercel.app/main.png',
+    image: 'https://spa-ten-ivory.vercel.app/og-image.png',
     liveUrl: 'https://spa-ten-ivory.vercel.app',
   },
   // 1st Year
