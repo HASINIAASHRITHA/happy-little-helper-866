@@ -52,9 +52,9 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       data-cursor-text="View"
-      className="glass rounded-2xl p-6 group hover:border-primary transition-all duration-300 relative overflow-hidden h-full flex flex-col cursor-pointer active:scale-[0.98]"
+      className="glass rounded-2xl p-6 group hover:border-primary/50 transition-all duration-300 relative overflow-hidden h-full flex flex-col cursor-pointer active:scale-[0.98] hover:shadow-[0_0_40px_rgba(var(--primary),0.1)]"
     >
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity" />
       <div 
         className="mb-6 h-48 bg-secondary rounded-xl overflow-hidden relative border border-white/5"
         style={{ transform: 'translateZ(20px)' }}

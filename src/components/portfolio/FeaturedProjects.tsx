@@ -153,10 +153,24 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-muted-foreground mb-10 leading-relaxed"
+              className="text-xl text-muted-foreground mb-8 leading-relaxed"
             >
               {project.description}
             </motion.p>
+            
+            {project.longDescription && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-10 p-6 glass border border-primary/10 rounded-2xl bg-primary/5 italic text-sm text-muted-foreground/80 relative"
+              >
+                <div className="absolute top-0 left-6 -translate-y-1/2 px-3 py-0.5 bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] rounded-full border border-primary/20">
+                  Project Insight
+                </div>
+                {project.longDescription}
+              </motion.div>
+            )}
             
             <div className="flex flex-wrap gap-2 mb-12">
               {project.technologies?.map(tech => (
