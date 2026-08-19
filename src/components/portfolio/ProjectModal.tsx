@@ -34,7 +34,7 @@ export const ProjectModal = ({
             initial={{ opacity: 0, scale: 0.8, y: 100 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 100 }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            transition={{ type: "spring", damping: 30, stiffness: 200, mass: 1 }}
             className="w-full max-w-5xl glass rounded-[2rem] overflow-hidden relative z-10 max-h-[90vh] overflow-y-auto"
           >
             <button
