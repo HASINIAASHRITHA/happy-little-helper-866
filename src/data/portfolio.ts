@@ -8,7 +8,7 @@ export interface Project {
   category: ProjectCategory;
   description: string;
   technologies: string[];
-  image?: string | null;
+  image?: string | null | undefined;
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
