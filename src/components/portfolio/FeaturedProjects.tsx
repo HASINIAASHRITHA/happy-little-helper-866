@@ -93,7 +93,7 @@ export const FeaturedProjects = () => {
                       ))}
                     </div>
                     
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-6" onClick={(e) => e.stopPropagation()}>
                       {project.liveUrl && (
                         <a 
                           href={project.liveUrl} 
