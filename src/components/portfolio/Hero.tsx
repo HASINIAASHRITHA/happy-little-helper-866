@@ -192,27 +192,39 @@ export const Hero = () => {
               <div className="absolute -inset-10 border border-primary/5 rounded-[50px] animate-[spin_40s_linear_infinite_reverse]" />
               
               {/* Floating Technology Cards */}
-              {techCards.map((card, i) => (
-                <motion.div
-                  key={card.name}
-                  animate={{ 
-                    y: [0, -15, 0],
-                    x: [0, i % 2 === 0 ? 10 : -10, 0]
-                  }}
-                  transition={{ 
-                    repeat: Infinity, 
-                    duration: 5 + i, 
-                    ease: "easeInOut",
-                    delay: card.delay 
-                  }}
-                  className={`absolute ${card.position} glass px-6 py-3 rounded-2xl text-sm font-bold shadow-2xl border border-primary/20 z-20 whitespace-nowrap`}
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                    {card.name}
-                  </span>
-                </motion.div>
-              ))}
+              {techCards.map((card, i) => {
+                // Individual card parallax intensity
+                const cardX = useTransform(springX, [-500, 500], [-(20 + i * 5), 20 + i * 5]);
+                const cardY = useTransform(springY, [-500, 500], [-(20 + i * 5), 20 + i * 5]);
+
+                return (
+                  <motion.div
+                    key={card.name}
+                    style={{ x: cardX, y: cardY }}
+                    className={`absolute ${card.position} z-20`}
+                  >
+                    <motion.div
+                      animate={{ 
+                        y: [0, -15, 0],
+                        x: [0, i % 2 === 0 ? 10 : -10, 0]
+                      }}
+                      transition={{ 
+                        repeat: Infinity, 
+                        duration: 5 + i, 
+                        ease: "easeInOut",
+                        delay: card.delay 
+                      }}
+                      whileHover={{ scale: 1.1, zIndex: 30 }}
+                      className="glass px-6 py-3 rounded-2xl text-sm font-bold shadow-2xl border border-primary/20 whitespace-nowrap cursor-default"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                        {card.name}
+                      </span>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
