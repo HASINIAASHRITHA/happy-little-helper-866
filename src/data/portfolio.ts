@@ -56,7 +56,7 @@ export const projects: Project[] = [
     category: 'Advanced Projects',
     description: 'An immersive 3D Solar System experience built with modern web technologies.',
     technologies: ['Three.js', 'React', '3D Modeling', 'Animations'],
-    image: 'https://atomic-dreamscape.vercel.app/screenshot.png',
+    image: 'https://atomic-dreamscape.vercel.app/og-image.png',
     liveUrl: 'https://atomic-dreamscape.vercel.app',
     featured: true,
   },
