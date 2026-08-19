@@ -58,8 +58,8 @@ export const Journey = () => {
             {milestones.map((m, index) => (
               <motion.div
                 key={m.year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100, scale: 0.8 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
                 className={`flex flex-col md:flex-row items-center gap-12 md:gap-0 ${

@@ -7,8 +7,8 @@ export const About = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row gap-20 items-center">
             <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -50, rotate: -2 }}
+              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="flex-1"
