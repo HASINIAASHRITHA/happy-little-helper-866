@@ -1,6 +1,6 @@
 import { motion, useSpring, useMotionValue } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { projects } from '@/data/portfolio';
+import { useProjects } from '@/lib/projects';
 
 const AnimatedNumber = ({ value }: { value: string }) => {
   const numericValue = parseInt(value);
