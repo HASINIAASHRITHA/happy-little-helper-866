@@ -59,7 +59,18 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           <div className="w-2 h-2 rounded-full bg-green-500/50" />
         </div>
         <div className="absolute inset-0 pt-6 flex items-center justify-center bg-white/5 group-hover:scale-105 transition-transform duration-700">
-           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col p-4 space-y-2 opacity-60">
+           {project.image ? (
+             <img 
+               src={project.image} 
+               alt={project.title}
+               className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+               onError={(e) => {
+                 (e.target as HTMLImageElement).style.display = 'none';
+                 (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+               }}
+             />
+           ) : null}
+           <div className={`${project.image ? 'hidden' : ''} w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex flex-col p-4 space-y-2 opacity-60`}>
              <div className="h-4 w-2/3 bg-white/10 rounded" />
              <div className="grid grid-cols-3 gap-2">
                <div className="h-20 bg-white/5 rounded" />
@@ -68,9 +79,11 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
              </div>
              <div className="h-4 w-full bg-white/5 rounded" />
            </div>
-           <div className="absolute inset-0 flex items-center justify-center">
-             <span className="font-bold text-white/20 text-xs tracking-widest uppercase">Dashboard Preview</span>
-           </div>
+           {!project.image && (
+             <div className="absolute inset-0 flex items-center justify-center">
+               <span className="font-bold text-white/20 text-xs tracking-widest uppercase">Dashboard Preview</span>
+             </div>
+           )}
         </div>
       </div>
       <div style={{ transform: 'translateZ(30px)' }} className="flex flex-col flex-grow">

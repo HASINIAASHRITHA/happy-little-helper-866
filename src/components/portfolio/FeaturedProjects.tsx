@@ -46,7 +46,18 @@ export const FeaturedProjects = () => {
                         <div className="ml-4 h-4 w-32 bg-white/5 rounded-full" />
                       </div>
                       <div className="absolute inset-0 pt-8 flex items-center justify-center bg-white/5 group-hover:scale-110 transition-transform duration-1000">
-                        <div className="w-full h-full bg-gradient-to-br from-primary/20 via-background to-accent/20 flex flex-col p-8 space-y-6 opacity-60">
+                        {project.image ? (
+                          <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                              (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
+                            }}
+                          />
+                        ) : null}
+                        <div className={`${project.image ? 'hidden' : ''} w-full h-full bg-gradient-to-br from-primary/20 via-background to-accent/20 flex flex-col p-8 space-y-6 opacity-60`}>
                           <div className="h-8 w-1/3 bg-white/10 rounded-lg" />
                           <div className="grid grid-cols-4 gap-4">
                             <div className="h-40 bg-white/5 rounded-xl" />
@@ -56,18 +67,20 @@ export const FeaturedProjects = () => {
                           </div>
                           <div className="h-8 w-full bg-white/5 rounded-lg" />
                         </div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          {project.id === 'ai-assistant' ? (
-                            <div className="flex flex-col items-center gap-4">
-                               <div className="w-20 h-20 rounded-full border-2 border-primary/50 flex items-center justify-center animate-pulse">
-                                  <div className="w-12 h-12 rounded-full bg-primary/20 blur-sm" />
-                               </div>
-                               <span className="text-2xl font-bold text-white/40 tracking-widest uppercase">AI Agent</span>
-                            </div>
-                          ) : (
-                            <span className="text-6xl font-black text-white/5 tracking-tighter uppercase">{project.title}</span>
-                          )}
-                        </div>
+                        {!project.image && (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            {project.id === 'ai-assistant' ? (
+                              <div className="flex flex-col items-center gap-4">
+                                 <div className="w-20 h-20 rounded-full border-2 border-primary/50 flex items-center justify-center animate-pulse">
+                                    <div className="w-12 h-12 rounded-full bg-primary/20 blur-sm" />
+                                 </div>
+                                 <span className="text-2xl font-bold text-white/40 tracking-widest uppercase">AI Agent</span>
+                              </div>
+                            ) : (
+                              <span className="text-6xl font-black text-white/5 tracking-tighter uppercase">{project.title}</span>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
