@@ -105,6 +105,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                   src={project.image} 
                   alt={project.title} 
                   fallbackText={project.category}
+                  isSpecialAI={project.id === 'ai-assistant'}
                 />
               </div>
             </div>
