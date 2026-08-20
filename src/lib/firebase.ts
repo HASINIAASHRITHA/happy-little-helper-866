@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env['VITE_GOOGLE_API_KEY'] || "",
+  apiKey: import.meta.env["GOOGLE_API_KEY"] || "",
   authDomain: "portfolio-5abf3.firebaseapp.com",
   projectId: "portfolio-5abf3",
   storageBucket: "portfolio-5abf3.firebasestorage.app",
