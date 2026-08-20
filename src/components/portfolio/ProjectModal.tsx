@@ -50,7 +50,6 @@ export const ProjectModal = ({
                   src={project.image} 
                   alt={project.title} 
                   fallbackText={project.category}
-                  width={1200}
                 />
               </div>
               
