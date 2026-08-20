@@ -1,11 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useState, useEffect } from 'react';
 import { useProjects, useMilestones } from '@/lib/projects';
-import { Briefcase, Map, Plus, LogOut, Edit2, Trash2, Home, X } from 'lucide-react';
+import { Briefcase, Map, Plus, LogOut, Edit2, Trash2, Home, X, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { collection, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { db, auth } from '@/lib/firebase';
 import { Project, Milestone } from '@/data/portfolio';
+import { useAuth } from '@/lib/auth-context';
+import { signOut } from 'firebase/auth';
 import {
   Dialog,
   DialogContent,
@@ -18,15 +20,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute('/admin/dashboard')({
-  beforeLoad: () => {
-    if (typeof window !== 'undefined' && localStorage.getItem('admin_auth') !== 'true') {
-      window.location.href = '/admin';
-    }
-  },
   component: AdminDashboard,
 });
 
 function AdminDashboard() {
+  const { user, isAdmin, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'projects' | 'journey'>('projects');
   const { projects, loading: projectsLoading } = useProjects();
   const { milestones, loading: milestonesLoading } = useMilestones();
@@ -34,10 +33,30 @@ function AdminDashboard() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<any>(null);
 
-  const handleLogout = () => {
-    localStorage.removeItem('admin_auth');
-    window.location.href = '/';
+  useEffect(() => {
+    if (!authLoading && (!user || !isAdmin)) {
+      navigate({ to: '/admin' });
+    }
+  }, [user, isAdmin, authLoading, navigate]);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate({ to: '/admin' });
+    } catch (err) {
+      toast.error('Failed to logout');
+    }
   };
+
+  if (authLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!user || !isAdmin) return null;
 
   const handleOpenAdd = () => {
     setEditingItem(activeTab === 'projects' 
