@@ -13,7 +13,19 @@ export interface Project {
   githubUrl?: string;
   featured?: boolean;
   longDescription?: string;
+  order?: number;
 }
+
+export interface Milestone {
+  id: string;
+  year: string;
+  title: string;
+  skills: string[];
+  description: string;
+  active?: boolean;
+  order?: number;
+}
+
 
 export const projects: Project[] = [
   // 3rd Year - Featured
@@ -203,7 +215,36 @@ export const projects: Project[] = [
   },
 ];
 
+export const milestones: Milestone[] = [
+  {
+    id: 'year-1',
+    year: '01 — FIRST YEAR',
+    title: 'Learning the Web',
+    skills: ['HTML', 'CSS', 'JavaScript'],
+    description: 'Focus on fundamentals and early project foundations.',
+    order: 1
+  },
+  {
+    id: 'year-2',
+    year: '02 — SECOND YEAR',
+    title: 'Building Bigger Experiences',
+    skills: ['React', 'Interactive Apps', 'Authentication'],
+    description: 'Progressing into advanced interactive applications and modern UI.',
+    order: 2
+  },
+  {
+    id: 'year-3',
+    year: '03 — THIRD YEAR',
+    title: 'AI, IoT & Leadership',
+    skills: ['AI', 'IoT (SmartCity Lab)', 'Team Leadership'],
+    description: 'Leading technical teams and specializing in AI-driven IoT systems and smart manufacturing assistants.',
+    active: true,
+    order: 3
+  },
+];
+
 export const skills = [
+
   {
     category: 'Programming',
     items: ['Python', 'JavaScript', 'HTML', 'CSS']
