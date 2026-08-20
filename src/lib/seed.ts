@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import { doc, collection, getDocs, writeBatch } from 'firebase/firestore';
+import { doc, collection, getDocs, writeBatch, setDoc, getDoc } from 'firebase/firestore';
 import { projects, milestones } from '@/data/portfolio';
 
 export const seedProjects = async (force = false) => {
@@ -48,6 +48,24 @@ export const seedProjects = async (force = false) => {
     }
   } catch (error) {
     console.error('Error seeding data:', error);
+  }
+};
+
+export const seedAdminUser = async (uid: string) => {
+  try {
+    const userDocRef = doc(db, 'users', uid);
+    const userDoc = await getDoc(userDocRef);
+    
+    if (!userDoc.exists()) {
+      await setDoc(userDocRef, {
+        role: 'admin',
+        email: 'admin@example.com',
+        createdAt: new Date().toISOString()
+      });
+      console.log('Admin user role seeded successfully.');
+    }
+  } catch (error) {
+    console.error('Error seeding admin user:', error);
   }
 };
 

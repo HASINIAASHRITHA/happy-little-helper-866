@@ -14,7 +14,8 @@ import { Projects } from '@/components/portfolio/Projects';
 import { CurrentlyBuilding } from '@/components/portfolio/CurrentlyBuilding';
 import { AIAssistantShowcase } from '@/components/portfolio/AIAssistantShowcase';
 import { Contact } from '@/components/portfolio/Contact';
-import { seedProjects } from '@/lib/seed';
+import { seedProjects, seedAdminUser } from '@/lib/seed';
+import { useAuth } from '@/lib/auth-context';
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -31,14 +32,21 @@ export const Route = createFileRoute('/')({
 });
 
 function PortfolioIndex() {
+  const { user } = useAuth();
+  
   useEffect(() => {
     const runSeed = async () => {
       console.log("Triggering project synchronization...");
-      await seedProjects(false); // Changed to false to avoid overwriting admin changes on every load
+      await seedProjects(false); 
+      
+      // If a user is logged in, ensure they have the admin role for this demo
+      if (user) {
+        await seedAdminUser(user.uid);
+      }
     };
 
     runSeed();
-  }, []);
+  }, [user]);
 
   return (
     <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white font-sans antialiased relative">

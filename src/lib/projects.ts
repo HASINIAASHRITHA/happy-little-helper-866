@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Project, projects as localProjects } from '@/data/portfolio';
 
