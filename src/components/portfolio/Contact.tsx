@@ -87,6 +87,7 @@ export const Contact = () => {
                 >
                   <img 
                     src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203407/ai-contact-abstract.png" 
+                    onError={(e) => (e.currentTarget.style.display = 'none')}
                     alt="" 
                     className="w-full h-full object-contain"
                   />

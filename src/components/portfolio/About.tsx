@@ -100,6 +100,7 @@ export const About = () => {
                 <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none grayscale contrast-125 mix-blend-screen">
                   <img 
                     src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203401/ai-abstract-brain.png" 
+                    onError={(e) => (e.currentTarget.style.display = 'none')}
                     alt="AI Abstract"
                     className="w-full h-full object-contain"
                   />

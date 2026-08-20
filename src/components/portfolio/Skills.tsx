@@ -48,6 +48,7 @@ export const Skills = () => {
               >
                 <img 
                   src={`https://res.cloudinary.com/dopo6gjfq/image/upload/v178720340${groupIndex + 2}/skill-icon-${groupIndex}.png`}
+                  onError={(e) => (e.currentTarget.style.display = 'none')}
                   alt=""
                   className="w-full h-full object-contain"
                 />

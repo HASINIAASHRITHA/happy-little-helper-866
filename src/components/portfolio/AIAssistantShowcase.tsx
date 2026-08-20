@@ -33,7 +33,7 @@ export const AIAssistantShowcase = () => {
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div className="aspect-video rounded-2xl overflow-hidden glass border border-white/5">
                   <img 
-                    src={assistantProject.image ? `https://res.cloudinary.com/dopo6gjfq/image/upload/v1787201738/${assistantProject.image}.png` : ""} 
+                    src={assistantProject.image ? (assistantProject.image.startsWith('http') ? assistantProject.image : `https://res.cloudinary.com/dopo6gjfq/image/upload/v1787201738/${assistantProject.image}.png`) : ""} 
                     alt="AI Interface" 
                     className="w-full h-full object-cover"
                   />
@@ -75,6 +75,7 @@ export const AIAssistantShowcase = () => {
               <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse" />
               <img 
                 src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203406/ai-bot-character.png" 
+                onError={(e) => (e.currentTarget.style.display = 'none')}
                 alt="AI Bot" 
                 className="w-full h-full object-contain relative z-10"
               />
