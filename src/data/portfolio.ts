@@ -50,7 +50,7 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: '[IN PROGRESS] An AI-powered conversational application currently in development.',
     technologies: ['AI', 'NLP', 'React', 'In Development'],
-    image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787202297/ai_assistant_1787202290.png',
+    image: 'https://images.unsplash.com/photo-1675557009875-436f09789900?auto=format&fit=crop&q=80&w=800',
     liveUrl: 'https://ai-assistant-preview.vercel.app',
     githubUrl: 'https://github.com/HASINIAASHRITHA',
     featured: true,
