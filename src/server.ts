@@ -56,7 +56,7 @@ export default {
       return await normalizeCatastrophicSsrResponse(response);
     } catch (error: any) {
       console.error("FATAL SSR FETCH ERROR:", error);
-      return new Response(renderErrorPage(error?.message || "Fatal Server Error"), {
+      return new Response(renderErrorPage(describeError(error)), {
         status: 500,
         headers: { "content-type": "text/html; charset=utf-8" },
       });

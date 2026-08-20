@@ -11,7 +11,7 @@ const errorMiddleware = createMiddleware().server(async ({ next }) => {
       throw error;
     }
     console.error("MIDDLEWARE SSR ERROR:", error);
-    return new Response(renderErrorPage(error?.message || "Internal Middleware Error"), {
+    return new Response(renderErrorPage(describeError(error)), {
       status: 500,
       headers: { "content-type": "text/html; charset=utf-8" },
     });
