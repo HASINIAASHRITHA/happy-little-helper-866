@@ -30,8 +30,6 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
     
     if (!src) {
       setIsLoading(false);
-      // Requirement: Clearly report missing Cloudinary images
-      console.error(`PROJECT NAME — missing Cloudinary image: ${alt}`);
     }
   }, [src, alt]);
 
@@ -40,8 +38,6 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
   };
 
   const handleError = () => {
-    // If first source fails, we can try to find an alternative or just log it
-    // Some Vercel deployments might not have /og.png, so we stay in loading state or show specific error
     console.warn(`PROJECT IMAGE — could not load screenshot for: ${alt}`, { src, optimizedSrc });
     setHasError(true);
     setIsLoading(false);
@@ -65,7 +61,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
         )}
       </AnimatePresence>
 
-      {/* Real Screenshot from Cloudinary */}
+      {/* Real Screenshot */}
       {!hasError && optimizedSrc ? (
         <img
           src={optimizedSrc}
@@ -76,7 +72,7 @@ export const ProjectImage: React.FC<ProjectImageProps> = ({
           loading="lazy"
         />
       ) : (
-        /* Error/Missing Fallback - No generic mockups if Cloudinary fails */
+        /* Error/Missing Fallback */
         <div className="w-full h-full bg-secondary/30 flex flex-col items-center justify-center p-6 text-center space-y-3 z-10">
           <div className="w-12 h-12 rounded-xl border border-white/5 flex items-center justify-center text-muted-foreground/30">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
