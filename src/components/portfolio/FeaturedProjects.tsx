@@ -105,7 +105,6 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                   src={project.image} 
                   alt={project.title} 
                   fallbackText={project.category}
-                  width={1200}
                 />
               </div>
             </div>
