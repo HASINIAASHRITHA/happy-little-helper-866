@@ -1,46 +1,58 @@
 import { db } from './firebase';
 import { doc, collection, getDocs, writeBatch } from 'firebase/firestore';
-import { projects } from '@/data/portfolio';
+import { projects, milestones } from '@/data/portfolio';
 
 export const seedProjects = async (force = false) => {
   try {
     const projectsRef = collection(db, 'projects');
-    const querySnapshot = await getDocs(projectsRef);
+    const milestonesRef = collection(db, 'milestones');
+    const projectsSnapshot = await getDocs(projectsRef);
+    const milestonesSnapshot = await getDocs(milestonesRef);
     
     // Check if we should seed (if empty or force is true)
-    if (!force && !querySnapshot.empty) {
-      console.log('Projects already exist in Firestore, skipping seed. Use force=true to override.');
-      return;
+    if (!force && !projectsSnapshot.empty) {
+      console.log('Projects already exist in Firestore, skipping seed.');
+    } else {
+      console.log('Syncing projects with Firestore...');
+      const batch = writeBatch(db);
+      if (force && !projectsSnapshot.empty) {
+        projectsSnapshot.forEach((doc) => batch.delete(doc.ref));
+      }
+      projects.forEach((project) => {
+        const docRef = doc(projectsRef, project.id);
+        batch.set(docRef, {
+          ...project,
+          order: getProjectOrderValue(project.year, project.title),
+          updatedAt: new Date().toISOString()
+        });
+      });
+      await batch.commit();
     }
 
-    console.log('Syncing verified project data with Firestore (force sync)...');
-    const batch = writeBatch(db);
-    
-    // First, clear existing to ensure clean slate on force
-    if (force && !querySnapshot.empty) {
-      querySnapshot.forEach((doc) => {
-        batch.delete(doc.ref);
+    if (!force && !milestonesSnapshot.empty) {
+       console.log('Milestones already exist, skipping seed.');
+    } else {
+      console.log('Syncing milestones with Firestore...');
+      const batch = writeBatch(db);
+      if (force && !milestonesSnapshot.empty) {
+        milestonesSnapshot.forEach((doc) => batch.delete(doc.ref));
+      }
+      milestones.forEach((m) => {
+        const docRef = doc(milestonesRef, m.id);
+        batch.set(docRef, {
+          ...m,
+          updatedAt: new Date().toISOString()
+        });
       });
+      await batch.commit();
     }
-
-    projects.forEach((project) => {
-      // Use project.id as the document ID for stability
-      const docRef = doc(projectsRef, project.id);
-      batch.set(docRef, {
-        ...project,
-        order: getOrderValue(project.year, project.title),
-        updatedAt: new Date().toISOString()
-      });
-    });
-
-    await batch.commit();
-    console.log(`Successfully synced ${projects.length} projects to Firestore.`);
   } catch (error) {
-    console.error('Error seeding projects:', error);
+    console.error('Error seeding data:', error);
   }
 };
 
-const getOrderValue = (year: string, title: string) => {
+const getProjectOrderValue = (year: string, title: string) => {
   const yearWeight = year === '3rd Year' ? 3000 : year === '2nd Year' ? 2000 : 1000;
   return yearWeight + (title.charCodeAt(0) || 0);
 };
+
