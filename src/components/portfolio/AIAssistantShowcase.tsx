@@ -70,14 +70,13 @@ export const AIAssistantShowcase = () => {
               initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              className="hidden lg:block w-48 h-48 flex-shrink-0 relative"
+              className="hidden lg:block w-48 h-48 flex-shrink-0 relative group/bot"
             >
-              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse" />
+              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse group-hover/bot:bg-primary/40 transition-colors" />
               <img 
-                src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203406/ai-bot-character.png" 
-                onError={(e) => (e.currentTarget.style.display = 'none')}
-                alt="AI Bot" 
-                className="w-full h-full object-contain relative z-10"
+                src="https://images.unsplash.com/photo-1675557009875-436f09789900?auto=format&fit=crop&q=80&w=400" 
+                alt="AI Robot Assistant" 
+                className="w-full h-full object-contain relative z-10 rounded-2xl grayscale group-hover/bot:grayscale-0 transition-all duration-500"
               />
             </motion.div>
           </div>

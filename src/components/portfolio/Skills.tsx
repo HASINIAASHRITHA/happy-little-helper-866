@@ -24,10 +24,19 @@ const SkillCard = ({ skill, index }: { skill: string, index: number }) => {
 export const Skills = () => {
   return (
     <section id="skills" className="py-24 relative overflow-hidden scroll-mt-20">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-20">
           <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">Tech Stack</h2>
           <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Tools I use to build.</h3>
+        </div>
+
+        {/* Background visual storytelling for Skills */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl aspect-video opacity-[0.03] pointer-events-none -z-10 mix-blend-screen">
+          <img 
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" 
+            alt="Code Background"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -43,14 +52,18 @@ export const Skills = () => {
               {/* AI Image behind skill group */}
               <motion.div
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.05 }}
-                className="absolute -top-10 -left-10 w-32 h-32 pointer-events-none group-hover/group:opacity-10 transition-opacity"
+                whileInView={{ opacity: 0.08 }}
+                className="absolute -top-10 -left-10 w-32 h-32 pointer-events-none group-hover/group:opacity-20 transition-opacity mix-blend-screen"
               >
                 <img 
-                  src={`https://res.cloudinary.com/dopo6gjfq/image/upload/v178720340${groupIndex + 2}/skill-icon-${groupIndex}.png`}
-                  onError={(e) => (e.currentTarget.style.display = 'none')}
+                  src={[
+                    "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=200", // Programming
+                    "https://images.unsplash.com/photo-1551288049-bbda4865cda1?auto=format&fit=crop&q=80&w=200", // AI/Data
+                    "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=200", // Web
+                    "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=200"  // Tools
+                  ][groupIndex]}
                   alt=""
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain rounded-full grayscale"
                 />
               </motion.div>
               <h4 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] mb-8 flex items-center gap-4">
