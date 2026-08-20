@@ -1,6 +1,6 @@
 import "./lib/error-capture";
 
-import { consumeLastCapturedError } from "./lib/error-capture";
+import { consumeLastCapturedError, describeError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 
 type ServerEntry = {
@@ -28,8 +28,12 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   const body = await response.clone().text();
   if (!isH3SwallowedErrorBody(body)) return response;
 
-  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
-  return new Response(renderErrorPage(), {
+  const error = consumeLastCapturedError();
+  console.error("CATASTROPHIC SSR ERROR DETECTED:", error ?? body);
+  
+  const detail = error ? describeError(error) : body;
+  
+  return new Response(renderErrorPage(detail), {
     status: 500,
     headers: { "content-type": "text/html; charset=utf-8" },
   });
@@ -50,9 +54,9 @@ export default {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
-    } catch (error) {
-      console.error(error);
-      return new Response(renderErrorPage(), {
+    } catch (error: any) {
+      console.error("FATAL SSR FETCH ERROR:", error);
+      return new Response(renderErrorPage(describeError(error)), {
         status: 500,
         headers: { "content-type": "text/html; charset=utf-8" },
       });

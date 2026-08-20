@@ -1,16 +1,17 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
+import { describeError } from "./lib/error-capture";
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
     return await next();
-  } catch (error) {
+  } catch (error: any) {
     if (error != null && typeof error === "object" && "statusCode" in error) {
       throw error;
     }
-    console.error(error);
-    return new Response(renderErrorPage(), {
+    console.error("MIDDLEWARE SSR ERROR:", error);
+    return new Response(renderErrorPage(describeError(error)), {
       status: 500,
       headers: { "content-type": "text/html; charset=utf-8" },
     });
