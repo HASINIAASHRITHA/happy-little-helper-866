@@ -10,7 +10,7 @@ const SkillCard = ({ skill, index }: { skill: string, index: number }) => {
       transition={{ delay: index * 0.05, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -5, scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
-      className="glass px-6 py-4 rounded-2xl border border-white/5 hover:border-primary/50 hover:bg-primary/[0.05] shadow-2xl transition-all group cursor-pointer relative overflow-hidden"
+      className="glass px-6 py-5 rounded-3xl border border-white/5 hover:border-primary/50 hover:bg-primary/[0.08] shadow-2xl transition-all group cursor-pointer relative overflow-hidden"
     >
       <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
       <div className="flex items-center gap-3">
@@ -30,7 +30,7 @@ export const Skills = () => {
           <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Tools I use to build.</h3>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skillGroup, groupIndex) => (
             <motion.div
               key={skillGroup.category}
