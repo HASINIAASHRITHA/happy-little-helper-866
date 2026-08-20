@@ -69,6 +69,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
             src={project.image} 
             alt={project.title} 
             fallbackText={project.category}
+            isSpecialAI={project.id === 'ai-assistant'}
           />
         </div>
       </div>
