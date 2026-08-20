@@ -28,10 +28,12 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   const body = await response.clone().text();
   if (!isH3SwallowedErrorBody(body)) return response;
 
-  const error = consumeLastCapturedError() as any;
+  const error = consumeLastCapturedError();
   console.error("CATASTROPHIC SSR ERROR DETECTED:", error ?? body);
   
-  return new Response(renderErrorPage(error?.message || "Unknown SSR Error"), {
+  const detail = error ? describeError(error) : body;
+  
+  return new Response(renderErrorPage(detail), {
     status: 500,
     headers: { "content-type": "text/html; charset=utf-8" },
   });
