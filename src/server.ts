@@ -52,9 +52,9 @@ export default {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
-    } catch (error) {
-      console.error(error);
-      return new Response(renderErrorPage(), {
+    } catch (error: any) {
+      console.error("FATAL SSR FETCH ERROR:", error);
+      return new Response(renderErrorPage(error?.message || "Fatal Server Error"), {
         status: 500,
         headers: { "content-type": "text/html; charset=utf-8" },
       });
