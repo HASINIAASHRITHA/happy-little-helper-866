@@ -1,7 +1,15 @@
 import { db } from './firebase';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { Project, projects as localProjects } from '@/data/portfolio';
+import { Project, projects as localProjects, milestones as staticMilestones } from '@/data/portfolio';
+
+const requireData = () => {
+  try {
+    return require('@/data/portfolio');
+  } catch (e) {
+    return { projects: localProjects, milestones: staticMilestones };
+  }
+};
 
 export const PROJECTS_COLLECTION = 'projects';
 export const MILESTONES_COLLECTION = 'milestones';
@@ -9,7 +17,7 @@ export const MILESTONES_COLLECTION = 'milestones';
 export const useMilestones = () => {
   const [milestones, setMilestones] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const localMilestones = require('@/data/portfolio').milestones;
+  const localMilestones = requireData().milestones;
 
 
   useEffect(() => {
