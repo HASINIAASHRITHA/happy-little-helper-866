@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         // Check for admin role in Firestore
         try {
           const userDoc = await getDoc(doc(db, 'users', user.uid));
-          setIsAdmin(userDoc.exists() && userDoc.data()?.role === 'admin');
+          setIsAdmin(userDoc.exists() && userDoc.data()?.['role'] === 'admin');
         } catch (error) {
           console.error("Error checking admin role:", error);
           setIsAdmin(false);
