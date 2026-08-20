@@ -9,7 +9,8 @@ export const MILESTONES_COLLECTION = 'milestones';
 export const useMilestones = () => {
   const [milestones, setMilestones] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const { milestones: localMilestones } = require('@/data/portfolio');
+  const localMilestones = require('@/data/portfolio').milestones;
+
 
   useEffect(() => {
     const milestonesRef = collection(db, MILESTONES_COLLECTION);
