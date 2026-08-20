@@ -213,11 +213,14 @@ export const Hero = () => {
                      }}
                      transition={{ repeat: Infinity, duration: 8 }}
                      className="absolute inset-0 z-15 pointer-events-none mix-blend-overlay opacity-30"
-                     style={{
-                       backgroundImage: 'url("https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203400/ai-circuit-overlay.png")',
-                       backgroundSize: 'cover'
-                     }}
-                   />
+                   >
+                     <img 
+                       src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203400/ai-circuit-overlay.png"
+                       onError={(e) => (e.currentTarget.style.display = 'none')}
+                       alt=""
+                       className="w-full h-full object-cover"
+                     />
+                   </motion.div>
                 </div>
               </motion.div>
 
