@@ -60,10 +60,10 @@ export const Journey = () => {
           />
 
           <div className="space-y-24 md:space-y-32">
-            {milestones.map((m, index) => {
+            {!loading && milestones.map((m: any, index: number) => {
               return (
                 <MilestoneItem 
-                  key={m.year} 
+                  key={m.id} 
                   milestone={m} 
                   index={index} 
                   total={milestones.length}
@@ -71,6 +71,7 @@ export const Journey = () => {
               );
             })}
           </div>
+
         </div>
       </div>
     </section>
