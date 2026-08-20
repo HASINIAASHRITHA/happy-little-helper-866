@@ -1,8 +1,7 @@
-import { db, auth } from './firebase';
-import { collection, getDocs, query, orderBy, onSnapshot, doc, getDoc } from 'firebase/firestore';
+import { db } from './firebase';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Project, projects as localProjects } from '@/data/portfolio';
-import { onAuthStateChanged, User } from 'firebase/auth';
 
 export const PROJECTS_COLLECTION = 'projects';
 export const MILESTONES_COLLECTION = 'milestones';
