@@ -26,7 +26,7 @@ export const projects: Project[] = [
     technologies: ['AI', 'Warehouse Management', 'Decision Support', 'Data Analysis'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200120/warehouse-copilot_1787200119.png',
     liveUrl: 'https://warehousecopilot.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/warehouse-copilot',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
     featured: true,
     longDescription: "Warehouse Copilot is a sophisticated AI-driven platform that optimizes logistics operations. It provides real-time insights into inventory flow and uses predictive modeling to prevent bottlenecks, significantly improving overall warehouse efficiency."
   },
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     technologies: ['AI', 'Machine Learning', 'Smart Manufacturing', 'Decision Support'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200120/factory-copilot_1787200120.png',
     liveUrl: 'https://factory-copilot-1.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/factory-copilot',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
     featured: true,
     longDescription: "Factory Copilot serves as an intelligent manufacturing assistant, bridging the gap between raw industrial data and actionable decisions. It monitors production health and provides predictive maintenance alerts to minimize downtime."
   },
@@ -50,9 +50,9 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: '[IN PROGRESS] An AI-powered conversational application currently in development.',
     technologies: ['AI', 'NLP', 'React', 'In Development'],
-    image: 'ai_assistant_1787201046',
+    image: 'xpkc2zdrkldkvzi5d1es',
     liveUrl: 'https://ai-assistant-preview.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/ai-assistant',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
     featured: true,
     longDescription: "Status: Currently Working On. This AI-powered interface is currently under active development. Once complete, it will provide an intelligent environment for natural language interactions, trained to handle complex queries with context-aware responses."
   },
@@ -65,7 +65,7 @@ export const projects: Project[] = [
     technologies: ['Three.js', 'React', '3D Modeling', 'Animations'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200122/atomic-dreamscape_1787200122.png',
     liveUrl: 'https://atomic-dreamscape.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/atomic-dreamscape',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
     featured: true,
     longDescription: "Atomic Dreamscape pushes the boundaries of web-based 3D experiences. Using Three.js, it creates a reactive, atomic-themed simulation of the solar system, allowing users to explore celestial bodies with high-fidelity performance."
   },
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Framer Motion', 'UI/UX Design'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200498/elegance_fixed_1787200497.png',
     liveUrl: 'https://elegance-flame.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/elegance',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'hotel-portal',
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Authentication', 'State Management'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200501/hotel-portal_fixed_1787200500.png',
     liveUrl: 'https://hotel-eta-five.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/hotel',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'funinchat',
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Authentication', 'Real-time Data'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200138/funinchat_1787200137.png',
     liveUrl: 'https://funinchat.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/funinchat',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'luxe-spa',
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     technologies: ['React', 'CSS Modules', 'Web Design'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200504/luxe-spa_fixed_1787200503.png',
     liveUrl: 'https://spa-ten-ivory.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/spa',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'swastik-health',
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200146/swastik-health_1787200146.png',
     liveUrl: 'https://swastik-health.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/swasthik',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'entertainment-pulse',
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200139/entertainment-pulse_1787200139.png',
     liveUrl: 'https://entertainment-code.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/anime-universe',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'beautymaker',
@@ -144,7 +144,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200143/beautymaker_1787200142.png',
     liveUrl: 'https://beautymaker.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/beautymaker',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'elite-homes',
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200148/elite-homes_1787200147.png',
     liveUrl: 'https://elite-homes-virid.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/elite-homes',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'befit',
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200142/befit_1787200141.png',
     liveUrl: 'https://befit-lilac.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/befit',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'hunger-buster',
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200145/hunger-buster_1787200144.png',
     liveUrl: 'https://hungerbuster.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/hungerbuster',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'creative-canvass',
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200140/creative-canvass_1787200140.png',
     liveUrl: 'https://creative-canvass.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/creative-canvass',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
   {
     id: 'stellartech',
@@ -199,7 +199,7 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dopo6gjfq/image/upload/v1787200144/stellartech_1787200143.png',
     liveUrl: 'https://stellartech-five.vercel.app',
-    githubUrl: 'https://github.com/HASINIAASHRITHA/stellartech',
+    githubUrl: 'https://github.com/HASINIAASHRITHA',
   },
 ];
 
