@@ -1,30 +1,11 @@
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-
-const milestones = [
-  {
-    year: '01 — FIRST YEAR',
-    title: 'Learning the Web',
-    skills: ['HTML', 'CSS', 'JavaScript'],
-    description: 'Focus on fundamentals and early project foundations.',
-  },
-  {
-    year: '02 — SECOND YEAR',
-    title: 'Building Bigger Experiences',
-    skills: ['React', 'Interactive Apps', 'Authentication'],
-    description: 'Progressing into advanced interactive applications and modern UI.',
-  },
-  {
-    year: '03 — THIRD YEAR',
-    title: 'AI, IoT & Leadership',
-    skills: ['AI', 'IoT (SmartCity Lab)', 'Team Leadership'],
-    description: 'Leading technical teams and specializing in AI-driven IoT systems and smart manufacturing assistants.',
-    active: true,
-  },
-];
+import { useMilestones } from '@/lib/projects';
 
 export const Journey = () => {
+  const { milestones, loading } = useMilestones();
   const containerRef = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start center", "end center"]
@@ -79,10 +60,10 @@ export const Journey = () => {
           />
 
           <div className="space-y-24 md:space-y-32">
-            {milestones.map((m, index) => {
+            {!loading && milestones.map((m: any, index: number) => {
               return (
                 <MilestoneItem 
-                  key={m.year} 
+                  key={m.id} 
                   milestone={m} 
                   index={index} 
                   total={milestones.length}
@@ -90,6 +71,7 @@ export const Journey = () => {
               );
             })}
           </div>
+
         </div>
       </div>
     </section>

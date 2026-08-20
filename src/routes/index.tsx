@@ -34,8 +34,9 @@ function PortfolioIndex() {
   useEffect(() => {
     const runSeed = async () => {
       console.log("Triggering project synchronization...");
-      await seedProjects(true);
+      await seedProjects(false); // Changed to false to avoid overwriting admin changes on every load
     };
+
     runSeed();
   }, []);
 

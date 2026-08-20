@@ -4,6 +4,38 @@ import { useEffect, useState } from 'react';
 import { Project, projects as localProjects } from '@/data/portfolio';
 
 export const PROJECTS_COLLECTION = 'projects';
+export const MILESTONES_COLLECTION = 'milestones';
+
+export const useMilestones = () => {
+  const [milestones, setMilestones] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const localMilestones = require('@/data/portfolio').milestones;
+
+
+  useEffect(() => {
+    const milestonesRef = collection(db, MILESTONES_COLLECTION);
+    const q = query(milestonesRef, orderBy('order', 'asc'));
+    
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      if (snapshot.empty) {
+        setMilestones(localMilestones);
+      } else {
+        const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setMilestones(data);
+      }
+      setLoading(false);
+    }, (err) => {
+      console.error("Milestones Firestore error:", err);
+      setMilestones(localMilestones);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return { milestones, loading };
+};
+
 
 export const useProjects = () => {
   const [projects, setProjects] = useState<Project[]>([]);
