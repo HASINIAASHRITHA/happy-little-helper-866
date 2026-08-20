@@ -79,11 +79,20 @@ export const About = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-1 w-full"
+              className="flex-1 w-full relative"
             >
+              {/* Contextual image for About section - AI/Neural network concept */}
+              <div className="absolute -top-20 -right-20 w-64 h-64 opacity-20 pointer-events-none blur-sm mix-blend-screen group">
+                <img 
+                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=600" 
+                  alt="AI Concept"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+
               <motion.div 
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="glass rounded-3xl p-8 md:p-10 border border-white/5 relative overflow-hidden group transition-all duration-500 hover:shadow-[0_0_50px_rgba(var(--primary),0.1)]"
+                className="glass rounded-3xl p-8 md:p-10 border border-white/5 relative overflow-hidden group transition-all duration-500 hover:shadow-[0_0_50px_rgba(var(--primary),0.1)] z-10"
               >
                 <motion.div 
                   animate={{ 
@@ -96,12 +105,10 @@ export const About = () => {
                   className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl -z-10 group-hover:bg-primary/20 transition-colors" 
                 />
                 
-                {/* AI generated decorative image for About section */}
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none grayscale contrast-125 mix-blend-screen">
+                <div className="absolute -bottom-10 -right-10 w-48 h-48 opacity-10 group-hover:opacity-30 transition-all duration-700 pointer-events-none grayscale contrast-125 mix-blend-screen group-hover:scale-110">
                   <img 
-                    src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203401/ai-abstract-brain.png" 
-                    onError={(e) => (e.currentTarget.style.display = 'none')}
-                    alt="AI Abstract"
+                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400" 
+                    alt="AI Network"
                     className="w-full h-full object-contain"
                   />
                 </div>
