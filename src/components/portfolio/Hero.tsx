@@ -204,6 +204,20 @@ export const Hero = () => {
                     className="w-full h-full object-cover grayscale-0 transition-all duration-700 relative z-10 cursor-pointer"
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent z-20" />
+                   
+                   {/* Decorative AI visual element overlay */}
+                   <motion.div
+                     animate={{ 
+                       opacity: [0.2, 0.4, 0.2],
+                       scale: [1, 1.1, 1]
+                     }}
+                     transition={{ repeat: Infinity, duration: 8 }}
+                     className="absolute inset-0 z-15 pointer-events-none mix-blend-overlay opacity-30"
+                     style={{
+                       backgroundImage: 'url("https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203400/ai-circuit-overlay.png")',
+                       backgroundSize: 'cover'
+                     }}
+                   />
                 </div>
               </motion.div>
 

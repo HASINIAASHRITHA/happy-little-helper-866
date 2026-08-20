@@ -51,9 +51,12 @@ export const AIAssistantShowcase = () => {
                   href={assistantProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:scale-105 transition-all"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all group/btn"
                 >
-                  Interact with the Bot <ArrowRight size={20} />
+                  Interact with Bot <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+                  
+                  {/* Glowing pulse effect */}
+                  <span className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none" />
                 </a>
               ) : (
                 <span className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 text-muted-foreground rounded-full font-bold border border-white/10 cursor-not-allowed">
@@ -61,6 +64,21 @@ export const AIAssistantShowcase = () => {
                 </span>
               )}
             </div>
+            
+            {/* Additional AI bot related image */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              className="hidden lg:block w-48 h-48 flex-shrink-0 relative"
+            >
+              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse" />
+              <img 
+                src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203406/ai-bot-character.png" 
+                alt="AI Bot" 
+                className="w-full h-full object-contain relative z-10"
+              />
+            </motion.div>
           </div>
         </motion.div>
       </div>

@@ -38,7 +38,20 @@ export const Skills = () => {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true }}
               transition={{ delay: groupIndex * 0.1, duration: 0.8 }}
+              className="relative group/group"
             >
+              {/* AI Image behind skill group */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.05 }}
+                className="absolute -top-10 -left-10 w-32 h-32 pointer-events-none group-hover/group:opacity-10 transition-opacity"
+              >
+                <img 
+                  src={`https://res.cloudinary.com/dopo6gjfq/image/upload/v178720340${groupIndex + 2}/skill-icon-${groupIndex}.png`}
+                  alt=""
+                  className="w-full h-full object-contain"
+                />
+              </motion.div>
               <h4 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] mb-8 flex items-center gap-4">
                 {skillGroup.category}
                 <span className="h-px flex-grow bg-white/5" />

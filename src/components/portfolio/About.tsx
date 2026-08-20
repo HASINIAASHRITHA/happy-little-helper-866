@@ -96,6 +96,15 @@ export const About = () => {
                   className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl -z-10 group-hover:bg-primary/20 transition-colors" 
                 />
                 
+                {/* AI generated decorative image for About section */}
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none grayscale contrast-125 mix-blend-screen">
+                  <img 
+                    src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203401/ai-abstract-brain.png" 
+                    alt="AI Abstract"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                
                 <h4 className="text-xl font-bold mb-8 flex items-center gap-3">
                   <span className="w-8 h-px bg-primary" />
                   Development Philosophy
