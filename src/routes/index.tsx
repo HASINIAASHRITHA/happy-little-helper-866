@@ -54,7 +54,9 @@ function PortfolioIndex() {
         '''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
                                                 
                                                     
-                                                    Add a React error boundary to the admin pages to capture and display meaningful runtime errors instead of a blank 500.
+                                                    Implement client-side error logging for the admin error boundary so captured errors are sent to a logging service with request context.
+
+Improve the error boundary retry button to re-run the failed admin route data load and clear the previous error state.
       </div>
       <motion.div className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-[60]" style={{ scaleX: useSpring(useScroll().scrollYProgress, { stiffness: 100, damping: 30 }) }} />
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(var(--primary),0.05),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(var(--accent),0.05),transparent_50%)] pointer-events-none" />
