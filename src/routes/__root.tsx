@@ -49,8 +49,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
 
-          This page didn't load
-          Something went wrong on our end. You can try refreshing or head back home.
+          still in preview i could not see anything 
+only below error
+
+This page didn't load
+Something went wrong on our end. You can try refreshing or head back home.
 
           FirebaseError: Firebase: Error (auth/invalid-api-key). at createErrorInternal (_libs/firebase__auth.mjs:108:37) at _assert (_libs/firebase__auth.mjs:111:24) at Component.instanceFactory (_libs/firebase__auth.mjs:6775:3) at Provider.getOrInitializeService (_libs/@firebase/app+[...].mjs:1392:30) at Provider.initialize (_libs/@firebase/app+[...].mjs:1352:25) at initializeAuth (_libs/firebase__auth.mjs:2400:18) at getAuth (_libs/firebase__auth.mjs:6837:15) at _ssr/auth-context-B64OVrsu.mjs:35:12 (status 500) caused by: FirebaseError: Firebase: Error (auth/invalid-api-key). at createErrorInternal (_libs/firebase__auth.mjs:108:37) at _assert (_libs/firebase__auth.mjs:111:24) at Component.instanceFactory (_libs/firebase__auth.mjs:6775:3) at Provider.getOrInitializeService (_libs/@firebase/app+[...].mjs:1392:30) at Provider.initialize (_libs/@firebase/app+[...].mjs:1352:25) at initializeAuth (_libs/firebase__auth.mjs:2400:18) at getAuth (_libs/firebase__auth.mjs:6837:15) at _ssr/auth-context-B64OVrsu.mjs:35:12`}
         </h1>
