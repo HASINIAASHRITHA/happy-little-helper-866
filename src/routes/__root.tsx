@@ -49,13 +49,41 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
 
-          still in preview i could not see anything 
-only below error
+The editor preview works correctly, but the deployed Preview URL shows:
 
-This page didn't load
-Something went wrong on our end. You can try refreshing or head back home.
+FirebaseError: Firebase: Error (auth/invalid-api-key)
 
-          FirebaseError: Firebase: Error (auth/invalid-api-key). at createErrorInternal (_libs/firebase__auth.mjs:108:37) at _assert (_libs/firebase__auth.mjs:111:24) at Component.instanceFactory (_libs/firebase__auth.mjs:6775:3) at Provider.getOrInitializeService (_libs/@firebase/app+[...].mjs:1392:30) at Provider.initialize (_libs/@firebase/app+[...].mjs:1352:25) at initializeAuth (_libs/firebase__auth.mjs:2400:18) at getAuth (_libs/firebase__auth.mjs:6837:15) at _ssr/auth-context-B64OVrsu.mjs:35:12 (status 500) caused by: FirebaseError: Firebase: Error (auth/invalid-api-key). at createErrorInternal (_libs/firebase__auth.mjs:108:37) at _assert (_libs/firebase__auth.mjs:111:24) at Component.instanceFactory (_libs/firebase__auth.mjs:6775:3) at Provider.getOrInitializeService (_libs/@firebase/app+[...].mjs:1392:30) at Provider.initialize (_libs/@firebase/app+[...].mjs:1352:25) at initializeAuth (_libs/firebase__auth.mjs:2400:18) at getAuth (_libs/firebase__auth.mjs:6837:15) at _ssr/auth-context-B64OVrsu.mjs:35:12`}
+at initializeAuth
+
+at getAuth
+
+at _ssr/auth-context
+
+Please fix this deployment issue.
+
+Do NOT change the existing UI, design, layout, animations, text, navigation, or styling.
+
+Check the Firebase configuration and environment variables used by the deployed/production build. Make sure the Firebase API key and all required Firebase configuration values are correctly loaded in the Preview/production environment, not only in the editor/development environment.
+
+Please:
+
+1. Inspect the Firebase initialization code.
+
+2. Check which VITE_/environment variables are being used.
+
+3. Verify that the deployed build receives the required Firebase configuration.
+
+4. Make sure the API key is not undefined, empty, malformed, or accidentally replaced.
+
+5. Make sure the Firebase project configuration matches the project being used by this application.
+
+6. Fix SSR/auth initialization if it is attempting to initialize Firebase Auth with an invalid or missing configuration.
+
+7. Keep the current website design exactly unchanged.
+
+8. After fixing it, verify that the Preview URL loads successfully without the auth/invalid-api-key error.
+
+The goal is ONLY to fix the Firebase deployment/runtime error.`}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
