@@ -49,7 +49,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           {`'''Do not make any visual modifications. The phrases I write are commands to understand what I want, not to be written down. Understand their content well, then execute what is required.'''
 
-The editor preview works correctly, but the deployed Preview URL shows:
+The Preview URL STILL fails with:
 
 FirebaseError: Firebase: Error (auth/invalid-api-key)
 
@@ -59,31 +59,61 @@ at getAuth
 
 at _ssr/auth-context
 
-Please fix this deployment issue.
+The editor preview works, but the deployed Preview URL does not.
 
-Do NOT change the existing UI, design, layout, animations, text, navigation, or styling.
+The previous attempted fix did NOT resolve the issue.
 
-Check the Firebase configuration and environment variables used by the deployed/production build. Make sure the Firebase API key and all required Firebase configuration values are correctly loaded in the Preview/production environment, not only in the editor/development environment.
+Please now debug the actual source code and deployment configuration instead of only changing the error message.
 
-Please:
+IMPORTANT:
 
-1. Inspect the Firebase initialization code.
+- Do not change my website UI/design/content.
 
-2. Check which VITE_/environment variables are being used.
+- Do not create a fake fallback page.
 
-3. Verify that the deployed build receives the required Firebase configuration.
+- Do not just suppress or hide the Firebase error.
 
-4. Make sure the API key is not undefined, empty, malformed, or accidentally replaced.
+- Do not tell me to refresh the page.
 
-5. Make sure the Firebase project configuration matches the project being used by this application.
+- Do not assume the API key is correct.
 
-6. Fix SSR/auth initialization if it is attempting to initialize Firebase Auth with an invalid or missing configuration.
+Please inspect the complete Firebase authentication initialization flow, especially the code corresponding to:
 
-7. Keep the current website design exactly unchanged.
+_ssr/auth-context
 
-8. After fixing it, verify that the Preview URL loads successfully without the auth/invalid-api-key error.
+initializeAuth
 
-The goal is ONLY to fix the Firebase deployment/runtime error.`}
+getAuth
+
+Find exactly where the Firebase config/API key is coming from in the deployed build.
+
+Then:
+
+1. Check every Firebase environment variable referenced by the source code.
+
+2. Check whether those variables are available during the production/Preview build.
+
+3. Check whether the variable names match the actual names used in the code.
+
+4. Check for undefined, empty, placeholder, malformed, or incorrectly substituted API-key values.
+
+5. Check whether multiple Firebase configurations exist and the deployed build is accidentally using the wrong one.
+
+6. Check the Firebase initialization code for SSR/server-side execution.
+
+7. Make Firebase initialization fail safely if configuration is unavailable instead of crashing the entire application.
+
+8. If authentication is NOT actually required by this portfolio website, remove the unnecessary Firebase Auth initialization/dependency completely rather than requiring Firebase just to load the homepage.
+
+9. If authentication IS required, correctly configure the production Firebase environment and keep authentication working.
+
+10. Rebuild/redeploy the application after making the fix.
+
+11. Verify the actual Preview URL loads the homepage successfully.
+
+The final test MUST be the deployed Preview URL, not only the Lovable editor preview.
+
+Again: preserve the existing website exactly. Fix ONLY the Firebase runtime/deployment problem.`}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
