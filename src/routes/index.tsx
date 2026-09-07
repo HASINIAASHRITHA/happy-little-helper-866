@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion, useSpring, useScroll } from 'framer-motion';
-import { useEffect } from 'react';
 import { CustomCursor } from '@/components/portfolio/CustomCursor';
 import { Navbar } from '@/components/portfolio/Navbar';
 import { Hero } from '@/components/portfolio/Hero';
@@ -14,8 +13,6 @@ import { Projects } from '@/components/portfolio/Projects';
 import { CurrentlyBuilding } from '@/components/portfolio/CurrentlyBuilding';
 import { AIAssistantShowcase } from '@/components/portfolio/AIAssistantShowcase';
 import { Contact } from '@/components/portfolio/Contact';
-import { seedProjects, seedAdminUser } from '@/lib/seed';
-import { useAuth } from '@/lib/auth-context';
 
 export const Route = createFileRoute('/')({
   head: () => ({
@@ -32,22 +29,6 @@ export const Route = createFileRoute('/')({
 });
 
 function PortfolioIndex() {
-  const { user } = useAuth();
-  
-  useEffect(() => {
-    const runSeed = async () => {
-      console.log("Triggering project synchronization...");
-      await seedProjects(false); 
-      
-      // If a user is logged in, ensure they have the admin role for this demo
-      if (user) {
-        await seedAdminUser(user.uid);
-      }
-    };
-
-    runSeed();
-  }, [user]);
-
   return (
     <main className="bg-background text-foreground dark min-h-screen selection:bg-primary/30 selection:text-white font-sans antialiased relative">
       <div className="sr-only">

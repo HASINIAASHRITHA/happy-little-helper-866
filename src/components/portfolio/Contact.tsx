@@ -80,18 +80,6 @@ export const Contact = () => {
               <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-6">LET'S CONNECT</h2>
               <h3 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-[1.1] relative">
                 Have an idea? <br/>Let's <span className="text-primary italic">build it.</span>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 0.15 }}
-                  className="absolute -top-20 -left-20 w-40 h-40 pointer-events-none"
-                >
-                  <img 
-                    src="https://res.cloudinary.com/dopo6gjfq/image/upload/v1787203407/ai-contact-abstract.png" 
-                    onError={(e) => (e.currentTarget.style.display = 'none')}
-                    alt="" 
-                    className="w-full h-full object-contain"
-                  />
-                </motion.div>
               </h3>
               <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
                 I'm always interested in learning, experimenting and building interesting technology projects.
