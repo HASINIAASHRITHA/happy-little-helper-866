@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { getAuth, type Auth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env["GOOGLE_API_KEY"] || "",
@@ -12,6 +12,35 @@ const firebaseConfig = {
   measurementId: "G-CHDXSGPPSY"
 };
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+// Firebase must never initialize during SSR — the client API key is not
+// available on the server and auth throws auth/invalid-api-key, causing a 500.
+let app: FirebaseApp | undefined;
+let dbInstance: Firestore | undefined;
+let authInstance: Auth | undefined;
+
+function ensureApp(): FirebaseApp {
+  if (!app) {
+    app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+  }
+  return app;
+}
+
+function lazy<T extends object>(factory: () => T): T {
+  return new Proxy({} as T, {
+    get(_target, prop, receiver) {
+      const instance = factory() as Record<PropertyKey, unknown>;
+      const value = Reflect.get(instance, prop, receiver);
+      return typeof value === "function" ? value.bind(instance) : value;
+    },
+  });
+}
+
+export const db: Firestore = lazy(() => {
+  if (!dbInstance) dbInstance = getFirestore(ensureApp());
+  return dbInstance;
+});
+
+export const auth: Auth = lazy(() => {
+  if (!authInstance) authInstance = getAuth(ensureApp());
+  return authInstance;
+});
