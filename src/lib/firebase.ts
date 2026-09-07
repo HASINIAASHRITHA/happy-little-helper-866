@@ -20,7 +20,8 @@ let authInstance: Auth | undefined;
 
 function ensureApp(): FirebaseApp {
   if (!app) {
-    app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+    const existing = getApps();
+    app = existing.length > 0 ? existing[0]! : initializeApp(firebaseConfig);
   }
   return app;
 }
