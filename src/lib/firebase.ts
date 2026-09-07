@@ -26,22 +26,25 @@ function ensureApp(): FirebaseApp {
   return app;
 }
 
-function lazy<T extends object>(factory: () => T): T {
-  return new Proxy({} as T, {
-    get(_target, prop, receiver) {
-      const instance = factory() as Record<PropertyKey, unknown>;
-      const value = Reflect.get(instance, prop, receiver);
-      return typeof value === "function" ? value.bind(instance) : value;
-    },
-  });
-}
-
-export const db: Firestore = lazy(() => {
+// Firestore is safe to create anywhere (no API-key validation), so export the
+// real instance — a Proxy breaks Firestore's internal instanceof checks.
+export const db: Firestore = (() => {
   if (!dbInstance) dbInstance = getFirestore(ensureApp());
   return dbInstance;
-});
+})();
 
-export const auth: Auth = lazy(() => {
+// Auth validates the API key at creation time, so only create it in the browser.
+function createAuth(): Auth {
   if (!authInstance) authInstance = getAuth(ensureApp());
   return authInstance;
-});
+}
+
+export const auth: Auth =
+  typeof window === "undefined"
+    ? (new Proxy({} as Auth, {
+        get() {
+          throw new Error("Firebase Auth is only available in the browser");
+        },
+      }) as Auth)
+    : createAuth();
+
