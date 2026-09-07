@@ -4,7 +4,7 @@ import { useProjects, useMilestones } from '@/lib/projects';
 import { Briefcase, Map, Plus, LogOut, Edit2, Trash2, Home, X, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { collection, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { db, auth } from '@/lib/firebase';
+import { db, getFirebaseAuth } from '@/lib/firebase';
 import { Project, Milestone } from '@/data/portfolio';
 import { useAuth } from '@/lib/auth-context';
 import { signOut } from 'firebase/auth';
@@ -41,6 +41,11 @@ function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
+      const auth = getFirebaseAuth();
+      if (!auth) {
+        navigate({ to: '/admin' });
+        return;
+      }
       await signOut(auth);
       navigate({ to: '/admin' });
     } catch (err) {

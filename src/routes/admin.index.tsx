@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { getFirebaseAuth } from '@/lib/firebase';
 import { useAuth } from '@/lib/auth-context';
 import { Loader2, ShieldCheck, Mail, Lock } from 'lucide-react';
 
@@ -27,6 +27,12 @@ function AdminLogin() {
     e.preventDefault();
     setIsLoggingIn(true);
     try {
+      const auth = getFirebaseAuth();
+      if (!auth) {
+        toast.error('Admin sign-in is temporarily unavailable.');
+        setIsLoggingIn(false);
+        return;
+      }
       await signInWithEmailAndPassword(auth, email, password);
       // useAuth will trigger the redirect in the useEffect
     } catch (err: any) {

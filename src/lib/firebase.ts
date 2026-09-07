@@ -2,8 +2,10 @@ import { initializeApp, getApps, type FirebaseApp } from "firebase/app";
 import { getFirestore, type Firestore } from "firebase/firestore";
 import { getAuth, type Auth } from "firebase/auth";
 
+const apiKey = import.meta.env["GOOGLE_API_KEY"] || "";
+
 const firebaseConfig = {
-  apiKey: import.meta.env["GOOGLE_API_KEY"] || "",
+  apiKey,
   authDomain: "portfolio-5abf3.firebaseapp.com",
   projectId: "portfolio-5abf3",
   storageBucket: "portfolio-5abf3.firebasestorage.app",
@@ -33,18 +35,18 @@ export const db: Firestore = (() => {
   return dbInstance;
 })();
 
-// Auth validates the API key at creation time, so only create it in the browser.
-function createAuth(): Auth {
-  if (!authInstance) authInstance = getAuth(ensureApp());
-  return authInstance;
-}
+// Auth validates its key immediately. Keep that work out of SSR and return a
+// controlled unavailable state instead of crashing the entire application.
+export function getFirebaseAuth(): Auth | null {
+  if (typeof window === "undefined" || !apiKey) return null;
+  if (authInstance) return authInstance;
 
-export const auth: Auth =
-  typeof window === "undefined"
-    ? (new Proxy({} as Auth, {
-        get() {
-          throw new Error("Firebase Auth is only available in the browser");
-        },
-      }) as Auth)
-    : createAuth();
+  try {
+    authInstance = getAuth(ensureApp());
+    return authInstance;
+  } catch (error) {
+    console.error("Firebase Authentication is unavailable.", error);
+    return null;
+  }
+}
 
