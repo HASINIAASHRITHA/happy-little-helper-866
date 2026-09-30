@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDownRight, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Mail } from 'lucide-react';
 import portrait from '@/assets/hasini-portrait-enhanced.png';
 import { socialLinks } from '@/data/portfolio';
 import { Button } from '@/components/ui/button';
@@ -40,8 +40,8 @@ export const Hero = () => (
       <div className="mt-10 flex items-center justify-between gap-6 border-t border-foreground/20 pt-6 md:mt-16">
         <p className="text-xs font-medium uppercase text-muted-foreground">Selected work <span className="mx-2 text-primary">/</span> AI · DATA · WEB</p>
         <div className="flex items-center gap-5">
-          <a className="text-foreground/80 transition-colors hover:text-primary" href={socialLinks.github} aria-label="GitHub" target="_blank" rel="noreferrer"><Github size={19} /></a>
-          <a className="text-foreground/80 transition-colors hover:text-primary" href={socialLinks.linkedin} aria-label="LinkedIn" target="_blank" rel="noreferrer"><Linkedin size={19} /></a>
+          <a className="text-xs font-semibold uppercase text-foreground/80 transition-colors hover:text-primary" href={socialLinks.github} target="_blank" rel="noreferrer">GitHub</a>
+          <a className="text-xs font-semibold uppercase text-foreground/80 transition-colors hover:text-primary" href={socialLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <a className="text-foreground/80 transition-colors hover:text-primary" href="#contact" aria-label="Contact"><Mail size={19} /></a>
         </div>
       </div>
