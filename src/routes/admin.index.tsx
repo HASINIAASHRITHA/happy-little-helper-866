@@ -7,6 +7,14 @@ import { useAuth } from '@/lib/auth-context';
 import { Loader2, ShieldCheck, Mail, Lock } from 'lucide-react';
 
 export const Route = createFileRoute('/admin/')({
+  head: () => ({ meta: [
+    { title: 'Admin sign in | Hasini Addanki' },
+    { name: 'description', content: 'Private portfolio management sign in for Hasini Addanki.' },
+    { property: 'og:title', content: 'Admin sign in | Hasini Addanki' },
+    { property: 'og:description', content: 'Private portfolio management sign in for Hasini Addanki.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary' },
+  ] }),
   component: AdminLogin,
 });
 

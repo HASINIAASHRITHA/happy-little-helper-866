@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+Portfolio visual assets: keep the edited user portrait as an imported source asset and preserve the original CDN pointer; this makes the new portrait dependable without breaking previous references.

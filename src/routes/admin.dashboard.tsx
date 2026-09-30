@@ -20,6 +20,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute('/admin/dashboard')({
+  head: () => ({ meta: [
+    { title: 'Portfolio dashboard | Hasini Addanki' },
+    { name: 'description', content: 'Private dashboard for managing Hasini Addanki’s projects and journey.' },
+    { property: 'og:title', content: 'Portfolio dashboard | Hasini Addanki' },
+    { property: 'og:description', content: 'Private dashboard for managing Hasini Addanki’s projects and journey.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary' },
+  ] }),
   component: AdminDashboard,
 });
 
