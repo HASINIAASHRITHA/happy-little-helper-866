@@ -1,26 +1,28 @@
 import { motion } from 'framer-motion';
+import { BrainCircuit, ChartNoAxesCombined, Code2, Workflow } from 'lucide-react';
 
-const IntroCard = ({ title, desc, icon }: { title: string, desc: string, icon: string }) => (
-  <motion.div
-    whileHover={{ y: -10 }}
-    className="glass p-8 rounded-3xl border border-white/5 hover:border-primary/50 transition-all group"
-  >
-    <div className="text-4xl mb-6">{icon}</div>
-    <h3 className="text-xl font-bold mb-4">{title}</h3>
-    <p className="text-muted-foreground leading-relaxed">{desc}</p>
-  </motion.div>
-);
+const areas = [
+  { title: 'AI & machine learning', desc: 'Building systems that turn complex inputs into useful decisions.', icon: BrainCircuit },
+  { title: 'Data science', desc: 'Finding patterns and making information easier to act on.', icon: ChartNoAxesCombined },
+  { title: 'Web development', desc: 'Designing and engineering thoughtful digital experiences.', icon: Code2 },
+  { title: 'Connected systems', desc: 'Exploring sensors and intelligent workflows at SmartCity Lab.', icon: Workflow },
+];
 
 export const Intro = () => (
-  <section id="about" className="py-24">
-    <div className="container mx-auto px-6">
-      <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4 text-center">WHAT I BUILD</h2>
-      <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-center mb-20">From ideas to working products.</h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <IntroCard title="AI & MACHINE LEARNING" desc="Building intelligent systems and prediction-driven applications." icon="🤖" />
-        <IntroCard title="DATA SCIENCE" desc="Working with data to discover patterns, insights and useful decisions." icon="📊" />
-        <IntroCard title="WEB DEVELOPMENT" desc="Creating modern, responsive and interactive web experiences." icon="🌐" />
-        <IntroCard title="AI-POWERED PRODUCTS" desc="Combining AI with practical applications and real-world workflows." icon="🚀" />
+  <section className="border-b border-border bg-secondary/20 py-20 md:py-28">
+    <div className="mx-auto max-w-[1500px] px-6 md:px-12 lg:px-20">
+      <div className="mb-12 grid gap-5 md:grid-cols-[1fr_2fr] md:items-end md:gap-12">
+        <p className="text-xs font-semibold uppercase text-primary">01 / EXPERTISE</p>
+        <h2 className="font-display max-w-3xl text-4xl font-medium leading-tight md:text-6xl">Curiosity meets <em className="font-normal text-primary">execution.</em></h2>
+      </div>
+      <div className="grid border-t border-border sm:grid-cols-2 xl:grid-cols-4">
+        {areas.map(({ title, desc, icon: Icon }, i) => (
+          <motion.div key={title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * .08 }} className="border-b border-border py-8 pr-8 xl:border-b-0 xl:border-r xl:pl-7 first:pl-0 last:border-r-0">
+            <Icon className="mb-8 text-primary" size={27} strokeWidth={1.5} aria-hidden="true" />
+            <h3 className="mb-3 text-lg font-semibold">{title}</h3>
+            <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">{desc}</p>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>

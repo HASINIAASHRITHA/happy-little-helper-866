@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -53,22 +54,18 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 w-[90%] md:w-auto max-w-4xl px-8 rounded-full ${
-        isScrolled ? 'glass py-3 shadow-2xl border border-white/10 backdrop-blur-xl translate-y-2 translate-x-[-50%]' : 'py-6 bg-transparent border-transparent'
-      }`}
-    >
-      <div className="flex justify-between items-center gap-12">
+    <nav className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${isScrolled ? 'border-border bg-background/95 backdrop-blur-xl' : 'border-foreground/15 bg-background/40 backdrop-blur-sm'}`}>
+      <div className="mx-auto flex h-[76px] max-w-[1500px] items-center justify-between gap-6 px-6 md:px-12 lg:px-20">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xl font-medium tracking-tight"
+          className="font-display shrink-0 text-xl font-semibold"
         >
-          Hasini Addanki
+          <a href="#home" onClick={(e) => scrollToSection(e, '#home')}>Hasini<span className="text-primary">.</span></a>
         </motion.div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex items-center gap-7">
           {navItems.map((item, index) => (
             <motion.a
               key={item.name}
@@ -77,7 +74,7 @@ export const Navbar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className={`text-sm font-medium transition-all duration-300 relative ${
+              className={`text-xs font-semibold uppercase transition-all duration-300 relative ${
                 activeSection === item.href.slice(1) ? 'text-primary' : 'text-muted-foreground hover:text-primary'
               }`}
             >
@@ -93,14 +90,17 @@ export const Navbar = () => {
           ))}
         </div>
 
+        <Button asChild size="sm" variant="outline" className="hidden lg:inline-flex border-primary/50 bg-background/20 text-primary hover:text-foreground">
+          <a href="#contact" onClick={(e) => scrollToSection(e, '#contact')}>Let's talk <ArrowUpRight size={15} /></a>
+        </Button>
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
-          <button
+          <Button variant="ghost" size="icon" aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-foreground"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -112,7 +112,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="md:hidden glass border border-white/10 overflow-hidden mt-4 rounded-2xl"
+            className="absolute top-[76px] inset-x-0 md:hidden bg-background border-b border-border overflow-hidden"
           >
             <div className="flex flex-col p-6 space-y-4">
               {navItems.map((item) => (
