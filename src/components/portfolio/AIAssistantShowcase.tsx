@@ -1,86 +1,40 @@
 import { motion } from 'framer-motion';
 import { useProjects } from '@/lib/projects';
-import { MessageSquare, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import assistantConcept from '@/assets/ai-assistant-concept.jpg';
 
 export const AIAssistantShowcase = () => {
   const { projects } = useProjects();
-  const assistantProject = projects.find(p => p.id === 'ai-assistant');
-  
-  if (!assistantProject) return null;
+  const assistantProject = projects.find((project) => project.id === 'ai-assistant');
+  const liveUrl = assistantProject?.liveUrl === 'https://ai-assistant-preview.vercel.app' ? undefined : assistantProject?.liveUrl;
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto glass p-12 rounded-[2.5rem] border border-primary/20 relative overflow-hidden"
-        >
-          <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 blur-3xl rounded-full" />
-          
-          <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
-            <div className="w-20 h-20 rounded-3xl bg-primary/20 flex items-center justify-center text-primary border border-primary/30 flex-shrink-0">
-              <MessageSquare size={40} />
-            </div>
-            
-            <div className="flex-grow text-center md:text-left">
-              <h3 className="text-3xl font-bold mb-4 tracking-tight">Get to know about Hasini's AI Bot.</h3>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Meet my intelligent companion — a custom-trained AI assistant designed to handle complex queries, provide insights on my work, and showcase the potential of conversational intelligence.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="aspect-video rounded-2xl overflow-hidden glass border border-white/5">
-                  <img 
-                    src={assistantProject.image ? (assistantProject.image.startsWith('http') ? assistantProject.image : `https://res.cloudinary.com/dopo6gjfq/image/upload/v1787201738/${assistantProject.image}.png`) : ""} 
-                    alt="AI Interface" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="aspect-video rounded-2xl overflow-hidden glass border border-white/5 flex items-center justify-center bg-primary/5">
-                   <div className="text-center p-4">
-                     <div className="text-xs font-bold text-primary mb-1 uppercase tracking-wider">Trained on</div>
-                     <div className="text-sm font-medium">Custom Knowledge</div>
-                   </div>
-                </div>
-              </div>
-              
-              {assistantProject.liveUrl ? (
-                <a 
-                  href={assistantProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all group/btn"
-                >
-                  Interact with Bot <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
-                  
-                  {/* Glowing pulse effect */}
-                  <span className="absolute inset-0 rounded-full bg-white/20 animate-ping opacity-0 group-hover/btn:opacity-100 transition-opacity pointer-events-none" />
-                </a>
-              ) : (
-                <span className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 text-muted-foreground rounded-full font-bold border border-white/10 cursor-not-allowed">
-                  Bot coming soon
-                </span>
-              )}
-            </div>
-            
-            {/* Additional AI bot related image */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              className="hidden lg:block w-48 h-48 flex-shrink-0 relative group/bot"
-            >
-              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-pulse group-hover/bot:bg-primary/40 transition-colors" />
-              <img 
-                src="https://images.unsplash.com/photo-1675557009875-436f09789900?auto=format&fit=crop&q=80&w=400" 
-                alt="AI Robot Assistant" 
-                className="w-full h-full object-contain relative z-10 rounded-2xl grayscale group-hover/bot:grayscale-0 transition-all duration-500"
-              />
-            </motion.div>
+    <section className="border-t border-border py-24">
+      <div className="container mx-auto grid items-center gap-12 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+          <p className="mb-5 text-xs font-semibold uppercase text-primary">AI / In progress</p>
+          <h2 className="max-w-xl font-display text-4xl leading-tight md:text-5xl">An assistant built for useful conversations.</h2>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            My AI Assistant is a conversational project in development, exploring how context-aware responses can make information easier to use.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-2 text-xs font-medium text-muted-foreground">
+            <span className="border border-border px-3 py-2">Conversational AI</span>
+            <span className="border border-border px-3 py-2">Natural language</span>
+            <span className="border border-border px-3 py-2">React</span>
           </div>
+          {liveUrl && (
+            <Button asChild className="mt-8">
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer">Interact with Bot <ArrowUpRight aria-hidden="true" /></a>
+            </Button>
+          )}
         </motion.div>
+        <motion.figure initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.1 }} className="min-w-0">
+          <div className="overflow-hidden border border-border bg-secondary">
+            <img src={assistantConcept} alt="Concept visualization of the AI Assistant conversation interface" width={1200} height={800} loading="lazy" className="aspect-[3/2] w-full object-cover" />
+          </div>
+          <figcaption className="mt-3 text-xs text-muted-foreground">Concept visual · Assistant in development</figcaption>
+        </motion.figure>
       </div>
     </section>
   );

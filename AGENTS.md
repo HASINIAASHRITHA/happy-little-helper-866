@@ -10,3 +10,5 @@
 <!-- LOVABLE:END -->
 
 Portfolio visual assets: keep the edited user portrait as an imported source asset and preserve the original CDN pointer; this makes the new portrait dependable without breaking previous references.
+
+Use imported, locally generated editorial visuals for skills and the in-progress assistant concept, while keeping project screenshots separate; this avoids fragile remote stock links and prevents concept art from being presented as a real screenshot.

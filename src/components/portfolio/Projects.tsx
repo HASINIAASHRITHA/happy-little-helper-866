@@ -95,7 +95,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         <div className="flex flex-col gap-4 mt-auto pt-6 border-t border-white/5 group-hover:border-primary/20 transition-colors">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex gap-4 relative z-10" onClick={(e) => e.stopPropagation()}>
-              {project.liveUrl && (
+              {project.liveUrl && project.liveUrl !== 'https://ai-assistant-preview.vercel.app' && (
                 <a 
                   href={project.liveUrl} 
                   target="_blank" 
