@@ -189,7 +189,7 @@ const FeaturedProjectItem = ({ project, index, onClick }: { project: Project, in
                 <ExternalLink size={20} className="group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform text-primary" />
               </button>
               
-              {project.liveUrl && (
+               {project.liveUrl && project.liveUrl !== 'https://ai-assistant-preview.vercel.app' && (
                 <a 
                   href={project.liveUrl} 
                   target="_blank" 

@@ -50,6 +50,7 @@ export const ProjectModal = ({
                   src={project.image} 
                   alt={project.title} 
                   fallbackText={project.category}
+                  isSpecialAI={project.id === 'ai-assistant'}
                 />
               </div>
               
@@ -85,7 +86,7 @@ export const ProjectModal = ({
                 </div>
                 
                 <div className="flex flex-wrap gap-4 mt-auto">
-                  {project.liveUrl && (
+                   {project.liveUrl && project.liveUrl !== 'https://ai-assistant-preview.vercel.app' && (
                     <a 
                       href={project.liveUrl} 
                       target="_blank" 

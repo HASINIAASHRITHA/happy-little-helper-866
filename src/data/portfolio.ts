@@ -62,8 +62,7 @@ export const projects: Project[] = [
     category: 'AI & Real-World Systems',
     description: '[IN PROGRESS] An AI-powered conversational application currently in development.',
     technologies: ['AI', 'NLP', 'React', 'In Development'],
-    image: 'https://images.unsplash.com/photo-1675557009875-436f09789900?auto=format&fit=crop&q=80&w=800',
-    liveUrl: 'https://ai-assistant-preview.vercel.app',
+    // Concept visual is provided by ProjectImage while this project is in development.
     githubUrl: 'https://github.com/HASINIAASHRITHA',
     featured: true,
     longDescription: "Status: Currently Working On. This AI-powered interface is currently under active development. Once complete, it will provide an intelligent environment for natural language interactions, trained to handle complex queries with context-aware responses."
