@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { skills } from '@/data/portfolio';
 import programmingImage from '@/assets/skill-programming.jpg';
 import dataImage from '@/assets/skill-data.jpg';
@@ -16,12 +15,8 @@ export const Skills = () => (
       </div>
       <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
         {skills.map((group, groupIndex) => (
-          <motion.div
+          <div
             key={group.category}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.55, delay: groupIndex * 0.08 }}
             className="min-w-0"
           >
             <div className="relative mb-6 aspect-[3/2] overflow-hidden border border-border bg-secondary">
@@ -42,7 +37,7 @@ export const Skills = () => (
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>
